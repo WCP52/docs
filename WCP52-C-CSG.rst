@@ -1,7 +1,7 @@
 :Title: C Coding Style Guidelines
 :Author:
     Chris Pavlina <cpavlin1@binghamton.edu>;
-    much taken from Python PEP-8, placed in the public domain.
+    adapted from Python PEP-8, placed in the public domain.
 :Content-Type: text/x-rst
 :Created: 2014-10-24
 
