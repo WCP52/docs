@@ -452,7 +452,7 @@ is transported to older Mac or Windows versions, or DOS.
 Global Variable Names
 ~~~~~~~~~~~~~~~~~~~~~
 
-Global variables should be named in uppercase with a prefix of ``G_``:
+Global variables should be named in uppercase with a prefix of ``G_``::
 
     G_GLOBAL
 
