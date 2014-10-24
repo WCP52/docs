@@ -353,7 +353,7 @@ all inputs, outputs, preconditions, postconditions, and side-effects when
 applicable. The descriptions should begin with a single sentence, terminated
 with a period (.), which summarizes the function as well as possible.  Use the
 double-asterisk style to differentiate this, as documentation generation
-software can recognize them:
+software can recognize them::
 
     /**
      * Do something. This function takes things, puts out things, and
