@@ -24,13 +24,13 @@ Chris Pavlina
 
 Harrison Owens
 --------------
--Hours spent:
-+ Weekly Meeting 4 hours
-+ Researching Example Code for Atmel Studio: 3.5 hours
-+ Used example code and Programmed into SAM4S16C: 1.5 hours
+- Hours spent:
+  + Weekly Meeting 4 hours
+  + Researching Example Code for Atmel Studio: 3.5 hours
+  + Used example code and Programmed into SAM4S16C: 1.5 hours
 
--Problems:
-+ None
+- Problems:
+  + None
 
--Plans
-+continue learning how ot interface with SAM4S16C
+- Plans
+  +continue learning how ot interface with SAM4S16C
