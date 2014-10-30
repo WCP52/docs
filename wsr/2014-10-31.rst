@@ -1,0 +1,24 @@
+Weekly Status Report, 2014-10-31
+================================
+
+Chris Pavlina
+-------------
+
+- Hours spent:
+  - Synthesizer PCB: 10 hours
+  - Input PCB: 1 hour
+  - Git setup: 2 hours
+
+- Accomplishments:
+  - DDS test board complete, sent to fab
+  - Git repository and wiki working
+  - PDP finished
+
+- Problem:
+  - None currently
+
+- Plan:
+  - Finish input PCB by Monday
+  - Contact ADI about sample
+  - Buy parts for synth PCB
+
