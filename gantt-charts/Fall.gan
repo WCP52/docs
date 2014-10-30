@@ -116,6 +116,14 @@
             <task id="68" name="Output amp control" meeting="false" start="2014-12-02" duration="6" complete="0" expand="true"/>
             <task id="69" name="Signal processing" meeting="false" start="2014-12-01" duration="11" complete="0" expand="true"/>
         </task>
+        <task id="70" name="Documentation" meeting="false" start="2014-10-17" duration="40" complete="0" expand="true">
+            <task id="71" name="Requirements Specification" color="#8cb6ce" meeting="true" start="2014-10-17" duration="0" complete="0" expand="true"/>
+            <task id="81" name="Status Presentations" color="#8cb6ce" meeting="true" start="2014-10-24" duration="0" complete="0" expand="true"/>
+            <task id="72" name="Development Plan" color="#8cb6ce" meeting="true" start="2014-10-31" duration="0" complete="0" expand="true"/>
+            <task id="73" name="Architecture Presentation" color="#8cb6ce" meeting="true" start="2014-11-14" duration="0" complete="0" expand="true"/>
+            <task id="74" name="Interim Report" color="#8cb6ce" meeting="true" start="2014-12-05" duration="0" complete="0" expand="true"/>
+            <task id="79" name="Interim Presentation" color="#8cb6ce" meeting="true" start="2014-12-12" duration="0" complete="0" expand="true"/>
+        </task>
     </tasks>
     <resources/>
     <allocations/>
