@@ -8,6 +8,7 @@ Chris Pavlina
   + Synthesizer PCB: 10 hours
   + Input PCB: 1 hour
   + Git setup: 2 hours
+  + Meeting: 4 hours
 
 - Accomplishments:
   + DDS test board complete, sent to fab
