@@ -38,8 +38,8 @@ Harrison Owens
 
 - Accomplishments
 
- + Now able to use Atmel Studio/TeraTerm to program SAM4S16C
- + Organized research and project information into an editable wiki
+  + Now able to use Atmel Studio/TeraTerm to program SAM4S16C
+  + Organized research and project information into an editable wiki
 
 
 - Problems:
