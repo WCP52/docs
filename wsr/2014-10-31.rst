@@ -42,3 +42,29 @@ Harrison Owens
 - Plans
 
   +continue learning how ot interface with SAM4S16C
+  
+Kenneth Zach
+------------
+- Hours spent:
+  
+  + Weekly Meeting: 4 hours
+  + Researching SCPI: 1 hour
+  + Setting up Atmel Studio and learning to program development board: 1 hour
+  + Writing Wiki about using the development board: 1 hour
+  
+- Accomplishments
+
+  + Learned how to program the development board
+  + Documented how to set up and program the development board
+  + Learned about how to implement SCPI
+  + Can use TeraTerm to communicate with development board
+  
+- Problems
+  
+  +None
+  
+Plans
+
+  + Begin writing code to implement SCPI
+  + Use SCPI to make a simple communication with the development board.
+    + Maybe have it turn on an LED or store some information that is retrieved on command
