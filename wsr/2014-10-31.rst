@@ -67,4 +67,4 @@ Plans
 
   + Begin writing code to implement SCPI
   + Use SCPI to make a simple communication with the development board.
-    + Maybe have it turn on an LED or store some information that is retrieved on command
+  + Maybe have it turn on an LED or store some information that is retrieved on command
