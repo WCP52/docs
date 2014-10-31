@@ -5,20 +5,24 @@ Chris Pavlina
 -------------
 
 - Hours spent:
+
   + Synthesizer PCB: 10 hours
   + Input PCB: 1 hour
   + Git setup: 2 hours
   + Meeting: 4 hours
 
 - Accomplishments:
+
   + DDS test board complete, sent to fab
   + Git repository and wiki working
   + PDP finished
 
 - Problem:
+
   + None currently
 
 - Plan:
+
   + Finish input PCB by Monday
   + Contact ADI about sample
   + Buy parts for synth PCB
@@ -26,12 +30,15 @@ Chris Pavlina
 Harrison Owens
 --------------
 - Hours spent:
+
   + Weekly Meeting 4 hours
   + Researching Example Code for Atmel Studio: 3.5 hours
   + Used example code and Programmed into SAM4S16C: 1.5 hours
 
 - Problems:
+
   + None
 
 - Plans
+
   +continue learning how ot interface with SAM4S16C
