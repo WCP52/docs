@@ -34,6 +34,13 @@ Harrison Owens
   + Weekly Meeting 4 hours
   + Researching Example Code for Atmel Studio: 3.5 hours
   + Used example code and Programmed into SAM4S16C: 1.5 hours
+  + editing Github wiki repository containing project information : 1 hour
+
+- Accomplishments
+
+ + Now able to use Atmel Studio/TeraTerm to program SAM4S16C
+ + Organized research and project information into an editable wiki
+
 
 - Problems:
 
@@ -41,7 +48,9 @@ Harrison Owens
 
 - Plans
 
-  +continue learning how ot interface with SAM4S16C
+  + continue learning how to interface with SAM4S16C
+  + Create Code to interface with LEDs
+  + Assist in understanding how to implement SCPI
   
 Kenneth Zach
 ------------
