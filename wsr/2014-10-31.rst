@@ -63,7 +63,7 @@ Kenneth Zach
   
   +None
   
-Plans
+- Plans
 
   + Begin writing code to implement SCPI
   + Use SCPI to make a simple communication with the development board.
