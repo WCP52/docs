@@ -61,7 +61,7 @@ Kenneth Zach
   
 - Problems
   
-  +None
+  + None
   
 - Plans
 
