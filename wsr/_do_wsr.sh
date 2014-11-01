@@ -28,5 +28,5 @@ cpavlin1@binghamton.edu
 
 echo "$BODY_TEXT" > "$BODY_TMP"
 
-mutt3 -s "WCP52 Gain-Phase Weekly Pres $(date +%Y-%m-%d)" "$SEND_TO" -i "$BODY_TMP" -a "$WP" -b "howens1@binghamton.edu" -b "kxu14@binghamton.edu" -b "kzach1@binghamton.edu"
+mutt3 -s "WCP52 Gain-Phase Weekly $(date +%Y-%m-%d)" "$SEND_TO" -i "$BODY_TMP" -a "$WP" -b "howens1@binghamton.edu" -b "kxu14@binghamton.edu" -b "kzach1@binghamton.edu"
 
