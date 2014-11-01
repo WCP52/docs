@@ -1,5 +1,8 @@
-Weekly Status Report, 2014-10-31
-================================
+WCP52: Weekly Status Report
+===========================
+Week of 2014-10-24
+
+---------------
 
 Chris Pavlina
 -------------
@@ -77,3 +80,26 @@ Kenneth Zach
   + Begin writing code to implement SCPI
   + Use SCPI to make a simple communication with the development board.
   + Maybe have it turn on an LED or store some information that is retrieved on command
+
+Kaidi Xu
+--------
+
+- Hours spent:
+
+  + Weekly Meeting 4 hours
+  + Writing Wiki about using the development board: 1 hour
+
+- Accomplishment:
+
+  + Learned about how to implement SCPI
+  + Write project information into an editable wiki
+
+- Problems:
+
+  + None
+
+- Plans:
+
+  + Finish input PCB at Monday
+  + Use SCPI to make a simple communication with the development board.
+  + Assist in understanding how to implement SCPI
