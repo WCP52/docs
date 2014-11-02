@@ -9,11 +9,13 @@ Chris Pavlina
 
 - Hours spent:
 
-  + Detector PCB: 4 hours
+  + Detector_ PCB: 4 hours
 
 - Accomplishments:
 
 - Problem:
 
 - Plan:
+
+.. _Detector: https://github.com/WCP52/docs/wiki/Detector-Prototype
 
