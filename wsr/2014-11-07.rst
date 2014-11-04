@@ -10,12 +10,14 @@ Chris Pavlina
 - Hours spent:
 
   + Detector_ PCB: 4 hours
+  + `ADC characterization`_: 0.5 hour
 
 - Accomplishments:
+  + Completed ADC INL characterization
 
 - Problem:
 
 - Plan:
 
 .. _Detector: https://github.com/WCP52/docs/wiki/Detector-Prototype
-
+.. _`ADC characterization`: https://github.com/WCP52/docs/wiki/ADC-characterization
