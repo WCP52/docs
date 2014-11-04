@@ -24,22 +24,23 @@ adc_out_ideal = fit_slope * test_voltages + fit_inter
 # Residuals
 resid = adc_out_ideal - adc_out
 
+adc_out_fig = figure ()
 plot (test_voltages, adc_out)
 title ('ATSAM4S16C ADC Output vs Input')
 xlabel ('Input (V)')
 ylabel ('Output (LSB)')
 grid (True)
-savefig ('adc_out.eps')
-savefig ('adc_out.png', dpi=72)
-close ()
+adc_out_fig.savefig ('adc_out.eps')
+adc_out_fig.savefig ('adc_out.png', dpi=72)
 
+adc_resid_fig = figure ()
 plot (test_voltages, resid)
 title ('ATSAM4S16C ADC Nonlinear Residuals')
 xlabel ('Input (V)')
 ylabel ('Residual (LSB)')
 grid (True)
-savefig ('adc_resid.eps')
-savefig ('adc_out.png', dpi=72)
+adc_resid_fig = savefig ('adc_resid.eps')
+adc_resid_fig = savefig ('adc_resid.png', dpi=72)
 close ()
 
 max_inl = max (abs (resid))
