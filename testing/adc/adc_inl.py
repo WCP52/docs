@@ -39,9 +39,8 @@ title ('ATSAM4S16C ADC Nonlinear Residuals')
 xlabel ('Input (V)')
 ylabel ('Residual (LSB)')
 grid (True)
-adc_resid_fig = savefig ('adc_resid.eps')
-adc_resid_fig = savefig ('adc_resid.png', dpi=72)
-close ()
+adc_resid_fig.savefig ('adc_resid.eps')
+adc_resid_fig.savefig ('adc_resid.png', dpi=72)
 
 max_inl = max (abs (resid))
 
