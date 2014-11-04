@@ -13,6 +13,7 @@ Chris Pavlina
   + `ADC characterization`_: 0.5 hour
 
 - Accomplishments:
+
   + Completed ADC INL characterization
 
 - Problem:
