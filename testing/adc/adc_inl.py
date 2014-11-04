@@ -22,7 +22,7 @@ fit_slope, fit_inter = polyfit (test_voltages, adc_out, 1)
 adc_out_ideal = fit_slope * test_voltages + fit_inter
 
 # Residuals
-resid = adc_out_ideal - adc_out
+resid = adc_out - adc_out_ideal
 
 adc_out_fig = figure ()
 plot (test_voltages, adc_out)
