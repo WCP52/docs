@@ -11,6 +11,8 @@ Chris Pavlina
 
   + Detector_ PCB: 4 hours
   + `ADC characterization`_: 0.5 hour
+  + Preparing architecture presentation: 1 hour
+  + Input coupling design: 2 hours
 
 - Accomplishments:
 
