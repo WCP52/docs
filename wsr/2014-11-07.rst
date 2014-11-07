@@ -20,7 +20,12 @@ Chris Pavlina
 
 - Problem:
 
+  + RF switch sample is late.
+
 - Plan:
+
+  + Complete switch characterization as soon as switch is available
+  + Complete input coupling/filter/detector board by Monday
 
 .. _Detector: https://github.com/WCP52/docs/wiki/Detector-Prototype
 .. _`ADC characterization`: https://github.com/WCP52/docs/wiki/ADC-characterization
