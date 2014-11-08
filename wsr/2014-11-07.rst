@@ -76,3 +76,23 @@ Kenneth Zach
   + Research more SPI
   + Learn about implementing SPI on our dev board
   + Possibly writing some code for it to be tested on Monday
+
+Kaidi Xu
+-------------
+- Hours spent:
+  
+  + Meeting:1.5 hours
+  + ADC characterization: 30 minutes
+  + SPI research: 30 minutes
+
+- Accomplishments:
+  
+  + Finish testing ADC and make it success
+
+- Problems:
+  
+  + Have not make it clearly about how to make SPI works with microcontroller
+  + Not spent a lot time to make work done
+  
+- Plans:
+  + Learn more about how SPI work 
