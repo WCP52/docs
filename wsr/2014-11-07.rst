@@ -20,7 +20,7 @@ Chris Pavlina
 
 - Problem:
 
-  + RF switch sample is late.
+  + RF switch sample is late. Solution: characterize switch this weekend
 
 - Plan:
 
