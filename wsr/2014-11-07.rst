@@ -52,3 +52,27 @@ Harrison Owens
 - Plans:
 
   + To Create my own code for the microcontroller in order to test it better
+  
+  
+Kenneth Zach
+------------
+- Hours Spent:
+
+  + FA meeting : 1 hour
+  + ADC characterization : 30 minutes
+  + SPI research : 1 hour
+  
+- Accomplishments:
+
+  + Successfully tested ADC.  
+
+- Problems
+
+  + Not enough time to get more work done this week, but we are not behind schedule.
+  + Will have plenty of time to get work done this weekend to make up for this week.
+  
+- Plans
+
+  + Research more SPI
+  + Learn about implementing SPI on our dev board
+  + Possibly writing some code for it to be tested on Monday
