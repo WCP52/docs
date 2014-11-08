@@ -31,3 +31,69 @@ Chris Pavlina
 .. _`ADC characterization`: https://github.com/WCP52/docs/wiki/ADC-characterization
 .. _`Input coupling design`: https://github.com/WCP52/docs/blob/master/testing/inputcoupling/sim/inputcoupling.png
 
+Harrison Owens
+--------------
+- Hours Spent:
+
+  + ADC characterization : 30 mins
+  + SPI testing : 1 hour
+  + SPI research : 2 hours
+  
+- Accomplishments:
+
+  + With the team successfully characterized ADC on ATSAM4S16C
+  + successfully tested output of SPI interface on ATSAM4S16C
+    
+- Current Problems:
+
+  + Did not put the time into writing out my own code which would get me used to coding process of microcontroller
+  + Should have put more time into understanding what the SPI is really interacting with in the Microcontroller
+    
+- Plans:
+
+  + To Create my own code for the microcontroller in order to test it better
+  
+  
+Kenneth Zach
+------------
+- Hours Spent:
+
+  + FA meeting : 1 hour
+  + ADC characterization : 30 minutes
+  + SPI research : 1 hour
+  
+- Accomplishments:
+
+  + Successfully tested ADC.  
+
+- Problems
+
+  + Not enough time to get more work done this week, but we are not behind schedule.
+  + Will have plenty of time to get work done this weekend to make up for this week.
+  
+- Plans
+
+  + Research more SPI
+  + Learn about implementing SPI on our dev board
+  + Possibly writing some code for it to be tested on Monday
+
+Kaidi Xu
+-------------
+- Hours spent:
+  
+  + Meeting:1.5 hours
+  + ADC characterization: 30 minutes
+  + SPI research: 30 minutes
+
+- Accomplishments:
+  
+  + Finish testing ADC and make it success
+
+- Problems:
+  
+  + Have not make it clearly about how to make SPI works with microcontroller
+  + Not spent a lot time to make work done
+  
+- Plans:
+  
+  + Learn more about how SPI work 
