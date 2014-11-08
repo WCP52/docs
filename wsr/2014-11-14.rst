@@ -9,7 +9,7 @@ Chris Pavlina
 
 - Hours spent:
 
-  + `RF switch characterization`: 2 hours
+  + `RF switch characterization`_: 2 hours
 
 - Accomplishments:
 
