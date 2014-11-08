@@ -38,13 +38,13 @@ Harrison Owens
   + SPI testing : 1 hour
   + SPI research : 2 hours
   
-  - Accomplishments
-    + With the team successfully characterized ADC on ATSAM4S16C
-    + successfully tested output of SPI interface on ATSAM4S16C
+- Accomplishments
+  + With the team successfully characterized ADC on ATSAM4S16C
+  + successfully tested output of SPI interface on ATSAM4S16C
     
-  - Current Problems:
-    + Did not put the time into writing out my own code which would get me used to coding process of microcontroller
-    + Should have put more time into understanding what the SPI is really interacting with in the Microcontroller
+- Current Problems:
+  + Did not put the time into writing out my own code which would get me used to coding process of microcontroller
+  + Should have put more time into understanding what the SPI is really interacting with in the Microcontroller
     
-  - Plans:
-    + To Create my own code for the microcontroller in order to test it better
+- Plans:
+  + To Create my own code for the microcontroller in order to test it better
