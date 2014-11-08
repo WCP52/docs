@@ -34,6 +34,7 @@ Chris Pavlina
 Harrison Owens
 --------------
 - Hours Spent:
+
   + ADC characterization : 30 mins
   + SPI testing : 1 hour
   + SPI research : 2 hours
