@@ -95,4 +95,5 @@ Kaidi Xu
   + Not spent a lot time to make work done
   
 - Plans:
+  
   + Learn more about how SPI work 
