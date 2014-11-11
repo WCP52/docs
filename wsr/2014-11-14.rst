@@ -10,14 +10,19 @@ Chris Pavlina
 - Hours spent:
 
   + `RF switch characterization`_: 2 hours
+  + `Input frontend design`_: 4 hours
 
 - Accomplishments:
 
   + Completed RF switch characterization
+  + Completed input frontend design
 
 - Problem:
 
 - Plan:
 
-.. _`RF switch characterization`: https://github.com/WCP52/docs/wiki/RF-switch-characterization
+  + Order parts and PCB for input frontend
+  + PCBs for synthesizer are coming; build as soon as they arrive
 
+.. _`RF switch characterization`: https://github.com/WCP52/docs/wiki/RF-switch-characterization
+.. _`Input frontend design`: https://github.com/WCP52/docs/wiki/Frontend-Prototype
