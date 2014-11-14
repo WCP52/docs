@@ -43,7 +43,7 @@ Harrison Owens
 
    + None
    
--Plan
+-Plan:
 
    + Work with Ken to program the synthesizer chip once it is built.
  
