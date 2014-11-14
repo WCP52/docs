@@ -30,20 +30,20 @@ Chris Pavlina
 Harrison Owens
 --------------
 
- - Hours spent:
+- Hours spent:
  
-   + SCPI command program testing: 1 hour
-   + Reading  & Researching Datasheet for Synthesizer chip: 1 hour
+  + SCPI command program testing: 1 hour
+  + Reading & Researching Datasheet for Synthesizer chip: 1 hour
  
 - Accomplishments:
 
-   + Tested simple code to communicate with the terminal
+  + Tested simple code to communicate with the terminal
    
 - Problems:
 
-   + None
+  + None
    
--Plan:
+- Plan:
 
-   + Work with Ken to program the synthesizer chip once it is built.
+  + Work with Ken to program the synthesizer chip once it is built.
  
