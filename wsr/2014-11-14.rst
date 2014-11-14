@@ -26,3 +26,24 @@ Chris Pavlina
 
 .. _`RF switch characterization`: https://github.com/WCP52/docs/wiki/RF-switch-characterization
 .. _`Input frontend design`: https://github.com/WCP52/docs/wiki/Frontend-Prototype
+
+Harrison Owens
+--------------
+
+ - Hours spent:
+ 
+   + `SCPI command program testing`_: 1 hour
+   + `Reading  & Researching Datasheet for Synthesizer chip`_: 1 hour
+ 
+- Accomplishments:
+
+   + Tested simple code to communicate with the terminal
+   
+- Problems:
+
+   + None
+   
+-Plans
+
+   + Work with Ken to program the synthesizer chip once it is built.
+ 
