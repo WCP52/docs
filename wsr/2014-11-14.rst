@@ -32,8 +32,8 @@ Harrison Owens
 
  - Hours spent:
  
-   + `SCPI command program testing`_: 1 hour
-   + `Reading  & Researching Datasheet for Synthesizer chip`_: 1 hour
+   + SCPI command program testing: 1 hour
+   + Reading  & Researching Datasheet for Synthesizer chip: 1 hour
  
 - Accomplishments:
 
@@ -43,7 +43,7 @@ Harrison Owens
 
    + None
    
--Plans
+-Plan
 
    + Work with Ken to program the synthesizer chip once it is built.
  
