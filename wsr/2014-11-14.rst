@@ -46,4 +46,33 @@ Harrison Owens
 - Plan:
 
   + Work with Ken to program the synthesizer chip once it is built.
+  
+Kenneth Zach
+------------
+
+- Hours Spent:
+   
+   + Command parsing: 1 hour
+   + Studying datasheet for synthesier chip: 1.5 hours
+   + Studying Atmel's SPI example code: 1 hour
+   + Writing wiki on what needs to be sent to synthesizer using SPI: 30 mins
+   
+- Accomplishments:
+
+  + Wrote about half of what we need on the wiki
+  + Gained a pretty good understanding of Atmel's SPI code
+  + Learned how to parse commands entered into the terminal
+  
+- Problems:
+
+  + datasheets? more like datashits
+  
+- Plan:
+  
+  + Finish the wiki - it will explain everything that needs to be communicated to the synthesizer
+  + Write the code that sets up the synthesizer.
+    + Do this in a way that we can enter what we want to set in the synthesizer through the terminal, this way each SPI transfer can be verified with a logic analyzer before we get the synthesizer
+    
+  
+  
  
