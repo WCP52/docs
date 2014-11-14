@@ -22,7 +22,7 @@ Chris Pavlina
 - Plan:
 
   + Order parts and PCB for input frontend
-  + PCBs for synthesizer are coming; build as soon as they arrive
+  + PCBs for synthesizer are coming this weekend; build as soon as they arrive
 
 .. _`RF switch characterization`: https://github.com/WCP52/docs/wiki/RF-switch-characterization
 .. _`Input frontend design`: https://github.com/WCP52/docs/wiki/Frontend-Prototype
