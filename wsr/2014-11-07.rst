@@ -28,20 +28,21 @@ Chris Pavlina
   + Complete input coupling/filter/detector board by Monday
 
 .. _Detector: https://github.com/WCP52/docs/wiki/Detector-Prototype
+.. _`ADC characterization`: https://github.com/WCP52/docs/wiki/ADC-characterization
 .. _`Input coupling design`: https://github.com/WCP52/docs/blob/master/testing/inputcoupling/sim/inputcoupling.png
 
 Harrison Owens
 --------------
 - Hours Spent:
 
-  + `ADC characterization`_ : 30 mins
+  + ADC characterization : 30 mins
   + SPI testing : 1 hour
-  + `SPI research`_ : 2 hours
+  + SPI research : 2 hours
   
 - Accomplishments:
 
   + With the team successfully characterized ADC on ATSAM4S16C
-  + `successfully tested output of SPI interface`_ on ATSAM4S16C
+  + successfully tested output of SPI interface on ATSAM4S16C
     
 - Current Problems:
 
@@ -51,14 +52,15 @@ Harrison Owens
 - Plans:
 
   + To Create my own code for the microcontroller in order to test it better
-
+  
+  
 Kenneth Zach
 ------------
 - Hours Spent:
 
   + FA meeting : 1 hour
-  + `ADC characterization`_ : 30 minutes
-  + `SPI research`_ : 1 hour
+  + ADC characterization : 30 minutes
+  + SPI research : 1 hour
   
 - Accomplishments:
 
@@ -74,9 +76,6 @@ Kenneth Zach
   + Research more SPI
   + Learn about implementing SPI on our dev board
   + Possibly writing some code for it to be tested on Monday
-
-.. _`SPI research`: https://github.com/WCP52/docs/wiki/Using-SPI-to-interact-with-the-AD9958-synthesizer
-.. _`ADC characterization`: https://github.com/WCP52/docs/wiki/ADC-characterization
 
 Kaidi Xu
 -------------
