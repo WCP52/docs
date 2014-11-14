@@ -66,8 +66,6 @@ Kenneth Zach
   + Learned how to parse commands entered into the terminal
   
 - Problems:
-
-  + datasheets? more like datashits
   
 - Plan:
   
