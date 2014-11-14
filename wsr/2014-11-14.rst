@@ -52,10 +52,10 @@ Kenneth Zach
 
 - Hours Spent:
    
-   + Command parsing: 1 hour
-   + Studying datasheet for synthesier chip: 1.5 hours
-   + Studying Atmel's SPI example code: 1 hour
-   + Writing wiki on what needs to be sent to synthesizer using SPI: 30 mins
+  + Command parsing: 1 hour
+  + Studying datasheet for synthesier chip: 1.5 hours
+  + Studying Atmel's SPI example code: 1 hour
+  + Writing wiki on what needs to be sent to synthesizer using SPI: 30 mins
    
 - Accomplishments:
 
