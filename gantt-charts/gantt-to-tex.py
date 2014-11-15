@@ -331,15 +331,15 @@ def output_gantttitles(items, outfile=None):
     print ("\\\\", file=outfile)
 
 TEX_HEAD=r"""
-\documentclass{article}
+\documentclass[border=1cm]{standalone}
 \usepackage[usenames,dvipsnames,svgnames]{xcolor}
 \usepackage{pgfgantt}
-\usepackage[letterpaper,margin=0.1in]{geometry}
+\usepackage{graphics}
 \begin{document}
 \pagenumbering{gobble}
 \renewcommand*{\familydefault}{\sfdefault}
-\begin{figure}[ftbp]
-\begin{center}
+%\begin{figure}[ftbp]
+%\begin{center}
 \begin{ganttchart}[time slot format=isodate,
     x unit=2mm,
     y unit chart=5mm,
@@ -350,8 +350,8 @@ TEX_HEAD=r"""
 
 TEX_FOOT=r"""
 \end{ganttchart}
-\end{center}
-\end{figure}
+%\end{center}
+%\end{figure}
 \end{document}
 """
 
