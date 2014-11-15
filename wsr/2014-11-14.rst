@@ -71,6 +71,7 @@ Kenneth Zach
   
   + Finish the wiki - it will explain everything that needs to be communicated to the synthesizer
   + Write the code that sets up the synthesizer.
+
     + Do this in a way that we can enter what we want to set in the synthesizer through the terminal, this way each SPI transfer can be verified with a logic analyzer before we get the synthesizer
     
 .. _`Studying datasheet for synthesier chip`: https://github.com/WCP52/docs/wiki/Using-SPI-to-interact-with-the-AD9958-synthesizer 
