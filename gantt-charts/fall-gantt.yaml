@@ -43,11 +43,12 @@ items:
   - name: Output amplifier
     items:
       - name: PCB design
-        prog: 90
+        prog: 100
         id: amp_pcb
         start: 2014-11-15
         end: dur 7
       - name: Parts, PCB ordered
+        prog: 50
       - name: Delivery
         end: dur 10
       - name: Assembled
