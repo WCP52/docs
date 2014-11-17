@@ -30,7 +30,7 @@ items:
         start: imm-after synth_pcb
         end: dur 7
       - name: Parts, PCB ordered
-        prog: 0
+        prog: 50
       - name: Delivery
         prog: 0
         end: dur 10
@@ -43,6 +43,7 @@ items:
   - name: Output amplifier
     items:
       - name: PCB design
+        prog: 90
         id: amp_pcb
         start: 2014-11-15
         end: dur 7
