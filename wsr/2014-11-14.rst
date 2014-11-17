@@ -22,7 +22,56 @@ Chris Pavlina
 - Plan:
 
   + Order parts and PCB for input frontend
-  + PCBs for synthesizer are coming; build as soon as they arrive
+  + PCBs for synthesizer are coming this weekend; build as soon as they arrive
 
 .. _`RF switch characterization`: https://github.com/WCP52/docs/wiki/RF-switch-characterization
 .. _`Input frontend design`: https://github.com/WCP52/docs/wiki/Frontend-Prototype
+
+Harrison Owens
+--------------
+
+- Hours spent:
+ 
+  + SCPI command program testing: 1 hour
+  + `Reading & Researching Datasheet for Synthesizer chip`_: 1 hour
+ 
+- Accomplishments:
+
+  + Tested simple code to communicate with the terminal
+   
+- Problems:
+
+  + None
+   
+- Plan:
+
+  + Work with Ken to program the synthesizer chip once it is built.
+
+.. _`Reading & Researching Datasheet for Synthesizer chip`: https://github.com/WCP52/docs/wiki/Using-SPI-to-interact-with-the-AD9958-synthesizer
+  
+Kenneth Zach
+------------
+
+- Hours Spent:
+   
+  + Command parsing: 1 hour
+  + `Studying datasheet for synthesier chip`_: 1.5 hours
+  + Studying Atmel's SPI example code: 1 hour
+  + Writing wiki on what needs to be sent to synthesizer using SPI: 30 mins
+   
+- Accomplishments:
+
+  + Wrote about half of what we need on the wiki
+  + Gained a pretty good understanding of Atmel's SPI code
+  + Learned how to parse commands entered into the terminal
+  
+- Problems:
+  
+- Plan:
+  
+  + Finish the wiki - it will explain everything that needs to be communicated to the synthesizer
+  + Write the code that sets up the synthesizer.
+
+    + Do this in a way that we can enter what we want to set in the synthesizer through the terminal, this way each SPI transfer can be verified with a logic analyzer before we get the synthesizer
+    
+.. _`Studying datasheet for synthesier chip`: https://github.com/WCP52/docs/wiki/Using-SPI-to-interact-with-the-AD9958-synthesizer 

@@ -1,0 +1,114 @@
+magic: gantt
+
+name: Fall Schedule
+
+items:
+  - name: Synthesizer
+    items:
+      - name: PCB design
+        prog: 100
+        id: synth_pcb
+        start: 2014-10-20
+        end: dur 7
+      - name: Parts, PCB ordered
+        prog: 100
+      - name: Delivery
+        prog: 100
+        end: 2014-11-14
+      - name: Assembled
+        prog: 100
+        start: 2014-11-14
+      - name: Testing
+        prog: 0
+        end: dur 6
+
+  - name: Input frontend
+    items:
+      - name: PCB design
+        prog: 100
+        id: frontend_pcb
+        start: imm-after synth_pcb
+        end: dur 7
+      - name: Parts, PCB ordered
+        prog: 50
+      - name: Delivery
+        prog: 0
+        end: dur 10
+      - name: Assembled
+        prog: 0
+      - name: Testing
+        prog: 0
+        end: dur 6
+
+  - name: Output amplifier
+    items:
+      - name: PCB design
+        prog: 100
+        id: amp_pcb
+        start: 2014-11-15
+        end: dur 7
+      - name: Parts, PCB ordered
+        prog: 50
+      - name: Delivery
+        end: dur 10
+      - name: Assembled
+      - name: Testing
+        end: dur 3
+
+# Consider moving this to next semester. We'll bring it back if HW is finished early.
+#  - name: Power supply
+#    items:
+#      - name: PCB design
+#        id: psu_pcb
+#        start: imm-after Output amplifier
+#        end: dur 7
+#      - name: Parts ordered
+#      - name: PCB etched, assembled
+#        end: dur 6
+#      - name: Testing
+#        end: dur 6
+#
+
+  - name: Microcontroller
+    items:
+      - name: Dev stack and test
+        start: 2014-10-20
+        end: 2014-10-31
+        prog: 100
+      - name: ADC profiling
+        start: 2014-11-02
+        end: 2014-11-03
+        prog: 100
+      - name: Command parser
+        start: 2014-11-10
+        end: dur 7
+        prog: 50
+      - name: Synthesizer control
+        start: 2014-11-10
+        end: dur 14
+        prog: 20
+      - name: Input detection/ADC
+        start: imm-after Synthesizer control
+        end: dur 7
+      - name: Signal processing
+        start: imm-after Input detection/ADC
+        end: dur 14
+
+  - name: Documentation
+    items:
+      - name: Requirements Specification
+        start: 2014-10-17
+        prog: 100
+      - name: Status Presentations
+        start: 2014-10-24
+        prog: 100
+      - name: Development Plan
+        start: 2014-10-31
+        prog: 100
+      - name: Architecture Presentation
+        start: 2014-11-14
+        prog: 100
+      - name: Interim Report
+        start: 2014-12-05
+      - name: Interim Presentation
+        start: 2014-12-12
