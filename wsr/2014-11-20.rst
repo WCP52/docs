@@ -1,0 +1,28 @@
+WCP52: Weekly Status Report
+===========================
+Week of 2014-11-20
+
+---------------
+
+Chris Pavlina
+-------------
+
+- Hours spent:
+
+  + `Firmware`_: 2 hours
+
+- Accomplishments:
+
+  + Migrated build system from Atmel Studio
+  + First initialization of synthesizer
+
+- Problem:
+
+  + Bug in synthesizer interface - does not respond to register writes
+
+- Plan:
+
+  + Keep working on firmware while we wait for PCBs
+
+.. _`Firmware`: https://github.com/WCP52/firmware
+
