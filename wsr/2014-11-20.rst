@@ -26,3 +26,30 @@ Chris Pavlina
 
 .. _`Firmware`: https://github.com/WCP52/firmware
 
+
+Kenneth Zach
+------------
+
+- Hours spent:
+
+  + Group meeting: 1 hour
+  + Firmware: 2 hours
+  + Testing firmware: 1.5 hours
+  + Design Document: 30 minutes
+  
+- Accomplishments:
+  
+  + Wrote code for SPI interface
+  + Integration/Initial testing of SPI interface
+  + Executive summary and some other sloppy ideas for design document
+  
+- Problem:
+
+  + Synthesizer not responding to SPI commands properly.
+
+- Plans:
+
+  + Debug problem with SPI
+  + Turn sloppy ideas into formal design document
+  + More firmware development
+
