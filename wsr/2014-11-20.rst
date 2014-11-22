@@ -83,7 +83,7 @@ Harrison Owens
   + write intital code for phase/gain formula
   + reaccquaint myself with Python coding.
   
-  Kaidi Xu
+Kaidi Xu
 ------------
 
 - Hour Spent:
