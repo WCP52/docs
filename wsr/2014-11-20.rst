@@ -82,3 +82,28 @@ Harrison Owens
   + Finalize the Design report into a more coherent version
   + write intital code for phase/gain formula
   + reaccquaint myself with Python coding.
+  
+  Kaidi Xu
+------------
+
+- Hour Spent:
+  
+  + Group Meeting: 2hours
+  + Firmware: 2 hours
+  + Synthesizer Testing: 2 hours
+  
+- Accomplishment:
+  
+  + Initial testing of SPI interface
+  + Know how to test SPI interface with logic analyzer
+  
+- Problems:
+  
+  + Have not finish the interim report
+  + The synthesizer board test is not successful, because the Synthesizer board not responding to SPI commands
+  
+- Plans:
+  
+  + Still need to worj=k on the firmware
+  + Finish the report as soon as possible
+  
