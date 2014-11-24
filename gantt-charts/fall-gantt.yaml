@@ -19,7 +19,7 @@ items:
         prog: 100
         start: 2014-11-14
       - name: Testing
-        prog: 0
+        prog: 70
         end: dur 6
 
   - name: Input frontend
@@ -86,7 +86,7 @@ items:
       - name: Synthesizer control
         start: 2014-11-10
         end: dur 21
-        prog: 20
+        prog: 80
       - name: Input detection/ADC
         start: imm-after Synthesizer control
         end: dur 7
@@ -111,6 +111,6 @@ items:
         prog: 100
       - name: Interim Report
         start: 2014-12-05
-        prog: 50
+        prog: 75
       - name: Interim Presentation
         start: 2014-12-12
