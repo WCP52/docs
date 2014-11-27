@@ -19,7 +19,7 @@ items:
         prog: 100
         start: 2014-11-14
       - name: Testing
-        prog: 70
+        prog: 95
         end: dur 6
 
   - name: Input frontend
@@ -30,9 +30,8 @@ items:
         start: imm-after synth_pcb
         end: dur 7
       - name: Parts, PCB ordered
-        prog: 50
+        prog: 100
       - name: Delivery
-        prog: 0
         end: dur 10
       - name: Assembled
         prog: 0
@@ -48,7 +47,7 @@ items:
         start: 2014-11-15
         end: dur 7
       - name: Parts, PCB ordered
-        prog: 50
+        prog: 100
       - name: Delivery
         end: dur 10
       - name: Assembled
