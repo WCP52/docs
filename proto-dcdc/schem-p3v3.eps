@@ -1,10 +1,11 @@
 %!PS-Adobe-3.0 EPSF-3.0
-%%Title: schem_cycle_on.png
+%%Title: schem-p3v3.eps
 %%Creator: XCircuit v3.9 rev26
-%%CreationDate: Sat Nov 22 21:19:13 2014
+%%CreationDate: Fri Nov 28 16:23:24 2014
 %%Pages: 1
-%%BoundingBox: 68 68 441 361
-%%DocumentNeededResources: font Times-Roman Times-RomanISO 
+%%BoundingBox: 68 68 436 343
+%%DocumentNeededResources: font Helvetica Times-Roman HelveticaISO 
+%%+ font Helvetica-ObliqueISO Symbol 
 %%EndComments
 %%BeginProlog
 %
@@ -172,25 +173,19 @@
 %%EndResource
 %%EndProlog
 
-/Times-Roman findfont dup length dict begin
+/Helvetica findfont dup length dict begin
 {1 index /FID ne {def} {pop pop} ifelse} forall
 /Encoding ISOLatin1Encoding def currentdict end
-/Times-RomanISO exch definefont pop
+/HelveticaISO exch definefont pop
+
+/Helvetica-Oblique findfont dup length dict begin
+{1 index /FID ne {def} {pop pop} ifelse} forall
+/Encoding ISOLatin1Encoding def currentdict end
+/Helvetica-ObliqueISO exch definefont pop
 
 % XCircuit output starts here.
 
 %%BeginSetup
-
-/generic::circle {
-% trivial
-begingate
-1 1.000 16 0 6 0.000 360.000 xcarc
-1 1.000 0 0 10 0 2 polygon
-1.000 0.000 0.000 scb
-(out) {/Times-Roman cf} 2 4 0 1.000 16 0 pinlabel
-(out) {/Times-Roman cf} 2 7 0 1.000 0 0 pinlabel
-endgate
-} def
 
 /capacitors::polarized {
 begingate
@@ -218,6 +213,21 @@ begingate
 0.180 0.545 0.341 scb
 (spice:R%i %pr.1 %pr.2 1.0K) {/Times-Roman cf} 2 0 0 1.000 -208 -160 infolabel
 (sim:r %pr.1 %pr.2) {/Times-Roman cf} 2 0 0 1.000 -208 -208 infolabel
+endgate
+} def
+
+/capacitors::capacitor {
+begingate
+1 1.500 -32 6 32 6 2 polygon
+1 1.500 -32 -6 32 -6 2 polygon
+1 1.000 0 -32 0 -6 2 polygon
+1 1.000 0 32 0 6 2 polygon
+1.000 0.000 0.000 scb
+(c.1) {/Times-Roman cf} 2 9 0 1.000 0 32 pinlabel
+(c.2) {/Times-Roman cf} 2 13 0 1.000 0 -32 pinlabel
+0.180 0.545 0.341 scb
+(spice:C%i %pc.1 %pc.2 1.0P) {/Times-Roman cf} 2 0 0 1.000 -208 -160 infolabel
+(sim:c %pc.1 %pc.2) {/Times-Roman cf} 2 0 0 1.000 -208 -208 infolabel
 endgate
 } def
 
@@ -263,18 +273,10 @@ begingate
 endgate
 } def
 
-/transistors::circleTr {
-% hidden
-begingate
-1 1.000 0 0 44 0.000 360.000 xcarc
-endgate
-} def
-
-/transistors::npn2 {
+/transistors::npn {
 begingate
 1.000 0 0 0 transistors::transistor
 0.650 /sv 115 0 -32 generic::arrowhead
-1.000 0 -18 0 transistors::circleTr
 1.000 0.000 0.000 scb
 (C) {/Times-Roman cf} 2 9 0 1.000 0 32 pinlabel
 (B) {/Times-Roman cf} 2 7 0 1.000 -64 0 pinlabel
@@ -285,11 +287,10 @@ begingate
 endgate
 } def
 
-/transistors::pnp2 {
+/transistors::pnp {
 begingate
 1.000 0 0 0 transistors::transistor
 0.650 /sv 245 -32 18 generic::arrowhead
-1.000 0 -18 0 transistors::circleTr
 1.000 0.000 0.000 scb
 (C) {/Times-Roman cf} 2 13 0 1.000 0 -32 pinlabel
 (B) {/Times-Roman cf} 2 7 0 1.000 -64 0 pinlabel
@@ -339,18 +340,33 @@ begingate
 endgate
 } def
 
-/capacitors::capacitor {
+/generic::dot {
+% trivial
 begingate
-1 1.500 -32 6 32 6 2 polygon
-1 1.500 -32 -6 32 -6 2 polygon
-1 1.000 0 -32 0 -6 2 polygon
-1 1.000 0 32 0 6 2 polygon
+248 1.000 0 0 6 0.000 360.000 xcarc
 1.000 0.000 0.000 scb
-(c.1) {/Times-Roman cf} 2 9 0 1.000 0 32 pinlabel
-(c.2) {/Times-Roman cf} 2 13 0 1.000 0 -32 pinlabel
-0.180 0.545 0.341 scb
-(spice:C%i %pc.1 %pc.2 1.0P) {/Times-Roman cf} 2 0 0 1.000 -208 -160 infolabel
-(sim:c %pc.1 %pc.2) {/Times-Roman cf} 2 0 0 1.000 -208 -208 infolabel
+(x) {/Times-Roman cf} 2 29 0 1.000 0 0 pinlabel
+endgate
+} def
+
+/generic::circle {
+% trivial
+begingate
+1 1.000 16 0 6 0.000 360.000 xcarc
+1 1.000 0 0 10 0 2 polygon
+1.000 0.000 0.000 scb
+(out) {/Times-Roman cf} 2 4 0 1.000 16 0 pinlabel
+(out) {/Times-Roman cf} 2 7 0 1.000 0 0 pinlabel
+endgate
+} def
+
+/generic::tap {
+% trivial
+<</@in (bus\(0:7\)) /@out (bus\(0\)) >> begingate
+496 1.000 0 8 16 0 0 -8 3 polygon
+1.000 0.000 0.000 scb
+mark @out {/Helvetica cf} ctmk 20 0 1.000 16 0 pinlabel
+mark @in {/Helvetica cf} ctmk 23 0 1.000 0 0 pinlabel
 endgate
 } def
 
@@ -366,130 +382,137 @@ begingate
 endgate
 } def
 
-/generic::dot {
-% trivial
-begingate
-248 1.000 0 0 6 0.000 360.000 xcarc
-1.000 0.000 0.000 scb
-(x) {/Times-Roman cf} 2 29 0 1.000 0 0 pinlabel
-endgate
-} def
-
 
 %%EndSetup
 
-%%Page: 1 1
+%%Page: schem-p3v3 1
 %%PageOrientation: Portrait
 /pgsave save def bop
 1.0000 inchscale
-2.6000 setlinewidth 754 527 translate
+2.6000 setlinewidth 1004 568 translate
 
--1.000 0 -480 384 generic::circle
-1.000 0 -416 32 capacitors::polarized
-1.000 0 -288 128 analog::resistor
-1.000 270 -288 -224 liec_smi::zener_diode
-1.000 0 -96 0 transistors::npn2
-1.000 0 -96 96 analog::resistor
-1.000 0 -96 288 analog::resistor
-1.000 0 32 192 transistors::pnp2
-1.000 90 -192 384 analog::resistor
-1.000 270 144 96 inductors::inductor_powder
-1.000 270 32 -224 liec_smi::diode_schottky
-1.000 0 256 -128 capacitors::polarized
-1 1.000 32 160 32 -192 2 polygon
-1 1.000 96 96 32 96 2 polygon
-1 1.000 256 -96 256 96 192 96 3 polygon
-1 1.000 -96 160 -96 224 2 polygon
-1 1.000 -128 384 32 384 32 224 3 polygon
-1 1.000 -96 352 -96 384 2 polygon
-1 1.000 -32 192 -96 192 2 polygon
-1.000 0 -192 -224 capacitors::capacitor
-1.000 90 -32 -96 capacitors::capacitor
-1.000 90 32 -32 generic::jumper
-1 1.000 16 -32 -96 -32 2 polygon
-1 1.000 48 -32 256 -32 2 polygon
-1 1.000 -288 -192 -288 64 2 polygon
-1 1.000 -160 0 -288 0 2 polygon
-1 1.000 -192 -192 -192 -128 -288 -128 3 polygon
-1 1.000 -64 -96 -160 -96 -176 -96 -176 0 4 polygon
-1 1.000 0 -96 32 -96 2 polygon
-1 1.000 -288 192 -288 384 -256 384 3 polygon
-1.000 0 32 -96 generic::dot
-1.000 0 32 96 generic::dot
-1.000 0 -96 192 generic::dot
-1.000 0 -96 384 generic::dot
-1.000 0 -288 0 generic::dot
-1.000 0 -176 0 generic::dot
-1.000 0 -288 -128 generic::dot
-1.000 0 256 -32 generic::dot
-1 1.000 -416 64 -416 384 -288 384 3 polygon
-1 1.000 256 -160 256 -320 -416 -320 -416 0 4 polygon
-1 1.000 -288 -256 -288 -320 2 polygon
-1.000 0 -288 -320 generic::dot
-1 1.000 -192 -256 -192 -320 2 polygon
-1.000 0 -192 -320 generic::dot
-1 1.000 32 -256 32 -320 2 polygon
-1.000 0 32 -320 generic::dot
-1.000 0 -288 384 generic::dot
-1 1.000 -480 384 -416 384 2 polygon
-1.000 0 -416 384 generic::dot
--1.000 0 -480 -320 generic::circle
-1 1.000 -480 -320 -416 -320 2 polygon
-1.000 0 -416 -320 generic::dot
--1.000 180 320 96 generic::circle
-1 1.000 320 96 240 96 2 polygon
-1.000 0 256 96 generic::dot
--1.000 180 320 -320 generic::circle
-1 1.000 320 -320 256 -320 2 polygon
-1.000 0 256 -320 generic::dot
-(PPTC1) {/Times-Roman cf} 2 21 0 0.700 -192 416 label
-(R1) {/Times-Roman cf} 2 20 0 0.700 -256 128 label
-(R2) {/Times-Roman cf} 2 20 0 0.700 -64 288 label
-(R3) {/Times-Roman cf} 2 20 0 0.700 -64 96 label
-(L1) {/Times-RomanISO cf} 2 21 0 0.700 144 160 label
-(C1) {/Times-RomanISO cf} 2 20 0 0.700 -368 32 label
-(C2) {/Times-RomanISO cf} 2 20 0 0.700 -144 -224 label
-(C3) {/Times-RomanISO cf} 2 21 0 0.700 -64 -160 label
-(C4) {/Times-RomanISO cf} 2 20 0 0.700 304 -128 label
-(D1) {/Times-RomanISO cf} 2 23 0 0.700 -320 -224 label
-(D2) {/Times-RomanISO cf} 2 20 0 0.700 80 -224 label
-(+) {ns} {Ss} {ns} (in) {ss} (V) {/Times-RomanISO cf} 8 23 0 0.700 -512 384 
-label
-(-) {ns} (in) {ss} (V) {/Times-RomanISO cf} 6 23 0 0.700 -512 -320 label
-(+) {ns} (out) {ss} (V) {/Times-RomanISO cf} 6 20 0 0.700 352 96 label
-(-) {ns} (out) {ss} (V) {/Times-RomanISO cf} 6 20 0 0.700 352 -320 label
-1.000 0.000 0.000 scb
-1.000 90 -432 384 generic::arrowhead
-1.000 90 -320 384 generic::arrowhead
-1.000 90 -224 384 generic::arrowhead
-1.000 90 -48 384 generic::arrowhead
-1.000 180 32 336 generic::arrowhead
-1.000 180 32 256 generic::arrowhead
-1.000 180 32 112 generic::arrowhead
-1.000 90 96 96 generic::arrowhead
-1.000 90 224 96 generic::arrowhead
-1.000 180 256 0 generic::arrowhead
-1.000 90 304 96 generic::arrowhead
-1.000 270 288 -320 generic::arrowhead
-1.000 270 144 -320 generic::arrowhead
-1.000 270 -32 -320 generic::arrowhead
-1.000 270 -176 -320 generic::arrowhead
-1.000 270 -352 -320 generic::arrowhead
-1.000 270 -464 -320 generic::arrowhead
-1.000 180 256 -224 generic::arrowhead
+1.000 0 -704 64 capacitors::polarized
+1.000 0 -512 160 analog::resistor
+1.000 0 -512 -224 capacitors::capacitor
+1.000 270 -592 -224 liec_smi::zener_diode
+1.000 0 -384 -32 transistors::npn
+1.000 0 -384 64 analog::resistor
+1.000 0 -384 192 analog::resistor
+1.000 0 -272 128 transistors::pnp
+1.000 270 -176 64 inductors::inductor_powder
+1.000 270 -272 -224 liec_smi::diode_schottky
+1.000 90 -368 -128 capacitors::capacitor
+1.000 0 32 -144 capacitors::polarized
+1 1.000 32 -112 32 64 2 polygon
+1 1.000 -272 96 -272 64 2 polygon
+1 1.000 -272 64 -272 -192 2 polygon
+1.000 0 -272 64 generic::dot
+1 1.000 -272 64 -224 64 2 polygon
+1 1.000 -336 128 -384 128 2 polygon
+1.000 0 -384 128 generic::dot
+1 1.000 -384 256 -384 288 2 polygon
+1.000 0 -384 288 generic::dot
+1 1.000 -288 -64 -384 -64 2 polygon
+1.000 0 -272 -128 generic::dot
+1 1.000 -272 -128 -336 -128 2 polygon
+1 1.000 -272 288 -512 288 2 polygon
+1 1.000 -512 288 -672 288 2 polygon
+1 1.000 -704 288 -704 96 2 polygon
+1.000 0 -512 288 generic::dot
+1 1.000 -512 288 -512 224 2 polygon
+1 1.000 -512 96 -512 -192 2 polygon
+1 1.000 -448 -32 -512 -32 2 polygon
+1 1.000 -592 -192 -592 -80 -512 -80 3 polygon
+1 1.000 -400 -128 -512 -128 2 polygon
+1.000 0 -512 -128 generic::dot
+1.000 0 -512 -80 generic::dot
+1.000 0 -512 -32 generic::dot
+1 1.000 32 -176 32 -304 -672 -304 3 polygon
+1 1.000 -704 -304 -704 32 2 polygon
+1 1.000 -592 -256 -592 -304 2 polygon
+1.000 0 -592 -304 generic::dot
+1 1.000 -512 -256 -512 -304 2 polygon
+1.000 0 -512 -304 generic::dot
+1 1.000 -272 -256 -272 -304 2 polygon
+1.000 0 -272 -304 generic::dot
+1.000 0 64 64 generic::circle
+1 1.000 64 64 32 64 2 polygon
+1.000 0 32 64 generic::dot
+1.000 0 64 -304 generic::circle
+1 1.000 64 -304 32 -304 2 polygon
+1.000 0 32 -304 generic::dot
+-1.000 0 -736 288 generic::circle
+-1.000 0 -736 -304 generic::circle
+1 1.000 -736 -304 -672 -304 2 polygon
+1.000 0 -704 -304 generic::dot
+1 1.000 -736 288 -672 288 2 polygon
+1.000 0 -704 288 generic::dot
+(C1) {/HelveticaISO cf} 2 20 0 0.600 -656 80 label
+(470\265F) {/HelveticaISO cf} 2 20 0 0.600 -656 48 label
+(C2) {/HelveticaISO cf} 2 20 0 0.600 -464 -208 label
+(10nF) {/HelveticaISO cf} 2 20 0 0.600 -464 -240 label
+(C3) {/HelveticaISO cf} 2 21 0 0.600 -368 -176 label
+(1nF) {/HelveticaISO cf} 2 21 0 0.600 -368 -208 label
+(C4) {/HelveticaISO cf} 2 20 0 0.600 80 -128 label
+(470\265F) {/HelveticaISO cf} 2 20 0 0.600 80 -160 label
+(L1) {/HelveticaISO cf} 2 21 0 0.600 -176 48 label
+(220\265H) {/HelveticaISO cf} 2 21 0 0.600 -176 16 label
+(D1) {/HelveticaISO cf} 2 21 0 0.600 -272 -336 label
+(1N5819) {/HelveticaISO cf} 2 21 0 0.600 -272 -368 label
+(R1) {/HelveticaISO cf} 2 20 0 0.600 -480 176 label
+(W) {/Symbol cf} (10k) {/HelveticaISO cf} 4 16 0 0.600 -480 144 label
+(R3) {/HelveticaISO cf} 2 20 0 0.600 -352 208 label
+(R4) {/HelveticaISO cf} 2 20 0 0.600 -352 80 label
+(W) {/Symbol cf} (1k) {/HelveticaISO cf} 4 20 0 0.600 -352 176 label
+(W) {/Symbol cf} (1k) {/HelveticaISO cf} 4 20 0 0.600 -352 48 label
+(Q1) {/HelveticaISO cf} 2 20 0 0.600 -384 -16 label
+(2N3904) {/HelveticaISO cf} 2 20 0 0.600 -384 -48 label
+(Q2) {/HelveticaISO cf} 2 20 0 0.600 -272 144 label
+(2N4403) {/HelveticaISO cf} 2 20 0 0.600 -272 112 label
+(+) {ns} (in) {ss} (V) {/HelveticaISO cf} 6 23 0 0.600 -768 288 label
+(-) {ns} (in) {ss} (V) {/HelveticaISO cf} 6 23 0 0.600 -768 -304 label
+(+) {ns} (out) {ss} (V) {/HelveticaISO cf} 6 20 0 0.600 96 64 label
+(-) {ns} (out) {ss} (V) {/HelveticaISO cf} 6 20 0 0.600 96 -304 label
 0.000 0.000 1.000 scb
-1.000 180 -96 144 generic::arrowhead
-1.000 270 -64 192 generic::arrowhead
-1.000 90 -32 -32 generic::arrowhead
-1.000 90 96 -32 generic::arrowhead
-1.000 90 224 -32 generic::arrowhead
-1.000 180 -288 336 generic::arrowhead
-1.000 180 -288 256 generic::arrowhead
-1.000 180 -288 176 generic::arrowhead
-1.000 180 -288 48 generic::arrowhead
-1.000 90 -240 0 generic::arrowhead
-1.000 90 -176 0 generic::arrowhead
-1.000 180 -96 208 generic::arrowhead
+(Node) {CR} (Switching) {/Helvetica-ObliqueISO cf} 4 20 0 0.600 -224 -128 label
+1.000 285 -256 -112 generic::arrowhead
+(Base) {/Helvetica-ObliqueISO cf} 2 21 0 0.600 -464 -80 label
+1.000 30 -432 -48 generic::arrowhead
+sce
+1.000 0 -656 -224 analog::resistor
+1.000 180 -624 -224 generic::tap
+1 1.000 -640 -224 -592 -224 2 polygon
+1 1.000 -656 -288 -656 -304 2 polygon
+1 1.000 -656 -160 -656 -80 -592 -80 3 polygon
+1.000 0 -592 -80 generic::dot
+1 1.000 -272 288 -272 160 2 polygon
+1.000 90 -64 64 analog::resistor
+1.000 360 0 128 transistors::npn
+1.000 90 -272 -64 generic::jumper
+1 1.000 -256 -64 32 -64 2 polygon
+1.000 0 32 -64 generic::dot
+1.000 180 0 224 analog::resistor
+1 1.000 0 96 0 64 2 polygon
+1.000 0 0 64 generic::dot
+1 1.000 0 64 32 64 2 polygon
+1 1.000 -64 128 -112 128 -112 64 3 polygon
+1.000 0 -112 64 generic::dot
+1 1.000 0 288 0 336 -576 336 3 polygon
+1.000 0 -576 288 generic::jumper
+1 1.000 -576 336 -576 304 2 polygon
+1 1.000 -576 272 -576 80 -512 80 3 polygon
+1.000 0 -512 80 generic::dot
+1.000 0 -656 -304 generic::dot
+(W) {/Symbol cf} (1M) {/HelveticaISO cf} 4 21 0 0.600 -656 -368 label
+(RV1) {/Helvetica cf} 2 21 0 0.600 -656 -336 label
+(U1) {/Helvetica cf} 2 21 0 0.600 -592 -336 label
+(TL431) {/Helvetica cf} 2 21 0 0.600 -592 -368 label
+(Q3) {/HelveticaISO cf} 2 20 0 0.600 0 144 label
+(2N3904) {/HelveticaISO cf} 2 20 0 0.600 0 112 label
+(R5) {/Helvetica cf} 2 21 0 0.600 -64 32 label
+(W) {/Symbol cf} (1.7) {/HelveticaISO cf} 4 21 0 0.600 -64 0 label
+(R6) {/HelveticaISO cf} 2 20 0 0.600 32 240 label
+(W) {/Symbol cf} (68) {/HelveticaISO cf} 4 20 0 0.600 32 208 label
 pgsave restore showpage
 
 %%Trailer
