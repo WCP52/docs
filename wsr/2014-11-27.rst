@@ -1,3 +1,26 @@
+Chris Pavlina
+-------------
+
+- Hours Spent
+  
+  + Design Review: 2 hours
+  + Group meeting: 30 minutes
+  + Power supply prototyping: 4 hours
+  
+- Accomplishments
+  
+  + Worked on interim report
+  + Built and documented prototype power supply
+  
+- Problems
+
+  + None
+  
+- Plans
+
+  + Work on presentation
+  + Assemble input frontend when parts arrive
+
 Kenneth Zach
 ------------
 
