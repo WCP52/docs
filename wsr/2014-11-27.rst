@@ -35,6 +35,10 @@ Harrison Owens
 
   + finished the first draft of the design report
   
+- Problems
+
+  + Nothing major to address
+  
 - Plans
 
   + Finish writing out SPI code prompting for gain and phase output
