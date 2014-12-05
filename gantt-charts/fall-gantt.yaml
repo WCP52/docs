@@ -19,7 +19,7 @@ items:
         prog: 100
         start: 2014-11-14
       - name: Testing
-        prog: 95
+        prog: 100
         end: dur 6
 
   - name: Input frontend
@@ -32,12 +32,13 @@ items:
       - name: Parts, PCB ordered
         prog: 100
       - name: Delivery
+        prog: 100
         end: dur 10
       - name: Assembled
-        prog: 0
+        prog: 100
       - name: Testing
-        prog: 0
-        end: dur 6
+        prog: 100
+        end: 2014-12-01
 
   - name: Output amplifier
     items:
@@ -49,8 +50,11 @@ items:
       - name: Parts, PCB ordered
         prog: 100
       - name: Delivery
+        prog: 100
         end: dur 10
       - name: Assembled
+        prog: 100
+        end: 2014-12-04
       - name: Testing
         end: dur 3
 
@@ -85,11 +89,11 @@ items:
       - name: Synthesizer control
         start: 2014-11-10
         end: dur 21
-        prog: 80
+        prog: 100
       - name: Input detection/ADC
         start: imm-after Synthesizer control
-        end: dur 7
-        prog: 20
+        end: 2014-12-02
+        prog: 80
       - name: Signal processing
         start: imm-after Input detection/ADC
         end: dur 14
@@ -110,6 +114,7 @@ items:
         prog: 100
       - name: Interim Report
         start: 2014-12-05
-        prog: 75
+        prog: 100
       - name: Interim Presentation
-        start: 2014-12-12
+        start: 2014-12-05
+        prog: 100
