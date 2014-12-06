@@ -47,24 +47,24 @@ Kenneth Zach
   
   + Work on presentation
   
-  Harrison Owens
-  --------------
+Harrison Owens
+--------------
+
+- Hours Spent
+
+  + Group Meeting: 30 Minutes
+  + Interim Presentation: 2 hours
+  + SPI Phase/Gain/Amplitude coding: 1.5 hours
   
-  - Hours Spent
+- Accomplishments
+
+  + Drafted and gave a dry run of Interim Presentation
+  + Finished Part of the SPI Interface
   
-    + Group Meeting: 30 Minutes
-    + Interim Presentation: 2 hours
-    + SPI Phase/Gain/Amplitude coding: 1.5 hours
-    
-  - Accomplishments
+- Problems
+
+  + None
   
-    + Drafted and gave a dry run of Interim Presentation
-    + Finished Part of the SPI Interface
-    
-  - Problems
-  
-    + None
-    
-  - Plans
-  
-    + practice presentation
+- Plans
+
+  + practice presentation
