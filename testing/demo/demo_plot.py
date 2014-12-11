@@ -16,6 +16,17 @@ def printline (s, indent=2):
     print ((" " * indent) + line)
     return line
 
+if len(sys.argv) < 3:
+    print ("usage: demo_plot.py MIN MAX options...")
+    sys.exit (1)
+try:
+    float (sys.argv[1])
+    float (sys.argv[2])
+except ValueError:
+    print ("usage: demo_plot.py MIN MAX options...")
+    print ("MIN and MAX must be floating point!")
+    sys.exit (1)
+
 # Connect
 print ("Connecting to GPA...")
 s = serial.Serial ("/dev/ttyACM0", 115200, timeout=1)
@@ -25,8 +36,14 @@ print ("Initializing microcontroller...")
 s.write (b"*RST\r\n")
 s.read (100)
 s.write (b"*IDN?\r\n")
+idnstr = getline (s)
+print ("  identity string = " + idnstr)
+while not idnstr.startswith ("WCP52"):
+    print ("  bad response, retrying")
+    s.write (b"*IDN?\r\n")
+    idnstr = getline (s)
 print ("  OK")
-print ("  identity string = " + s.readline ().decode ('ascii').strip ())
+
 
 print ("Initializing synthesizer...")
 s.write (b"T:INIF\r\n")
@@ -67,7 +84,8 @@ if 'linear' in sys.argv:
     plot, = plt.plot (freqs, data)
 else:
     plot, = plt.semilogx (freqs, data)
-plt.xlabel ("Frequency (Hz)")
+if "phase" not in sys.argv:
+    plt.xlabel ("Frequency (Hz)")
 plt.ylabel ("Amplitude (dB, uncalibrated)")
 plt.title ("Voltage Insertion Gain, uncalibrated")
 plt.grid (True)
@@ -153,8 +171,8 @@ if "phase" in sys.argv:
     plt.title ("Phase Shift, uncalibrated")
     plt.grid (True)
 
-    plt.savefig('out.png')
-    plt.show ()
+plt.savefig('out.png')
+plt.show ()
 #plt.waitforbuttonpress (-1)
 
 
