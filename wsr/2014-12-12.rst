@@ -35,3 +35,21 @@ Harrison Owens
   - Plans
   
    + We will improve the firmware during the next semester
+   
+ Kaidi Xu
+-----------
+  - Hours Spent
+    
+    + Preparing the Presentation: 3 hours
+  
+  - Accomplishments
+  
+    + Finished our presentation
+    
+  - Problems
+  
+    + None
+  
+  - Plans
+  
+   + Improve the firmware next semester
