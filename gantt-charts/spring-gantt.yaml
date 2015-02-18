@@ -26,14 +26,14 @@ items:
   - name: Microcontroller
     items:
       - name: USB
-        start: 2015-01-26
-        end: 2015-02-08
+        start: 2015-02-18
+        end: 2015-03-04
       - name: CDC/command parser
-        start: 2015-02-09
-        end: 2015-02-22
+        start: 2015-03-05
+        end: 2015-03-19
       - name: PC software
-        start: 2015-02-23
-        end: 2015-03-22
+        start: 2015-03-20
+        end: 2015-04-04
 
   - name: Documentation
     start: 2015-03-23
