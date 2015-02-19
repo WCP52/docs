@@ -5,22 +5,25 @@ name: Spring Schedule
 items:
   - name: Hardware integration
     items:
-      - name: Extra subsystem integration
+      - name: Output amp testing/fixing
         start: 2015-01-27
-        end: 2015-02-02
+        end: 2015-02-26
+      - name: Power supply design
+        start: 2015-02-19
+        end: 2015-02-28
       - name: Final PCB design
-        start: 2015-02-02
-        end: 2015-02-23
+        start: 2015-02-28
+        end: 2015-03-20
       - name: Parts and PCB ordered
-        start: 2015-02-24
+        start: 2015-03-23
       - name: Delivery wait time
-        start: 2015-02-24
-        end: 2015-03-16
+        start: 2015-03-23
+        end: 2015-04-10
       - name: Final PCB assembled
-        start: 2015-03-17
+        start: 2015-04-15
 
-  - name: Hardware testing
-    start: 2015-03-17
+  - name: Final hardware testing
+    start: 2015-02-16
     end: 2015-05-12
 
   - name: Microcontroller

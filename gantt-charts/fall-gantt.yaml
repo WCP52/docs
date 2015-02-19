@@ -56,6 +56,7 @@ items:
         prog: 100
         end: 2014-12-04
       - name: Testing
+        prog: 100
         end: dur 3
 
 # Consider moving this to next semester. We'll bring it back if HW is finished early.
