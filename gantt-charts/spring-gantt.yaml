@@ -15,14 +15,14 @@ items:
         prog: 10
       - name: Final PCB design
         start: 2015-02-28
-        end: 2015-03-20
+        end: 2015-03-14
       - name: Parts and PCB ordered
-        start: 2015-03-23
+        start: 2015-03-17
       - name: Delivery wait time
-        start: 2015-03-23
-        end: 2015-04-10
+        start: 2015-03-17
+        end: 2015-04-07
       - name: Final PCB assembled
-        start: 2015-04-15
+        start: 2015-04-08
 
   - name: Final hardware testing
     start: 2015-02-16
