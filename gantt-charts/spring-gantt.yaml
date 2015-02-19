@@ -8,9 +8,11 @@ items:
       - name: Output amp testing/fixing
         start: 2015-01-27
         end: 2015-02-26
+        prog: 75
       - name: Power supply design
         start: 2015-02-19
         end: 2015-02-28
+        prog: 10
       - name: Final PCB design
         start: 2015-02-28
         end: 2015-03-20
@@ -34,9 +36,11 @@ items:
       - name: CDC/command parser
         start: 2015-03-05
         end: 2015-03-19
+        prog: 50
       - name: PC software
         start: 2015-03-20
         end: 2015-04-04
+        prog: 25
 
   - name: Documentation
     start: 2015-03-23
