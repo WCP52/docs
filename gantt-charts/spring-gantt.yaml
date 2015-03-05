@@ -12,10 +12,11 @@ items:
       - name: Power supply design
         start: 2015-02-19
         end: 2015-02-28
-        prog: 40
+        prog: 100
       - name: Final PCB design
         start: 2015-02-28
         end: 2015-03-14
+        prog: 90
       - name: Parts and PCB ordered
         start: 2015-03-17
       - name: Delivery wait time
@@ -41,7 +42,7 @@ items:
       - name: PC software
         start: 2015-03-20
         end: 2015-04-04
-        prog: 25
+        prog: 33
 
   - name: Documentation
     start: 2015-03-23
