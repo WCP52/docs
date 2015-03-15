@@ -16,7 +16,6 @@
 %\usepackage[nottoc,numbib]{tocbibind} % references in TOC
 \usepackage{multicol}
 \usepackage{float}
-\usepackage{parskip}
 \usepackage{cclicenses}
 \usepackage{textcomp}
 
@@ -32,6 +31,7 @@
 %\pagestyle{fancy}
 
 \setlength{\parindent}{0mm}
+\nonzeroparskip
 \raggedbottom
 \raggedcolumns
 
@@ -97,13 +97,6 @@ in explaining their function, but are not always shown.
 
 \section{Power Input Circuit}
 
-\begin{figure}[H]
-\centering
-\missingfigure[figwidth=3in]{powerinput.eps}
-\caption{Power input circuit}
-\label{fig:powerinput}
-\end{figure}
-
 This instrument is complex and has many somewhat expensive parts, so a full
 input subsystem was designed to ensure that these parts are always supplied
 correctly with power. This subsystem provides the following features:
@@ -163,12 +156,14 @@ After the reverse polarity protection, the current must flow through
 its gate and source together when the power is switched off, keeping the MOSFET
 also turned off.
 
+%\end{multicols}
 \begin{figure}[H]
 \centering
-\missingfigure[figwidth=3in]{comparator.eps}
+\includegraphics[width=3in]{comparator}
 \caption{UVLO and OVLO circuit}
 \label{fig:uovlo}
 \end{figure}
+%\begin{multicols}{2}
 
 To simplify things, the subcircuit in figure~\ref{fig:uovlo} is powered through
 a single diode for its own reverse-polarity protection. Bandgap voltage reference
@@ -210,7 +205,7 @@ advantage of this.
 
 \begin{figure}[H]
 \centering
-\missingfigure[figwidth=3in]{millerint.eps}
+\includegraphics[width=3in]{millerint}
 \caption{Miller integrator}
 \label{fig:miller}
 \end{figure}
@@ -223,6 +218,11 @@ the resistance (nominally, $4.5\;\mr{V}$ at $500\;\mr{k\Omega}$). The
 integrator capacitance is simply \texttt{C75}, which is $10\;\mr{nF}$.
 Because the voltage across \texttt{C74} changes only negligibly, its effect
 on the circuit will also be negligible.
+
+At startup, \refdes{C75} would tend to hold the gate above the source,
+switching the transistor fully on and bypassing any limiting effect. The
+much larger \refdes{C74} swamps this effect, holding the gate to the
+source until a DC source of current is provided via \refdes{R87}.
 
 The input signal to this integrator will be a step, because comparator
 \texttt{U12A} switches directly from `off' to `on'. Integrating a step gives
@@ -251,6 +251,7 @@ a power dissipation of $(9\;\mr{V})(180\;\mr{mA}) = 1.62\;\mr{W}$. The average
 power for the entire time will be:
 
 \begin{gather*}
+    P = IV \\
     P_\mr{avg} = \frac{1}{10\;\mr{ms}}\int_0^{10ms} iv\;dt \\
     {}= \tfrac{1}{2}(1.62\;\mr{W})(10\;\mr{ms})/(10\;\mr{ms}) \\
     {}= 810\;\mr{mW} \\
@@ -286,14 +287,15 @@ was already in use elsewhere for this particular integrator.
 No reverse polarity protection was deemed necessary on the USB input.
 
 \section{Switching DC-DC Converters}
-\subsection{Buck converter theory}
 
 \begin{figure}[H]
 \centering
-\missingfigure[figwidth=3in]{buckconv.eps}
+\includegraphics[width=3in]{buckconv}
 \caption{Basic buck converter circuit}
 \label{fig:basicbuck}
 \end{figure}
+
+\subsection{Buck converter theory}
 
 The basic idea of an inductor is that it translates electric current flowing
 through it into a magnetic field around it. There is energy stored in this
@@ -330,14 +332,15 @@ to be any arbitrary voltage smaller than the input voltage, but does not
 theoretically lose power, unlike a linear regulator (whose entire mechanism of
 operation is intentional power loss).
 
-\subsection{3.3 V buck converter}
 
 \begin{figure}[H]
 \centering
-\missingfigure[figwidth=3in]{3v3buck.eps}
+\includegraphics[width=3in]{3v3buck}
 \caption{$3.3\;\mr{V}$ buck converter circuit}
 \label{fig:3v3buck}
 \end{figure}
+
+\subsection{3.3 V buck converter}
 
 In this instrument, we have used a simple, three-transistor regulated buck
 converter circuit. It is inexpensive, reliable, and though it is not hugely
@@ -412,6 +415,10 @@ parallel with the main output capacitor.
 \section{User Interface}
 
 \end{multicols}
+
+\newpage
+\chapter{Full schematics}
+
 
 \newpage
 \begin{thebibliography}{9}
