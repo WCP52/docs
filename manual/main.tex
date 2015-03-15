@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[article]{memoir}
 
 \usepackage[letterpaper,margin=2.5cm]{geometry}
 \usepackage{color}
@@ -13,19 +13,29 @@
 \usepackage[final]{microtype}
 \usepackage{nameref}
 \usepackage{todonotes}
-\usepackage[nottoc,numbib]{tocbibind} % references in TOC
-\usepackage{titletoc}
+%\usepackage[nottoc,numbib]{tocbibind} % references in TOC
+\usepackage{multicol}
+\usepackage{float}
+\usepackage{parskip}
+\usepackage{cclicenses}
+\usepackage{textcomp}
+
 
 % Header configuration
-\usepackage{fancyhdr}
-\makeatletter
-\rhead{\@currentlabelname}
-\cfoot{}
-\rfoot{\thepage}
-\makeatother
-\pagestyle{fancy}
+%\usepackage{fancyhdr}
+%\makeatletter
+%\lhead{}
+%\rhead{\@currentlabelname}
+%\cfoot{}
+%\rfoot{\thepage}
+%\makeatother
+%\pagestyle{fancy}
 
 \setlength{\parindent}{0mm}
+\raggedbottom
+\raggedcolumns
+
+\renewcommand{\bibname}{References}
 
 \newcommand{\note}[1]{ %\
  \begin{framed} %\
@@ -41,44 +51,55 @@
 \begin{document}
 
 \maketitle
-\thispagestyle{empty}
+\begin{center}
+\textcopyright 2015, Christopher Pavlina. Licensed under a Creative Commons Attribution 4.0 International License.
+\end{center}
+
+\begin{multicols}{2}
 
 \tableofcontents
-\setlength{\parskip}{4mm}
+\listoffigures
 
 \newpage
-\section{Introduction}
-\label{sec:intro}
+\chapter{Introduction}
+\label{chap:intro}
 
 \newpage
-\section{Specifications}
+\chapter{Specifications}
 
 \newpage
-\section{Operating Information}
+\chapter{Operating Information}
 
+
+\end{multicols}
 \newpage
-\section{Theory of Operation}
-
-This section contains a decription of the operation of the gain/phase analyzer.
-Explanations start from the simple and broad, and descend to very specific
-levels. It is expected that the reader has an understanding of the basics of
-gain/phase analysis itself, which is explained in the \hyperref[sec:intro]{Introduction
-section}.
-
-\subsection{Block Diagram}
-
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
-\missingfigure[figwidth=3in]{Block diagram}
+\includegraphics[width=6.5in]{blockdiagram}
 \caption{Block diagram}
 \label{fig:blockdiagram}
 \end{figure}
+\begin{multicols}{2}
 
-\subsection{Power Input Circuit}
+\chapter{Theory of Operation}
 
-\begin{figure}[h]
+This section contains a decription of the operation of the gain/phase analyzer.
+Explanations range from simple and broad to very specific.
+It is expected that the reader has an understanding of the basics of
+gain/phase analysis itself, which is explained in the \hyperref[chap:intro]{Introduction
+chapter}.
+
+Also, it will be beneficial to look at the main system schematics when reading
+through this section. Small pieces of the schematic are excerpted when helpful
+in explaining their function, but are not always shown.
+
+\section{Block Diagram}
+
+\section{Power Input Circuit}
+
+\begin{figure}[H]
 \centering
-\missingfigure[figwidth=3in]{Power input circuit}
+\missingfigure[figwidth=3in]{powerinput.eps}
 \caption{Power input circuit}
 \label{fig:powerinput}
 \end{figure}
@@ -95,6 +116,8 @@ correctly with power. This subsystem provides the following features:
 \item{Inrush current limiting}
 \end{itemize}
 
+\subsection{Overcurrent protection}
+
 The first piece of this input system, and possibly the simplest, is
 \refdes{R81}. \refdes{R81} is a \emph{resettable fuse}, a type of resistor
 with a positive temperature coefficient. Its resistance is very low
@@ -105,12 +128,14 @@ resistance is high enough that almost no current can flow through it. This
 allows it to act like a fuse, but without permanently blowing: as soon as it
 cools back down, it will conduct again.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=3in]{mosrpp}
 \caption{MOS reverse polarity protection circuit, simplified}
 \label{fig:mosrpp}
 \end{figure}
+
+\subsection{Reverse polarity protection}
 
 Once input current has passed through the resettable fuse, it encounters
 \refdes{Q13}. A simplified form of this part of the circuit can be seen in
@@ -131,63 +156,286 @@ would be lost.
 If power is applied in the incorrect polarity, the substrate diode never
 conducts, so the MOSFET never switches on.
 
+\subsection{Power switch}
+
 After the reverse polarity protection, the current must flow through
 \refdes{Q14}, which is connected as a traditional switch. \refdes{R88} holds
 its gate and source together when the power is switched off, keeping the MOSFET
 also turned off.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
-\missingfigure[figwidth=3in]{Comparator circuit}
+\missingfigure[figwidth=3in]{comparator.eps}
 \caption{UVLO and OVLO circuit}
 \label{fig:uovlo}
 \end{figure}
 
 To simplify things, the subcircuit in figure~\ref{fig:uovlo} is powered through
-a simple diode for its own reverse-polarity protection. Bandgap voltage reference
+a single diode for its own reverse-polarity protection. Bandgap voltage reference
 \refdes{U11} does not need this, as its internal circuit has an antiparallel diode
 built in~\cite{tl431}.
 
+\subsection{Undervoltage lockout}
+
 \refdes{U11} provides an accurate $2.5\;\mr{V}$ level against which the input
-voltage can be compared.
+voltage can be compared. As the input voltage rises, the voltage at the output of
+the \refdes{R84A}/\refdes{R84B}/\refdes{R85A} voltage divider also rises. When
+this divided voltage reaches the $2.5\;\mr{V}$ reference level, the input voltage
+is at $7.5\;\mr{V}$, the undervoltage threshold. Comparator \refdes{U12A}
+switches low, allowing power switch \refdes{Q14} to switch on and allow the
+full system to operate.
 
-\subsubsection{USB Power Input Circuit}
+\subsection{Overvoltage protection}
 
-\subsection{Switching DC-DC Converters}
+If the input voltage continues to rise, the voltage at the output of the
+\refdes{R84C}/\refdes{R84D}/\refdes{R85D}/\refdes{R85C} voltage divider will
+eventually reach the reference level when the input voltage is at $10\;\mr{V}$.
+\refdes{C72} provides a low-pass effect which prevents simple noise and short
+transients from causing this. When this happens, comparator \refdes{U12B}
+switches low. At this point, two things happen. First, \refdes{Q12} switches
+\refdes{Q14} off, powering down the circuit. Second, \refdes{D5} pulls the
+reference level as seen by \refdes{U12B} down to about $1\;\mr{V}$, locking
+the system in this shutdown mode until the input voltage drops back as low
+as $4\;\mr{V}$ --- at which point it must climb again to the $7.5\;\mr{V}$
+undervoltage threshold. In practice, the system must be powered off and back
+on. This latch prevents the instrument from accidentally being powered by
+too high an input voltage.
 
-\subsection{Linear Regulators}
+\subsection{Inrush current limiting}
 
-\subsection{Microcontroller}
-\subsubsection{USB Communications}
+\refdes{Q14} does not act \emph{only} as a power switch. When it switches on,
+it starts in the `cutoff' region of operation, and moves to the `saturation'
+region. However, it must pass through the `linear' region. We can take
+advantage of this.
 
-\subsection{Synthesizer}
+\begin{figure}[H]
+\centering
+\missingfigure[figwidth=3in]{millerint.eps}
+\caption{Miller integrator}
+\label{fig:miller}
+\end{figure}
 
-\subsection{Synthesizer Output Amplifiers}
+The circuit in figure~\ref{fig:miller}, when \refdes{Q14} is in the linear
+region, is known as a `Miller integrator'~\cite[pg. 283]{tranckts-sawtooth}.
+Because \texttt{R87} and \texttt{R88} form a voltage divider, the input
+voltage to the integrator will be half the input supply voltage at half
+the resistance (nominally, $4.5\;\mr{V}$ at $500\;\mr{k\Omega}$). The
+integrator capacitance is simply \texttt{C75}, which is $10\;\mr{nF}$.
+Because the voltage across \texttt{C74} changes only negligibly, its effect
+on the circuit will also be negligible.
 
-\subsection{Output System}
+The input signal to this integrator will be a step, because comparator
+\texttt{U12A} switches directly from `off' to `on'. Integrating a step gives
+a ramp, with a slope of:
 
-\subsubsection{Attenuator and Filter}
-\subsubsection{Gain Stages and Termination}
+\begin{equation*}
+    \frac{dv}{dt} = \frac{v_\mr{in}}{RC} = \frac{4.5\;\mr{V}}{(500\;\mr{k\Omega})(10\;\mr{nF})}
+    = 900\;\mr{V/s} = 0.9\;\mr{V/ms}
+\end{equation*}
 
-\subsection{Input System}
+This means it will take about $10\;\mr{ms}$ for the voltage to ramp from zero
+to the full input voltage of $9\;\mr{V}$.
 
-\subsubsection{Protection}
-\subsubsection{Switching}
-\subsubsection{Buffer and Filter}
-\subsubsection{Logarithmic Detector}
+Because the inrush current to be limited is the current charging the system's
+capacitance, we can calculate the worst-case inrush current. Charge is held
+on-board by approximately $200\;\mr{\mu F}$ worth of capacitors. Given this
+capacitance and the voltage slope, the current is calculated as follows:
 
-\subsection{Signal Processing}
-\subsubsection{Sampling}
-\subsubsection{Null Search}
-\subsubsection{Calibration}
+\begin{equation*}
+    I = C \frac{dv}{dt} = (200\;\mr{\mu F})(900\;\mr{V/s}) = 180\;\mr{mA}
+\end{equation*}
 
-\subsection{User Interface}
+During this charging time, the power dissipated in \texttt{Q14} will be high.
+The worst-case is when the full input voltage is dropped across it, giving
+a power dissipation of $(9\;\mr{V})(180\;\mr{mA}) = 1.62\;\mr{W}$. The average
+power for the entire time will be:
+
+\begin{gather*}
+    P_\mr{avg} = \frac{1}{10\;\mr{ms}}\int_0^{10ms} iv\;dt \\
+    {}= \tfrac{1}{2}(1.62\;\mr{W})(10\;\mr{ms})/(10\;\mr{ms}) \\
+    {}= 810\;\mr{mW} \\
+\end{gather*}
+
+Thus, a MOSFET must be selected that can handle an $810\;\mr{mW}$ pulse for
+$10\;\mr{ms}$. This pulse-handling capability is shown in the datasheet as
+the ``forward-biased safe operating area'', and we selected an AOD417 which
+can easily handle this pulse with excess~\cite{aod417}.
+
+
+\subsection{USB Power Input Circuit}
+
+The USB specification is very demanding with respect to the amount of inrush
+current that a USB device may consume. We used the same Miller-integrator
+inrush limiting circuit on the USB power supply input.
+
+In this case, the resistance has not changed (still a Th\'evenin-equivalent
+$500\;\mr{k\Omega}$), and the input step is equal to $2.5\;\mr{V}$, half the
+input voltage. The integrating capacitance is \refdes{C4}, which has a value of $10\;\mr{nF}$,
+and the maximum input capacitance being charged is approximately $20\;\mr{\mu F}$.
+
+\begin{gather*}
+    \frac{dv}{dt} = \frac{v_\mr{in}}{RC} = \frac{2.5\;\mr{V}}{(500\;\mr{k\Omega})(10\;\mr{nF})}
+    = 500\;\mr{V/s} \\
+    I = C \frac{dv}{dt} = (20\;\mr{\mu F})(500\;\mr{V/s}) = 10\;\mr{mA}
+\end{gather*}
+
+The power dissipation in this case is very small (no more than $50\;\mr{mW}$ for
+only a few milliseconds), so we used a smaller and less expensive MOSFET that
+was already in use elsewhere for this particular integrator.
+
+No reverse polarity protection was deemed necessary on the USB input.
+
+\section{Switching DC-DC Converters}
+\subsection{Buck converter theory}
+
+\begin{figure}[H]
+\centering
+\missingfigure[figwidth=3in]{buckconv.eps}
+\caption{Basic buck converter circuit}
+\label{fig:basicbuck}
+\end{figure}
+
+The basic idea of an inductor is that it translates electric current flowing
+through it into a magnetic field around it. There is energy stored in this
+magnetic field, so the inductor tends to hold the current fixed (as changing
+the current would require adding or removing energy from the field). The
+`buck converter' is a voltage down-converter circuit that takes advantage
+of this.
+
+A more mathematical approach is that inductors integrate the voltage applied
+to them, producing a current:
+
+\begin{equation*}
+    i = \frac{1}{L} \int v\;dt
+\end{equation*}
+
+A buck converter must have at least one switch, as shown in
+figure~\ref{fig:basicbuck}.  The switch is initially closed for a brief period.
+This applies a positive voltage to the inductor, causing the current through it
+to begin to increase (remember that the integral of a step is a ramp). This
+current flows through to the output of the converter, and the output voltage
+begins to rise.
+
+Now, the switch is opened. The inductor keeps the current flowing, though,
+through the diode this time. The voltage across the inductor is now negative
+(the voltage on the left side had to fall negative in order to forward-bias the
+diode and make it conduct), so the current starts ramping downward, and the
+output voltage begins to fall.~\cite[pp.~356--357]{aoe-vreg}
+
+By repeating this cycle, the output voltage can be made to rise and fall around
+a desired point, and by placing a large capacitor at the output, the rising and
+falling current can translate to very small variation in output voltage, though
+it must rise and fall at least a small amount. This allows the output voltage
+to be any arbitrary voltage smaller than the input voltage, but does not
+theoretically lose power, unlike a linear regulator (whose entire mechanism of
+operation is intentional power loss).
+
+\subsection{3.3 V buck converter}
+
+\begin{figure}[H]
+\centering
+\missingfigure[figwidth=3in]{3v3buck.eps}
+\caption{$3.3\;\mr{V}$ buck converter circuit}
+\label{fig:3v3buck}
+\end{figure}
+
+In this instrument, we have used a simple, three-transistor regulated buck
+converter circuit. It is inexpensive, reliable, and though it is not hugely
+efficient, it generates relatively little switching noise (due, in part, to
+its low speed compared to more modern designs).
+
+In the first phase of the switching cycle, \refdes{Q16}'s base voltage is
+low. \refdes{R90} charges \refdes{C79}, and eventually the base voltage rises
+high enough that \refdes{Q16} switches on. It pulls \refdes{Q18}'s base voltage
+down, switching on that transistor too. \refdes{Q18} is equivalent to the main
+switch in figure~\ref{fig:basicbuck}, and the inductor current starts to rise.
+
+In the next phase of the switching cycle, something draws current towards ground
+out of \refdes{C79} and away from \refdes{Q16}'s base. This starts a chain reaction:
+\refdes{Q16} and \refdes{Q18} start to switch off, and are no longer driving the
+inductor. The inductor's tendency to keep current flowing makes the voltage on its
+left side sharply decrease. This decrease is coupled through \refdes{C81}, which
+drags \refdes{Q16}'s base voltage even lower, switching it off quite solidly.
+The converter will remain switched off until \refdes{C79} charges back up through
+its resistor.
+
+Two things can be the `something' of the previous paragraph, initiating the
+switch from phase 1 to phase 2. First, note that \refdes{Q16}'s emitter is
+connected to the output voltage, so when it is switched on, its base will be
+about $0.65\;\mr{V}$ above that. When the output voltage reaches about
+$3.25\;\mr{V}$, the base voltage is at about $3.9\;\mr{V}$, and Zener diode
+\refdes{DZ9} starts to conduct. This means that the output voltage will not be
+allowed to rise above about $3.25\;\mr{V}$, providing the voltage regulation
+function.
+
+The inductor current must also flow through sense resistor \refdes{R96}. If the
+current exceeds about $650\;\mr{mA}$, the base-emitter voltage applied to
+\refdes{Q20} will be high enough to switch it on, and \refdes{Q20} will draw the
+shutdown current. This provides the current-limiting function.
+
+\subsection{-9V inverting regulator}
+It is possible to repurpose a buck converter circuit as an inverting
+(buck-boost) circuit that generates a negative voltage~\cite{buckinv}. The
+circuit is otherwise the same, with two exceptions. First, the Zener diode, now
+\refdes{DZ10}, is a $10\;\mr{V}$ part, giving a regulated output voltage of
+about $9.35\;\mr{V}$. Second, because the current through the output capacitor
+has more hard edges in a buck-boost converter, a $1\;\mr{\mu F}$ ceramic
+capacitor (useful to higher frequencies and currents) has been added in
+parallel with the main output capacitor.
+
+\section{Linear Regulators}
+
+\section{Microcontroller}
+\subsection{USB Communications}
+
+\section{Synthesizer}
+
+\section{Synthesizer Output Amplifiers}
+
+\section{Output System}
+
+\subsection{Attenuator and Filter}
+\subsection{Gain Stages and Termination}
+
+\section{Input System}
+
+\subsection{Protection}
+\subsection{Switching}
+\subsection{Buffer and Filter}
+\subsection{Logarithmic Detector}
+
+\section{Signal Processing}
+\subsection{Sampling}
+\subsection{Null Search}
+\subsection{Calibration}
+
+\section{User Interface}
+
+\end{multicols}
 
 \newpage
 \begin{thebibliography}{9}
+
+\bibitem{aod417}
+Alpha \& Omega Semiconductor, ``AOD417 P-Channel Enhancement Mode Field Effect Transistor,''
+AOD417 datasheet, 2008. \url{http://aosmd.com/pdfs/datasheet/AOD417.pdf}
+
+\bibitem{tranckts-sawtooth}
+S. W. Amos and M. James, ``Sawtooth generators,'' in
+\emph{Principles of Transistor Circuits}, 9th ed. Oxford: Newnes, 2003, ch. 14, pp. 281--292.
+
+\bibitem{aoe-vreg}
+P. Horowitz and W. Hill, ``Voltage regulators and power circuits,'' in
+\emph{The Art of Electronics}, 2nd ed. Cambridge: Cambridge, 1989, ch. 6, pp. 307--389.
+
 \bibitem{tl431}
 Texas Instruments, ``TL43xx Precision Programmable Reference,''
-TL431 datasheet, Aug. 2004 [Revised Jan. 2015].
+TL431 datasheet, Aug. 2004 [Revised Jan. 2015]. \url{http://www.ti.com/lit/ds/symlink/tl431.pdf}
+
+\bibitem{buckinv}
+J. Tucker, ``Using a buck converter in an inverting buck-boost topology,''
+\emph{Analog Applications Journal}, Texas Instruments, fourth quarter 2007, pp. 16--19.
+\url{http://www.ti.com/lit/an/slyt286/slyt286.pdf}
 \end{thebibliography}
 
 \end{document}
