@@ -1,4 +1,4 @@
-\documentclass[article]{memoir}
+\documentclass[article,oneside]{memoir}
 
 \usepackage[letterpaper,margin=2.5cm]{geometry}
 \usepackage{color}
@@ -13,22 +13,11 @@
 \usepackage[final]{microtype}
 \usepackage{nameref}
 \usepackage{todonotes}
-%\usepackage[nottoc,numbib]{tocbibind} % references in TOC
 \usepackage{multicol}
 \usepackage{float}
 \usepackage{cclicenses}
 \usepackage{textcomp}
-
-
-% Header configuration
-%\usepackage{fancyhdr}
-%\makeatletter
-%\lhead{}
-%\rhead{\@currentlabelname}
-%\cfoot{}
-%\rfoot{\thepage}
-%\makeatother
-%\pagestyle{fancy}
+\usepackage{tabularx}
 
 \setlength{\parindent}{0mm}
 \nonzeroparskip
@@ -50,11 +39,8 @@
 
 \begin{document}
 
-\maketitle
-\begin{center}
-\textcopyright 2015, Christopher Pavlina. Licensed under a Creative Commons Attribution 4.0 International License.
-\end{center}
-
+\pagestyle{headings}
+\input{title}
 \begin{multicols}{2}
 
 \tableofcontents
