@@ -344,7 +344,8 @@ TEX_HEAD=r"""
     x unit=2mm,
     y unit chart=5mm,
     bar height=0.3,
-    vgrid, hgrid,
+    hgrid,
+    vgrid={{red}, {dotted}, {dotted}, {dotted}, {dotted}, {dotted}, {dotted}},
     bar/.append style={draw=none, fill=OliveGreen!75},
     bar incomplete/.append style={fill=Maroon}]"""
 

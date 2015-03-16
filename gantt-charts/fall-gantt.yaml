@@ -19,7 +19,7 @@ items:
         prog: 100
         start: 2014-11-14
       - name: Testing
-        prog: 0
+        prog: 100
         end: dur 6
 
   - name: Input frontend
@@ -30,15 +30,15 @@ items:
         start: imm-after synth_pcb
         end: dur 7
       - name: Parts, PCB ordered
-        prog: 50
+        prog: 100
       - name: Delivery
-        prog: 0
+        prog: 100
         end: dur 10
       - name: Assembled
-        prog: 0
+        prog: 100
       - name: Testing
-        prog: 0
-        end: dur 6
+        prog: 100
+        end: 2014-12-01
 
   - name: Output amplifier
     items:
@@ -48,11 +48,15 @@ items:
         start: 2014-11-15
         end: dur 7
       - name: Parts, PCB ordered
-        prog: 50
+        prog: 100
       - name: Delivery
+        prog: 100
         end: dur 10
       - name: Assembled
+        prog: 100
+        end: 2014-12-04
       - name: Testing
+        prog: 100
         end: dur 3
 
 # Consider moving this to next semester. We'll bring it back if HW is finished early.
@@ -82,14 +86,15 @@ items:
       - name: Command parser
         start: 2014-11-10
         end: dur 7
-        prog: 50
+        prog: 100
       - name: Synthesizer control
         start: 2014-11-10
-        end: dur 14
-        prog: 20
+        end: dur 21
+        prog: 100
       - name: Input detection/ADC
         start: imm-after Synthesizer control
-        end: dur 7
+        end: 2014-12-02
+        prog: 80
       - name: Signal processing
         start: imm-after Input detection/ADC
         end: dur 14
@@ -110,5 +115,7 @@ items:
         prog: 100
       - name: Interim Report
         start: 2014-12-05
+        prog: 100
       - name: Interim Presentation
-        start: 2014-12-12
+        start: 2014-12-05
+        prog: 100

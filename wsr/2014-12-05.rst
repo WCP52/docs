@@ -1,0 +1,90 @@
+WCP52: Weekly Status Report
+===========================
+Week of 2014-12-05
+
+---------------
+
+Chris Pavlina
+-------------
+
+- Hours Spent
+  
+  + Group meeting: 30 minutes
+  + Interim presentation: 2 hours
+  + `Input frontend assembly, testing <https://github.com/WCP52/docs/wiki/Frontend-Prototype>`_: 5 hours
+  + `Output amplifier assembly <https://github.com/WCP52/docs/wiki/Outamp-Prototype>`_: 1 hour
+  
+- Accomplishments
+  
+  + Fully tested self-sweep of system
+  + Assembled frontend, output amplifier
+  
+- Problems
+
+  + None
+  
+- Plans
+
+  + Work on presentation
+  
+Kenneth Zach
+------------
+  
+- Hours Spent
+  
+  + Group meeting: 30 minutes
+  + Interim Presentation: 2 hours
+    
+- Accomplishments
+  
+  + Interim Presentation draft finished
+    
+- Problems
+  
+  + Took a hard test.  Not much time for other work this week.
+    
+- Plans
+  
+  + Work on presentation
+  
+Harrison Owens
+--------------
+
+- Hours Spent
+
+  + Group Meeting: 30 Minutes
+  + Interim Presentation: 2 hours
+  + SPI Phase/Gain/Amplitude coding: 1.5 hours
+  
+- Accomplishments
+
+  + Drafted and gave a dry run of Interim Presentation
+  + Finished Part of the SPI Interface
+  
+- Problems
+
+  + None
+  
+- Plans
+
+  + practice presentation
+  
+Kaidi Xu
+-------------
+
+- Hours Spent
+
+  + Group Meeting: 30 minutes
+  + Interim Presentation: 2 hours
+  
+- Accomplishments
+  
+  + Interim Presentation drafted finished
+  
+- Problems
+  
+  + Not familiar with the Interim Presentation
+  
+- Plan
+
+  + Need more time to practice the Interim Presentation

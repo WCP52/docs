@@ -1,0 +1,68 @@
+Chris Pavlina
+-------------
+
+- Hours Spent
+  
+  + Design Review: 2 hours
+  + Group meeting: 30 minutes
+  + Power supply prototyping: 4 hours
+  
+- Accomplishments
+  
+  + Worked on interim report
+  + Built and documented prototype power supply
+  
+- Problems
+
+  + None
+  
+- Plans
+
+  + Work on presentation
+  + Assemble input frontend when parts arrive
+
+Kenneth Zach
+------------
+
+- Hours Spent
+  
+  + Design Review: 2 hours
+  + Group meeting: 30 minutes
+  + Python GUI Practice: 1 hour
+  
+- Accomplishments
+  
+  + Helped team finish the Design Review due this week
+  + Learned a little bit about Python GUI programming
+  
+- Problems
+
+  + Week cut short due to holiday
+  
+- Plans
+
+  + Write a pretty basic GUI for the project
+  + Put a plot in the GUI
+  + open serial connection using Python
+
+Harrison Owens
+--------------
+
+- Hours Spent
+
+  + Design Report: 3 hours
+  + Group Meeting: 30 minutes
+  + SPI writing : 1 hour
+  
+- Accomplishments
+
+  + finished the first draft of the design report
+  
+- Problems
+
+  + Nothing major to address
+  
+- Plans
+
+  + Finish writing out SPI code prompting for gain and phase output
+  + With the group work on interim presentation
