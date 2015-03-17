@@ -80,9 +80,10 @@ print ("Collecting data... ")
 freqs = np.logspace(np.log10(lower_bound), np.log10(upper_bound), 60) # 1 kHz to 150 MHz
 data = []
 for i in freqs:
+    nSamples = max(((1/i)*25)//1000000, 1024)
     s.write (("T:FREQ 1, %f\r\n" % i).encode ('ascii'))
     getline (s)
-    s.write (b"T:SAM 5000\r\n")
+    s.write (("T:SAM %d\r\n" % nSamples).encode ('ascii'))
     level = float (getline (s))
     db = level / (4095 * 24e-3 / 3.3)
     print ("%.2f Hz\t%.2f dB" % (i, db))
