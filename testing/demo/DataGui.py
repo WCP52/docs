@@ -1,6 +1,11 @@
 #!usr/bin/python
 
-from Tkinter import *
+try:
+    from Tkinter import *
+except ImportError:
+    from tkinter import *
+
+
 import tkMessageBox
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation

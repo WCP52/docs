@@ -110,7 +110,7 @@ if "phase" in sys.argv:
     print ("Collecting phase data...")
     N_POINTS_PER_RANGE = 10
     PRECISION = 1.
-    freqs = np.logspace(np.log10(lower_bound), np.log10(upper_bound), 10)
+    freqs = np.logspace(np.log10(lower_bound), np.log10(upper_bound), 30)
     data = []
     for i in freqs:
         # Set frequency. Then, search phases for a null
