@@ -107,8 +107,8 @@ if "phase" in sys.argv:
     plt.waitforbuttonpress (-1)
 
     print ("Collecting phase data...")
-    N_POINTS_PER_RANGE = 4
-    PRECISION = 10.
+    N_POINTS_PER_RANGE = 10
+    PRECISION = 1.
     freqs = np.logspace(np.log10(lower_bound), np.log10(upper_bound), 10)
     data = []
     for i in freqs:
