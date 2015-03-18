@@ -1,10 +1,21 @@
 #!usr/bin/python
+<<<<<<< HEAD
 try:
 	from Tkinter import *
 except ImportError: 
 	from tkinter import *
  
 ##from tkinter import messagebox
+=======
+
+try:
+    from Tkinter import *
+except ImportError:
+    from tkinter import *
+
+
+import tkMessageBox
+>>>>>>> 3585cc21b314c965f3366be0e0f14a54731681b8
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
  

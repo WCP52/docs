@@ -10,15 +10,18 @@
 \usepackage{framed}
 \usepackage[letterpaper,margin=2.5cm]{geometry}
 \usepackage{graphicx}
-\usepackage{inconsolata}
 \usepackage{indentfirst}
-\usepackage{libertine}
+\usepackage{longtable}
 \usepackage[final]{microtype}
 \usepackage{multicol}
 \usepackage{nameref}
+\usepackage{pdflscape}
+\usepackage{pdfpages}
 \usepackage{tabularx}
 \usepackage{textcomp}
 \usepackage{todonotes}
+\usepackage{libertine}
+\usepackage{inconsolata}
 
 
 % PAGE SETUP
@@ -60,11 +63,19 @@
 \newpage
 \input{too/too}
 
-
 \end{multicols}
+
+\begin{landscape}
+\newpage
+\chapter{Electrical parts}
+\texttt{
+\input{autogen-bom}
+}
+\end{landscape}
 
 \newpage
 \chapter{Full schematics}
+\includepdf[landscape=true,pages=-]{schematic.pdf}
 
 \newpage
 \input{biblio}
