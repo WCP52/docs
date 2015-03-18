@@ -1,26 +1,15 @@
 #!usr/bin/python
-<<<<<<< HEAD
 try:
 	from Tkinter import *
 except ImportError: 
 	from tkinter import *
  
 ##from tkinter import messagebox
-=======
-
-try:
-    from Tkinter import *
-except ImportError:
-    from tkinter import *
-
-
-import tkMessageBox
->>>>>>> 3585cc21b314c965f3366be0e0f14a54731681b8
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
  
 top =  Tk()
-frame =  Frame(top)
+frame =  PanedWindow(top)
 frame.pack() 
 ## ####test values THIS MUST BE REPLACED#######
 phases = ['12','32','42','23', '42','12','34']
@@ -28,12 +17,9 @@ phases2 = [12,32,42,23,42,12,34]
 freq = [2,3,4,5,6,7,8]
 ###############################################
 
-##phase = Label(top, text=phases)
-##phase.pack()
-
-## Buttons that still need to be wrapped around a SPI input#######
-bottomframe = Frame(top)
-bottomframe.pack( side = BOTTOM)
+ 
+##bottomframe = Frame(top)
+##bottomframe.pack( side = BOTTOM)
  
 #####################################################
 
@@ -43,11 +29,15 @@ def textInsert():
 	text = Text(top)
 	for x in phases:
 		text.insert(END, x + '\n')
-##text.insert([phases],'dfdfdf')
-		text.pack(side = BOTTOM)
+ 
+	text.pack(side = RIGHT)
+	frame.add(text)
 ###############################################################################################
 	plt.plot (phases)
 	plt.axis([0,8,0,40])
+	plotpic = plt.savefig("DataPlot.gif")
+	PlotLabel = Label(top, image = plotpic).pack(side=RIGHT)
+
 	plt.show()
 startbutton = Button(frame, text= "Start", fg= "Black", command = textInsert)
 startbutton.pack(side = TOP)
