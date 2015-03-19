@@ -39,14 +39,18 @@ items:
       - name: CDC/command parser
         start: 2015-03-05
         end: 2015-03-19
-        prog: 50
+        prog: 100
       - name: PC software
         start: 2015-03-20
         end: 2015-04-17
-        prog: 33
+        prog: 40
       - name: Algorithms
         start: 2015-01-27
         end: 2015-03-31
+        prog: 90
+      - name: GUI
+        start: 2015-03-06
+        end: 2015-03-21
         prog: 90
 
   - name: Documentation
