@@ -8,7 +8,7 @@ items:
       - name: Output amp testing/fixing
         start: 2015-01-27
         end: 2015-02-26
-        prog: 80
+        prog: 100
       - name: Power supply design
         start: 2015-02-19
         end: 2015-02-28
@@ -16,9 +16,10 @@ items:
       - name: Final PCB design
         start: 2015-02-28
         end: 2015-03-14
-        prog: 90
+        prog: 100
       - name: Parts and PCB ordered
-        start: 2015-03-17
+        start: 2015-03-18
+        prog: 50
       - name: Delivery wait time
         start: 2015-03-17
         end: 2015-04-07
@@ -28,35 +29,31 @@ items:
   - name: Final hardware testing
     start: 2015-02-16
     end: 2015-05-12
+    prog: 80
 
-  - name: Microcontroller
+  - name: Software
     items:
       - name: USB
         start: 2015-02-18
         end: 2015-03-04
-<<<<<<< HEAD
       - name: CDC/command parser
         start: 2015-03-05
         end: 2015-03-19
+        prog: 100
       - name: PC software
         start: 2015-03-20
         end: 2015-04-17
-=======
-        prog: 33
-      - name: CDC/command parser
-        start: 2015-03-05
-        end: 2015-03-19
-        prog: 50
-      - name: PC software
-        start: 2015-03-20
-        end: 2015-04-04
-<<<<<<< HEAD
-        prog: 25
->>>>>>> 890641b44fb8658a3e44a49064a1445c34d6cbcb
-=======
-        prog: 33
->>>>>>> fb63097be1dc2bda94c5a138e9268ec8a45749e5
+        prog: 40
+      - name: Algorithms
+        start: 2015-01-27
+        end: 2015-03-31
+        prog: 90
+      - name: GUI
+        start: 2015-03-06
+        end: 2015-03-21
+        prog: 90
 
   - name: Documentation
     start: 2015-03-23
     end: 2015-05-18
+    prog: 5
