@@ -1,6 +1,8 @@
 \section{Detailed Circuit Description}
 \subsection{Power Input Circuit}
 
+\schematicpage{11}{PowerInput}
+
 This instrument is complex and has many somewhat expensive parts, so a full
 input subsystem was designed to ensure that these parts are always supplied
 correctly with power. This subsystem provides the following features:
@@ -63,7 +65,7 @@ also turned off.
 %\end{multicols}
 \begin{figure}[H]
 \centering
-\includegraphics[width=3in]{comparator}
+\includegraphics[]{comparator}
 \caption{UVLO and OVLO circuit}
 \label{fig:uovlo}
 \end{figure}
@@ -109,7 +111,7 @@ advantage of this.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=3in]{millerint}
+\includegraphics[]{millerint}
 \caption{Miller integrator}
 \label{fig:miller}
 \end{figure}
@@ -168,12 +170,14 @@ can easily handle this pulse with excess~\cite{aod417}.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=3in]{usbinput}
+\includegraphics[]{usbinput}
 \caption{USB power input circuit}
 \label{fig:usbpower}
 \end{figure}
 
 \subsubsection{USB Power Input Circuit}
+
+\schematicpage{2}{Comm}
 
 The USB specification is very demanding with respect to the amount of inrush
 current that a USB device may consume. We used the same Miller-integrator
@@ -206,9 +210,11 @@ of making sure that this current draw is within USB specifications.
 
 \subsection{Switching DC-DC Converters}
 
+\schematicpage{12}{DCDC}
+
 \begin{figure}[H]
 \centering
-\includegraphics[width=3in]{buckconv}
+\includegraphics[]{buckconv}
 \caption{Basic buck converter circuit}
 \label{fig:basicbuck}
 \end{figure}
@@ -253,7 +259,7 @@ operation is intentional power loss).
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=3in]{3v3buck}
+\includegraphics[]{3v3buck}
 \caption{$3.3\;\mr{V}$ buck converter circuit}
 \label{fig:3v3buck}
 \end{figure}
@@ -324,21 +330,31 @@ capacitors, and as such will not be addressed further. See their datasheets for
 more information:~\cite{l78m05}~\cite{mc79m00}~\cite{az1117c}~\cite{mcp1700}.
 
 \subsection{Microcontroller}
+\schematicpage{13}{MPU}
 \subsubsection{USB Communications}
+\schematicpage{2}{Comm}
 
 \subsection{Synthesizer}
+\schematicpage{3}{Synth}
 
 \subsection{Synthesizer Output Amplifiers}
+\schematicpage{3}{Synth}
 
 \subsection{Output System}
+\schematicpage{4}{OutputAmp}
 
 \subsubsection{Attenuator and Filter}
 \subsubsection{Gain Stages and Termination}
 
 \subsection{Input System}
+\schematicpage{6}{InputFrontend}
 
 \subsubsection{Protection}
+\schematicpage{7}{Protection}
+
 \subsubsection{Switching}
+
+\schematicpage{8}{Switching}
 
 It would not be practical for the analyzer to contain two independent input
 subsystems to measure both inputs, as these systems are complex and expensive,
@@ -397,4 +413,7 @@ off, and turning off the one that was on.
 
 
 \subsubsection{Buffer and Filter}
+\schematicpage{9}{Buffer\_Filter}
+
 \subsubsection{Logarithmic Detector}
+\schematicpage{10}{Detector}

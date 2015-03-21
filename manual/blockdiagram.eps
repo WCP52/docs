@@ -1,7 +1,7 @@
 %!PS-Adobe-3.0 EPSF-3.0
 %%Title: blockdiagram.eps
 %%Creator: XCircuit v3.9 rev33
-%%CreationDate: Sun Mar 15 21:57:43 2015
+%%CreationDate: Sat Mar 21 14:34:21 2015
 %%Pages: 1
 %%BoundingBox: 68 68 769 514
 %%DocumentNeededResources: font Helvetica Times-Roman Courier Symbol 
@@ -258,6 +258,14 @@ begingate
 endgate
 } def
 
+/euro::R {
+begingate
+1 1.000 0 48 0 40 2 polygon
+1 1.000 -16 40 16 40 16 -40 -16 -40 -16 40 5 polygon
+1 1.000 0 -40 0 -48 2 polygon
+endgate
+} def
+
 
 %%EndSetup
 
@@ -301,11 +309,8 @@ sce
 0 1.000 624 -128 624 -224 720 -224 720 -128 4 polygon
 1 1.000 672 -224 672 -272 544 -272 3 polygon
 1.000 0 512 -272 generic::circle
-1.000 0 672 80 analog::resistor
-1.000 0 672 -48 analog::resistor
-1.000 90 608 16 analog::resistor
-1 1.000 672 -112 672 -128 2 polygon
-1 1.000 672 144 672 160 544 160 3 polygon
+1 1.000 672 -96 672 -128 2 polygon
+1 1.000 672 128 672 160 544 160 3 polygon
 1.000 0 512 16 generic::circle
 1.000 0 672 16 generic::dot
 -1.000 0 320 -96 generic::circle
@@ -434,6 +439,12 @@ label
 1 1.000 320 -96 336 -96 2 polygon
 1 1.000 320 -160 336 -160 2 polygon
 (networks) {CR} (Protection) {/Times-Roman cf} 4 21 0 0.600 400 -128 label
+1.000 0 672 80 euro::R
+1.000 0 672 -48 euro::R
+1.000 90 608 16 euro::R
+1 1.000 672 32 672 0 2 polygon
+1 1.000 656 16 672 16 2 polygon
+1 1.000 560 16 544 16 2 polygon
 pgsave restore showpage
 
 %%Trailer

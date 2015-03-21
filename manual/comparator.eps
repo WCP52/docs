@@ -1,9 +1,9 @@
 %!PS-Adobe-3.0 EPSF-3.0
 %%Title: comparator.eps
-%%Creator: XCircuit v3.9 rev37
-%%CreationDate: Sun Mar 15 18:53:58 2015
+%%Creator: XCircuit v3.9 rev33
+%%CreationDate: Sat Mar 21 14:25:06 2015
 %%Pages: 1
-%%BoundingBox: 68 68 451 374
+%%BoundingBox: 68 68 297 283
 %%DocumentNeededResources: font Times-Roman Courier Symbol 
 %%EndComments
 %%BeginProlog
@@ -196,20 +196,6 @@ begingate
 endgate
 } def
 
-/analog::resistor {
-begingate
-1 1.000 0 64 0 36 2 polygon
-1 1.000 0 -64 0 -36 2 polygon
-1 1.000 0 -36 14 -30 -14 -18 14 -6 -14 6 14 18 -14 30 0 36 8 polygon
-1.000 0.000 0.000 scb
-(r.1) {/Times-Roman cf} 2 9 0 1.000 0 64 pinlabel
-(r.2) {/Times-Roman cf} 2 13 0 1.000 0 -64 pinlabel
-0.180 0.545 0.341 scb
-(spice:R%i %pr.1 %pr.2 1.0K) {/Times-Roman cf} 2 0 0 1.000 -208 -160 infolabel
-(sim:r %pr.1 %pr.2) {/Times-Roman cf} 2 0 0 1.000 -208 -208 infolabel
-endgate
-} def
-
 /generic::dot {
 % trivial
 begingate
@@ -255,41 +241,6 @@ begingate
 endgate
 } def
 
-/transistors::transistor {
-% hidden
-begingate
-1 2.000 -32 24 -32 -24 2 polygon
-1 1.000 0 32 -32 18 2 polygon
-1 1.000 -32 0 -64 0 2 polygon
-1 1.000 0 -32 -32 -18 2 polygon
-endgate
-} def
-
-/generic::arrowhead {
-% nonetwork
-begingate
-8 -28 beginpath
-3 -18 3 -15 0 0 curveto
--3 -15 -3 -18 -8 -28 curveto
--2 -26 2 -26 8 -28 curveto
-249 
-1.000 endpath
-endgate
-} def
-
-/transistors::pnp {
-begingate
-1.000 0 0 0 transistors::transistor
-0.650 /sv 245 -32 18 generic::arrowhead
-1.000 0.000 0.000 scb
-(C) {/Times-Roman cf} 2 13 0 1.000 0 -32 pinlabel
-(B) {/Times-Roman cf} 2 7 0 1.000 -64 0 pinlabel
-(E) {/Times-Roman cf} 2 9 0 1.000 0 32 pinlabel
-0.180 0.545 0.341 scb
-(spice:Q%i %pC %pB %pE pnp) {/Times-Roman cf} 2 4 0 1.000 -244 -139 infolabel
-endgate
-} def
-
 /analog::capacitor {
 begingate
 1 1.000 0 -64 0 -6 2 polygon
@@ -312,6 +263,18 @@ begingate
 endgate
 } def
 
+/generic::arrowhead {
+% nonetwork
+begingate
+8 -28 beginpath
+3 -18 3 -15 0 0 curveto
+-3 -15 -3 -18 -8 -28 curveto
+-2 -26 2 -26 8 -28 curveto
+249 
+1.000 endpath
+endgate
+} def
+
 /generic::arrow {
 % nonetwork
 begingate
@@ -327,41 +290,61 @@ begingate
 endgate
 } def
 
+/euro::R {
+begingate
+1 1.000 0 48 0 40 2 polygon
+1 1.000 -16 40 16 40 16 -40 -16 -40 -16 40 5 polygon
+1 1.000 0 -40 0 -48 2 polygon
+endgate
+} def
+
+/analog::pnp {
+begingate
+1 1.000 -48 0 -64 0 2 polygon
+1 1.000 -48 48 -48 -48 2 polygon
+1 1.000 0 48 -48 22 2 polygon
+1 1.000 0 48 0 64 2 polygon
+1 1.000 0 -48 -48 -22 2 polygon
+1 1.000 0 -48 0 -64 2 polygon
+1.000 240 -48 22 generic::arrowhead
+1.000 0.000 0.000 scb
+(C) {/Times-Roman cf} 2 13 0 1.000 0 -64 pinlabel
+(B) {/Times-Roman cf} 2 7 0 1.000 -64 0 pinlabel
+(E) {/Times-Roman cf} 2 9 0 1.000 0 64 pinlabel
+0.180 0.545 0.341 scb
+(spice:Q%i %pC %pB %pE pnp) {/Times-Roman cf} 2 4 0 1.000 -244 -139 infolabel
+endgate
+} def
+
 
 %%EndSetup
 
 %%Page: comparator 1
 %%PageOrientation: Portrait
 /pgsave save def bop
-1.0000 inchscale
-2.6000 setlinewidth 552 616 translate
+0.6000 inchscale
+2.6000 setlinewidth 676 780 translate
 
 1.000 270 -224 -320 liec_smi::zener_diode
-1.000 0 -224 224 analog::resistor
-1 1.000 -224 160 -224 -288 2 polygon
+1 1.000 -224 176 -224 -288 2 polygon
 1 1.000 -224 -320 -272 -320 -272 -272 -224 -272 4 polygon
 1.000 0 -224 -272 generic::dot
-1.000 0 -64 224 analog::resistor
-1.000 0 64 224 analog::resistor
-(R82) {/Courier cf} 2 20 0 0.900 -208 224 label
-(R84B) {CR} (R84A) {/Courier cf} 4 20 0 0.900 -48 224 label
-(R85D) {CR} (R84D) {CR} (R84C) {/Courier cf} 6 20 0 0.900 80 224 label
-1.000 0 64 -320 analog::resistor
-1.000 0 -64 -320 analog::resistor
+(2) {ns} (R8) {/Courier cf} 4 21 0 0.900 -224 384 label
+(R84B) {CR} (R84A) {/Courier cf} 4 21 0 0.900 -64 400 label
+(R85D) {CR} (R84D) {CR} (R84C) {/Courier cf} 6 21 0 0.900 64 416 label
 1.000 0 224 80 analog::opamp
 1.000 0 224 -144 analog::opamp
-1 1.000 -64 160 -64 -256 2 polygon
-1 1.000 64 -256 64 160 2 polygon
+1 1.000 -64 176 -64 -272 2 polygon
+1 1.000 64 -256 64 176 2 polygon
 1 1.000 144 128 64 128 2 polygon
 1.000 90 64 -96 generic::jumper
 1 1.000 80 -96 144 -96 2 polygon
 1 1.000 48 -96 -64 -96 2 polygon
 1.000 0 -64 -96 generic::dot
 1.000 0 64 128 generic::dot
-1.000 90 -144 32 analog::resistor
 1.000 90 -64 32 generic::jumper
 1.000 90 64 32 generic::jumper
-1 1.000 -208 32 -224 32 2 polygon
+1 1.000 -192 32 -224 32 2 polygon
 1.000 0 -224 32 generic::dot
 1 1.000 -48 32 48 32 2 polygon
 1 1.000 80 32 144 32 2 polygon
@@ -379,33 +362,29 @@ endgate
 1 1.000 240 68 264 68 2 polygon
 1 1.000 252 -132 240 -144 252 -156 264 -144 252 -132 5 polygon
 1 1.000 240 -156 264 -156 2 polygon
-1.000 0 336 144 analog::resistor
-1.000 0 336 272 analog::resistor
-1.000 0 448 208 transistors::pnp
 1 1.000 384 208 336 208 2 polygon
 1.000 0 336 208 generic::dot
-1.000 90 368 -144 analog::resistor
-1 1.000 448 176 448 -144 432 -144 3 polygon
+1 1.000 448 144 448 -144 432 -144 3 polygon
 (D5) {/Courier cf} 2 21 0 0.900 224 0 label
-(R87) {/Courier cf} 2 21 0 0.900 368 -112 label
-(R85A) {/Courier cf} 2 16 0 0.900 -48 -288 label
-(R85C) {/Courier cf} 2 16 0 0.900 80 -288 label
+(R87) {/Courier cf} 2 21 0 0.900 384 -112 label
+(R85A) {/Courier cf} 2 21 0 0.900 -64 -448 label
+(R85C) {/Courier cf} 2 21 0 0.900 64 -448 label
 1.000 0 192 -320 analog::capacitor
 1 1.000 192 -256 192 -256 64 -256 3 polygon
 1.000 0 64 -256 generic::dot
 (C72) {/Courier cf} 2 16 0 0.900 208 -288 label
-1 1.000 208 128 208 352 336 352 336 336 4 polygon
-1 1.000 336 352 448 352 448 240 3 polygon
+1 1.000 208 128 208 352 336 352 336 320 4 polygon
+1 1.000 336 352 448 352 448 272 3 polygon
 1.000 90 128 352 liec_smi::diode
 1 1.000 160 352 208 352 2 polygon
-1 1.000 96 352 -224 352 -224 288 3 polygon
-1 1.000 -64 288 -64 352 2 polygon
-1 1.000 64 288 64 352 2 polygon
+1 1.000 96 352 -224 352 -224 272 3 polygon
+1 1.000 -64 272 -64 352 2 polygon
+1 1.000 64 272 64 352 2 polygon
 1.000 0 208 352 generic::dot
 1.000 0 336 352 generic::dot
 1.000 0 64 352 generic::dot
 1.000 0 -64 352 generic::dot
-(Q12) {/Courier cf} 2 16 0 0.900 464 224 label
+(Q12) {/Courier cf} 2 21 0 0.900 464 208 label
 1.000 0 192 -400 euro::com-alt
 1.000 0 64 -400 euro::com-alt
 1.000 0 -64 -400 euro::com-alt
@@ -413,7 +392,7 @@ endgate
 1 1.000 -224 -352 -224 -384 2 polygon
 1 1.000 -224 -320 32 0.000 360.000 xcarc
 (U11) {/Courier cf} 2 16 0 0.900 -208 -288 label
-(R83A) {/Courier cf} 2 21 0 0.900 -144 64 label
+(R83A) {/Courier cf} 2 21 0 0.900 -144 80 label
 1.000 0 336 80 generic::dot
 1.000 90 464 -144 generic::arrow
 1.000 0 448 -144 generic::dot
@@ -427,6 +406,30 @@ endgate
 1.000 0 -224 352 generic::dot
 (IN) {/Times-Roman cf} 2 23 0 0.900 -320 352 label
 (2.5V) {/Times-Roman cf} 2 23 0 0.900 -240 -240 label
+1.000 0 -224 224 euro::R
+1.000 0 -64 -320 euro::R
+1 1.000 -64 -368 -64 -384 2 polygon
+1.000 0 64 -320 euro::R
+1 1.000 64 -256 64 -272 2 polygon
+1 1.000 64 -368 64 -384 2 polygon
+1.000 0 -64 224 euro::R
+1.000 0 64 224 euro::R
+1.000 0 336 272 euro::R
+1.000 0 336 144 euro::R
+1 1.000 336 224 336 192 2 polygon
+1 1.000 336 96 336 80 2 polygon
+1.000 90 -144 32 euro::R
+1 1.000 -96 32 -80 32 2 polygon
+1.000 90 384 -144 euro::R
+1 1.000 336 -144 304 -144 2 polygon
+1.000 0 448 208 analog::pnp
+0.600 0.600 0.600 scb
+1 1.000 -176 352 -176 320 -208 272 -176 368 spline
+1 1.000 -112 336 -128 352 -112 368 -80 272 spline
+1 1.000 16 320 0 352 16 368 48 272 spline
+1.000 150 48 272 generic::arrowhead
+1.000 150 -80 272 generic::arrowhead
+1.000 210 -208 272 generic::arrowhead
 pgsave restore showpage
 
 %%Trailer

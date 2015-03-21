@@ -1,9 +1,9 @@
 %!PS-Adobe-3.0 EPSF-3.0
 %%Title: mosrpp.eps
 %%Creator: XCircuit v3.9 rev33
-%%CreationDate: Sat Mar 14 22:44:27 2015
+%%CreationDate: Sat Mar 21 14:17:48 2015
 %%Pages: 1
-%%BoundingBox: 68 68 214 149
+%%BoundingBox: 68 68 158 118
 %%DocumentNeededResources: font Times-Roman Symbol 
 %%EndComments
 %%BeginProlog
@@ -176,46 +176,6 @@
 
 %%BeginSetup
 
-/transistors::mosfet {
-% hidden
-begingate
-1 1.000 0 -32 0 -20 -24 -20 3 polygon
-1 2.000 -24 -24 -24 -16 2 polygon
-1 2.000 -24 -8 -24 8 2 polygon
-1 2.000 -24 16 -24 24 2 polygon
-1 1.000 -24 20 0 20 0 32 3 polygon
-1 1.000 -64 -16 -36 -16 -36 16 3 polygon
-1 1.000 -24 0 0 0 0 -20 3 polygon
-endgate
-} def
-
-/generic::arrowhead {
-% nonetwork
-begingate
-8 -28 beginpath
-3 -18 3 -15 0 0 curveto
--3 -15 -3 -18 -8 -28 curveto
--2 -26 2 -26 8 -28 curveto
-249 
-1.000 endpath
-endgate
-} def
-
-/transistors::mosfet_p {
-begingate
-1.000 0 0 0 transistors::mosfet
-0.650 /sv 90 0 0 generic::arrowhead
-1.000 0.000 0.000 scb
-(G) {/Times-Roman cf} 2 7 0 1.000 -64 -16 pinlabel
-(D) {/Times-Roman cf} 2 13 0 1.000 0 -32 pinlabel
-(S) {/Times-Roman cf} 2 9 0 1.000 0 32 pinlabel
-0.180 0.545 0.341 scb
-(spice:M%i %pD %pG %pS GND nmos) {/Times-Roman cf} 2 4 0 1.000 -244 -139 
-infolabel
-(sim:n %pG %pS %pD) {/Times-Roman cf} 2 4 0 1.000 -244 -187 infolabel
-endgate
-} def
-
 /analog::source {
 % hidden
 begingate
@@ -245,6 +205,38 @@ begingate
 endgate
 } def
 
+/generic::arrowhead {
+% nonetwork
+begingate
+8 -28 beginpath
+3 -18 3 -15 0 0 curveto
+-3 -15 -3 -18 -8 -28 curveto
+-2 -26 2 -26 8 -28 curveto
+249 
+1.000 endpath
+endgate
+} def
+
+/liec_smi::arrowhead90 {
+begingate
+1.000 270 -16 0 generic::arrowhead
+endgate
+} def
+
+/liec_smi::mosfet_p3 {
+begingate
+1 1.000 0 33 0 -32 -16 -32 3 polygon
+1 1.000 16 9 16 -7 2 polygon
+1 1.000 16 33 64 33 64 48 3 polygon
+1 1.000 16 41 16 25 2 polygon
+1.000 180 48 1 liec_smi::arrowhead90
+1 1.000 40 1 16 1 2 polygon
+1 1.000 16 -31 64 -31 64 -48 3 polygon
+1 1.000 64 1 64 -31 2 polygon
+1 1.000 16 -23 16 -39 2 polygon
+endgate
+} def
+
 
 %%EndSetup
 
@@ -252,35 +244,36 @@ endgate
 %%PageOrientation: Portrait
 /pgsave save def bop
 % 32.00 4.00 gridspace
-1.0000 inchscale
-2.6000 setlinewidth 608 198 translate
+0.6000 inchscale
+2.6000 setlinewidth 736 326 translate
 
 0.604 0.604 0.604 scb
-1.000 270 -240 160 transistors::mosfet_p
 1.000 0 -384 80 analog::vsource
-1 1.000 -272 160 -384 160 -384 144 3 polygon
 1 1.000 -384 16 -384 0 -96 0 -96 48 4 polygon
 sce
 (LOAD) {/Times-Roman cf} 2 21 0 0.700 -96 80 label
 0 1.000 -144 112 -144 48 -48 48 -48 112 4 polygon
 0.604 0.604 0.604 scb
-1 1.000 -96 112 -96 160 -208 160 3 polygon
-1 1.000 -224 96 -224 0 2 polygon
 1.000 0 -224 0 generic::dot
-1.000 0 -220 160 generic::dot
 sce
-1 1.000 -372 144 -364 168 -336 168 -376 116 spline
-1 1.000 -296 168 -324 136 -236 136 -336 168 spline
-1 1.000 -172 132 -180 160 -116 148 -236 136 spline
 1.000 105 -104 144 generic::arrowhead
-1 1.000 -368 148 -368 180 -300 164 -376 116 spline
-1 1.000 -268 156 -248 124 -240 148 -300 164 spline
-1 1.000 -232 184 -184 164 -120 148 -240 148 spline
-0.600 0.600 0.600 scb
-(Q13) {/Times-Roman cf} 2 21 0 0.700 -260 180 label
+0.604 0.604 0.604 scb
+(Q13) {/Times-Roman cf} 2 21 0 0.700 -260 168 label
 sce
 (Startup path) {/Times-Roman 0.700 cf} 2 16 0 0.700 -204 172 label
-(Normal path) {/Times-Roman 0.700 cf} 2 16 0 0.700 -216 120 label
+(Normal path) {/Times-Roman 0.700 cf} 2 16 0 0.700 -212 124 label
+0.600 0.600 0.600 scb
+1 1.000 -224 64 -224 0 2 polygon
+1 1.000 -304 144 -384 144 2 polygon
+1 1.000 -208 144 -96 144 -96 112 3 polygon
+1.000 270 -256 80 liec_smi::mosfet_p3
+sce
+1 1.000 -368 140 -324 160 -284 104 -380 120 spline
+1 1.000 -272 88 -264 108 -260 116 -284 104 spline
+1 1.000 -228 188 -180 160 -116 148 -260 116 spline
+1 1.000 -344 132 -324 96 -280 92 -380 120 spline
+1 1.000 -244 88 -220 108 -220 128 -280 92 spline
+1 1.000 -216 156 -200 156 -120 148 -220 128 spline
 pgsave restore showpage
 
 %%Trailer
