@@ -65,8 +65,8 @@
 
 \end{multicols}
 
-\begin{landscape}
 \newpage
+\begin{landscape}
 \chapter{Electrical parts}
 \texttt{
 \input{autogen-bom}
@@ -75,8 +75,11 @@
 
 \newpage
 \chapter{Full schematics}
-\includepdf[landscape=true,pages=-]{schematic.pdf}
-
+The following pages contain schematics exported directly from the CAD software.
+While they are documented, it is intended that readers will first familiarize
+themselves with the workings of the circuits by reading through the
+\hyperref[chap:too]{Theory of Operation}.
+\includepdf[landscape=true,pages=-,link]{schematic.pdf}
 \newpage
 \input{biblio}
 
