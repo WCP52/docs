@@ -1,18 +1,22 @@
-#!/usr/bin/python
+#!usr/bin/python
 
 try:
 	from Tkinter import *
 except ImportError:
 	from tkinter import *
-#from PIL import Image 
+from PIL import Image
+from PIL import ImageTk 
 ##import tkMessageBox
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import random
- 
-top =  Tk()
-frame =  PanedWindow(orient=HORIZONTAL)
-frame.pack(fill =BOTH, expand = 1) 
+
+root =  Tk()
+Left =  Frame(root)
+Right = Frame(root)
+#frame =  PanedWindow(orient=HORIZONTAL)
+Left.pack(side = LEFT)
+Right.pack(side= RIGHT,fill =BOTH, expand = 1) 
 ## ####test values THIS MUST BE REPLACED#######
 ##phases = ['12','32','42','23', '42','12','34']
 ##phases2 = [12,32,42,23,42,12,34]
@@ -32,12 +36,11 @@ def ConvertListToString():
 	print(random_list2)
 def textInsert():
 	ConvertListToString()
-	text = Text(top)
+	text = Text(Left)
 	for x in random_list2:
 		text.insert(END, x + '\n')
 	
-	text.pack(side = LEFT)
-##	frame.add(text)
+	text.pack(in_ = Left, side = BOTTOM)
 ##	plt.plot (phases)
 ##	plt.axis([0,8,0,40])
 ##	plt.show()
@@ -55,29 +58,48 @@ def RandomNumGen():
 def GraphPlot():
 	global random_list
 	plt.plot(random_list)
-	plt.axis([0,40,0,40])	
+	plt.axis([0,40,0,40])
+	plt.savefig('out.png')	
+	ImagePlot = Image.open("out.png")
+	Plotphoto = ImageTk.PhotoImage(ImagePlot)
+	PlotLabel = Label(root,Plotphoto)## Problem line
+	PlotLabel.image = Plotphoto
+	PlotLabel.pack(in_ = Right)
 	plt.show()
+	
 RandomNumGen()
 ConvertListToString()
  
 
-  
-
-	
 ###############################################################################################
 
-startGraph = Button(frame, text= "Start Plot ", fg="Black", command = textInsert)
+startGraph = Button(Left, text= "Calibrate ", fg="Black", command = textInsert)
+startGraph.pack( in_ = Left, side = TOP )
+  
+displayGraph = Button(Left, text="Generate Plot", fg="Black", command = GraphPlot )
+displayGraph.pack( in_ = Left, side = TOP )
 
-startGraph.pack( side = LEFT )
-##stopGraph = Button(frame, text="Stop Graph", fg= "Black") 
-##stopGraph.pack( side = LEFT )
-displayGraph = Button(frame, text="Display Graph", fg="Black", command = GraphPlot )
-displayGraph.pack( side = LEFT )
 CheckVar1 = IntVar()
-CheckVar2 = IntVar()
-C1 = Checkbutton(top, text = "Freq", variable = CheckVar1, onvalue = 1, offvalue = 0, height=5,  width = 20)
-C2 = Checkbutton(top, text = "Phase", variable = CheckVar2,  onvalue = 1, offvalue = 0, height=5,  width = 20)
-C1.pack(side = LEFT)
-C2.pack(side = LEFT)
+C1 = Checkbutton(Left, text = "Linear", variable = CheckVar1, onvalue = 1, offvalue = 0, height=5,  width = 20)
+C1.pack(in_ = Left,side = TOP)
 
-top.mainloop()
+CheckVar2 = IntVar()
+C2 = Checkbutton(Left, text = "Phase", variable = CheckVar2,  onvalue = 1, offvalue = 0, height=5,  width = 20)
+C2.pack(in_ =Left, side = TOP)
+
+
+LabMin = Label(Left, text="Min")
+LabMin.pack( side =BOTTOM )
+
+UserSetMin = Entry(Left, bd = 1 )
+UserSetMin.pack(side = BOTTOM)
+
+LabMax = Label(Left, text = "Max")
+LabMax.pack( side =  BOTTOM)
+
+UserSetMax = Entry(Left, bd = 1)
+UserSetMax.pack(side = BOTTOM)
+
+
+
+root.mainloop()
