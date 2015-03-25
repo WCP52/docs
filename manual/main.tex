@@ -1,0 +1,88 @@
+\documentclass[article,oneside]{memoir}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cclicenses}
+\usepackage{color}
+\usepackage{euler}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=red]{hyperref}
+\usepackage{float}
+\usepackage{framed}
+\usepackage[letterpaper,margin=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{indentfirst}
+\usepackage{longtable}
+\usepackage[final]{microtype}
+\usepackage{multicol}
+\usepackage{nameref}
+\usepackage{pdflscape}
+\usepackage{pdfpages}
+\usepackage{tabularx}
+\usepackage{textcomp}
+\usepackage{todonotes}
+\usepackage{libertine}
+\usepackage{inconsolata}
+
+
+% PAGE SETUP
+\setlength{\parindent}{5mm}
+\nonzeroparskip
+\raggedbottom
+\raggedcolumns
+
+% CONFIG FOR TOC, BIBLIO, ETC
+\setcounter{tocdepth}{2}
+\renewcommand{\bibname}{References}
+
+% HANDY DEFINITIONS
+\newcommand{\note}[1]{ \begin{framed} #1 \end{framed} }
+\newcommand{\refdes}[1]{\texttt{#1}}
+\newcommand{\mr}[1]{\ensuremath{\mathrm{#1}}}
+\newcommand{\dg}{\ensuremath{{}^\circ}}
+\newcommand{\schematicpage}[2]{ \begin{framed} Relevant schematic page: \hyperlink{schematic.pdf.#1}{\texttt{#2/#1}} \end{framed} }
+
+\title{Owner's Manual}
+\author{WCP52}
+
+\begin{document}
+
+\pagestyle{headings}
+\input{title}
+\begin{multicols}{2}
+
+\tableofcontents
+\listoffigures
+
+\newpage
+\input{intro/intro}
+
+\newpage
+\input{specifications/specifications}
+
+\newpage
+\input{oper/oper}
+
+\newpage
+\input{too/too}
+
+\end{multicols}
+
+\newpage
+\begin{landscape}
+\chapter{Electrical parts}
+\texttt{
+\input{autogen-bom}
+}
+\end{landscape}
+
+\newpage
+\chapter{Full schematics}
+The following pages contain schematics exported directly from the CAD software.
+While they are documented, it is intended that readers will first familiarize
+themselves with the workings of the circuits by reading through the
+\hyperref[chap:too]{Theory of Operation}.
+\includepdf[landscape=true,pages=-,link]{schematic.pdf}
+\newpage
+\input{biblio}
+
+\end{document}
