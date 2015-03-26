@@ -19,12 +19,14 @@ items:
         prog: 100
       - name: Parts and PCB ordered
         start: 2015-03-18
-        prog: 50
+        prog: 100
       - name: Delivery wait time
         start: 2015-03-17
         end: 2015-04-07
+        prog: 100
       - name: Final PCB assembled
         start: 2015-04-08
+        prog: 50
 
   - name: Final hardware testing
     start: 2015-02-16
@@ -36,6 +38,7 @@ items:
       - name: USB
         start: 2015-02-18
         end: 2015-03-04
+        prog: 75
       - name: CDC/command parser
         start: 2015-03-05
         end: 2015-03-19
@@ -43,7 +46,7 @@ items:
       - name: PC software
         start: 2015-03-20
         end: 2015-04-17
-        prog: 40
+        prog: 50
       - name: Algorithms
         start: 2015-01-27
         end: 2015-03-31
@@ -56,4 +59,4 @@ items:
   - name: Documentation
     start: 2015-03-23
     end: 2015-05-18
-    prog: 5
+    prog: 10
