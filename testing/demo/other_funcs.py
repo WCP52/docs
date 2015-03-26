@@ -37,9 +37,8 @@ def get_freq_response(s, lower_bound, upper_bound,freqs):
 
 def get_phase_response(s, lower_bound, upper_bound, freqs):
     print ("Collecting phase data...")
-    N_POINTS_PER_RANGE = 4
-    PRECISION = 10.
-    #freqs = np.logspace(np.log10(lower_bound), np.log10(upper_bound), 10)
+    N_POINTS_PER_RANGE = 10
+    PRECISION = 1.
     data = []
     for i in freqs:
         # Set frequency. Then, search phases for a null
@@ -105,5 +104,5 @@ def get_phase_response(s, lower_bound, upper_bound, freqs):
 
         print ("%.2f Hz\t%f deg" % (i, phase))
         data.append (phase)
-        return data
+    return data
 

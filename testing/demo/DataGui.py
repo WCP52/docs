@@ -1,4 +1,4 @@
-#!usr/bin/python
+#!/usr/bin/python
 try:
 	from Tkinter import *
 except ImportError: 
