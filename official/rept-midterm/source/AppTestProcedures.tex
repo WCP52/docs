@@ -1,0 +1,153 @@
+\chapter{Test Procedures}
+\label{chap:test}
+
+\section*{3.1.1: Required mode: Idle}
+The idle state of the signal source is to be verified by viewing the signal from the
+``output'' connector on an oscilloscope. Any signal present must be less than $5$~V peak to peak.
+
+The idle state of the detection subsystem is verified by viewing the status annunciators on
+the printed circuit board. The annunciator designated ``sample'' must not light.
+
+
+\section*{3.1.2: Required mode: Analysis}
+This requirement is satisfied peripherally by the completion of \hyperref[tp:3.2.1]{requirement 3.2.1}.
+
+\section*{3.2.1: Bode plot}
+\label{tp:3.2.1}
+To test this requirement, connect a patch cable between the ``Output'' connector and the
+``Input 1'' connector, and initiate a non-normalized single-input analysis via the PC
+software with frequency bounds of $1$~kHz and $150$~MHz. A pair of plots must
+be produced, one indicating gain, and one indicating phase. This requirement places no
+constraints on the data that is displayed.
+
+\section*{3.2.2: Test signal frequency}
+\label{tp:3.2.2}
+To test this requirement, connect a patch cable between the ``Output'' connector and an oscilloscope
+with at least $100$~MHz bandwidth. Either using the PC software or manual control via a
+serial terminal, command the instrument to generate a signal with a frequency of $1$~kHz, and then
+a signal with a frequency of $150$~MHz. Using the oscilloscope's frequency display, verify
+that the signal is present, and that the frequency is within $2.5$~\% of its nominal value.
+
+\section*{3.2.3: Test signal amplitude}
+To test this requirement, connect a patch cable between the ``Output'' connector and an
+oscilloscope with at least $300$~MHz bandwidth. Either using the PC software or manual control
+via a serial terminal, command the instrument to generate a signal with a frequency of $1$~kHz,
+and then a signal with a frequency of $100$~MHz, both with maximum amplitude. Using the
+oscilloscope's amplitude display, verify that both signals have an amplitude of at least
+$1.25$~V~RMS.
+
+\section*{3.2.4: Sensitivity}
+\label{tp:3.2.4}
+To test this requirement, connect a patch cable between the ``Output'' connector and
+the ``Input 1'' connector. Command the instrument to generate a signal with a frequency of
+$100\;\mr kHz$ and maximum amplitude. Query the reported amplitude on the input. Next,
+remove the patch cable, and query the reported amplitude on the input again. The reported
+amplitude must be at least $45\;\mr dB$ lower than the first reported amplitude.
+
+\section*{3.2.5: Extended sensitivity}
+To test this optional requirement, perform the same test as in \hyperref[tp:3.2.4]{requirement 3.2.4},
+but verify that the final reported amplitude is at least $65\;\mr dB$ lower than the first reported amplitude.
+
+\section*{3.2.6: Accuracy}
+\label{tp:3.2.6}
+To test this requirement, connect a pair of patch cables in series using a cable coupler,
+and connect this pair between the ``Output'' connector and the ``Input 1'' connector. Configure
+the PC software for a full sweep from $1\;\mr kHz$ to $150\;\mr MHz$ including phase analysis.
+Perform normalization. Then, remove the cable coupler and insert a $50\;\mr\Omega$ attenuator with
+specified attenuation between $5\;\mr dB$ and $15\;\mr dB$ and bandwidth of at least $200\;\mr MHz$.
+Perform analysis. Verify that the reported gain is within $3\;\mr dB$ of the specified gain of the
+attenuator at all frequencies, and that the phase shift is within $5\dg$ of zero
+(above $-5\dg$ and below $+5\dg$) at all frequencies.
+
+\section*{3.2.7: Extended accuracy}
+To test this optional requirement, perform the test for \hyperref[tp:3.2.6]{requirement 3.2.6},
+with the following modifiations: the upper sweep limit should be $20$~MHz, reported gain must be
+within $1$~dB of the specified attenuator gain, and phase shift must be within $1\dg$ of zero
+(above $-1\dg$ and below $+1\dg$) at all frequencies.
+
+\section*{3.2.8: Interface safety}
+\label{tp:3.2.8}
+To test this requirement, use the interface control commands to attempt to set a GPIO pin
+which serves as a signal input to be an output instead. The system must respond with an error.
+
+\section*{3.3.1: Interface}
+This requirement is satisfied peripherally by the completion of requirements \hyperref[tp:3.2.1]{3.2.1}
+through \hyperref[tp:3.2.8]{3.2.8}, which all required PC interfacing to complete.
+
+\section*{3.3.2: Communcations type}
+To test this requirement, connect the instrument to a PC. Connect a serial terminal application
+to it, and perform at least one command that produces a response. Demonstrate that the
+command and response comprise displayable text symbols.
+
+\section*{3.3.3: Communications medium}
+To test this requirement, first demonstrate that the PC connector is a standard
+USB connector. Then, connect the instrument to a PC running a Linux-based
+operating system, and follow this procedure:
+
+\begin{enumerate}
+\item{Open a command prompt.}
+\item{Run this command to discover the device ID: \texttt{dmesg | tail}}
+\item{Enter the following directory: \texttt{/sys/bus/usb/devices/}\emph{deviceID}\texttt{/driver/module/drivers}}
+\item{View the directory listing, and verity that at least one of the following entries is present:
+    \begin{itemize}
+    \item{\texttt{usb-serial:generic}}
+    \item{\texttt{usb:usbserial}}
+    \item{\texttt{usb:usbserial\_generic}}
+    \end{itemize}
+}
+\end{enumerate}
+
+\section*{3.3.4: Panel connectors}
+To test this requirement, observe the front panel of the device, and see that the RF connectors are either
+SMA or BNC.
+
+\section*{3.3.5: Auxiliary connector}
+To test this requirement, ensure that the device is powered and connected to a PC. Connect the
+``common'' input of a multimeter to device ground, then use the multimeter to probe the ``Auxiliary'' connector
+and verify that there are power supply pins with a voltage present of at least $+7\;\mr V$ and
+$-7\;\mr V$. Then, switch the multimeter to ammeter mode, and connect in series a selected resistor. Probe
+these pins again, and verify that at least $40\;\mr mA$ is supplied.
+
+The resistor is to be selected such that it will draw at least $40\;\mr mA$ at the voltage that was
+measured on the connectors. This resistance may depend on the actual voltage that was present,
+which is allowed to be \emph{above} the required $\pm 7\;\mr V$.
+
+\section*{3.6.1: Operator's Manual}
+Demonstrate the existence of a manual in digital format, containing at least the following
+sections: Theory of Operation, Operational Instructions. Demonstrate that there exist example
+test setups for characterization of filters and of control loops.
+
+\section*{3.6.2: Protocol Guide}
+Demonstrate the existence of documentation explaining the protocol with which a PC communicates with the
+instrument. This documentation may be part of the Operator's Manual, or it may be separate.
+
+\section*{3.6.3: SMT}
+Demonstrate that the parts on the PCB are surface-mount devices, with the following allowed
+exceptions:
+\begin{itemize}
+\item{Connectors: through-hole connections have higher mechanical stability}
+\item{Inductors and capacitors larger than $5\;\mr{mm}$ in diameter: through-hole parts have higher mechanical stability}
+\end{itemize}
+
+Demonstrate that the only leadless devices on the PCB are essential for its function. This may be
+a result of directly satistying an above requirement. An anticipated example is device \refdes{U3},
+an Analog Devices AD9958BCPZ digital frequency synthesizer, which directly satisfies
+\hyperref[tp:3.2.2]{requirement 3.2.2} (test signal frequency between $1\;\mr{kHz}$ and $150\;\mr MHz$).
+
+\section*{3.6.4: Direct control}
+Viewing the protocol guide, demonstrate the existence of:
+
+\begin{itemize}
+\item{A command to set the output value of an arbitrary GPIO pin.}
+\item{A command to query the input value of an arbitrary GPIO pin.}
+\item{A command to transmit arbitrary data via the on-board SPI interface.}
+\item{A command to query the direct output value of the analog-to-digital converter.}
+\end{itemize}
+
+\section*{3.6.5: Electrical safety}
+To test this requirement, connect the ``common'' input of a multimeter to the instrument ground, and
+verify that no signals on the ``Auxiliary'' connector are more positive than $15$~V or more negative than $-15$~V.
+Then, connect a patch cable between the ``Output'' connector and an oscilloscope. Do not terminate the end. Command
+the instrument to generate a frequency of $100$~kHz and maximum amplitude. Using the oscilloscope's amplitude display,
+verify that the positive and negative peaks are no more positive than $15$~V and no more negative than
+$-15$~V.

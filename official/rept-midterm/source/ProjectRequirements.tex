@@ -1,0 +1,114 @@
+\chapter{Project Requirements}
+\label{chap:prs}
+
+\section*{3.1: Required States and Modes}
+
+This system requires the following modes:
+
+\subsection*{3.1.1: Idle}
+\label{prs:3.1.1}
+The signal source and detection subsystems are inactive, and the system is waiting for commands.
+
+\subsection*{3.1.2: Analysis}
+\label{prs:3.1.2}
+The system is performing a gain/phase analysis.
+
+\section*{3.2: System Capability Requirements}
+
+\subsection*{3.2.1: Bode plot}
+\label{prs:3.2.1}
+The analyzer shall be able to display a plot on the operator's PC in the form of a Bode plot.
+
+\subsection*{3.2.2: Test signal frequency}
+\label{prs:3.2.2}
+The analyzer shall be capable of sourcing test signals between $1$~kHz and $150$~MHz.
+(Not applicable: state \hyperref[prs:3.1.1]{WCP52-3.1.1 --- idle})
+
+\subsection*{3.2.3: Test signal amplitude}
+\label{prs:3.2.3}
+The analyzer shall be capable of output amplitudes up to $1.25$~V~RMS at frequencies up to
+$100$~MHz. (Not applicable: state \hyperref[prs:3.1.1]{WCP52-3.1.1 --- idle})
+
+\subsection*{3.2.4: Sensitivity}
+\label{prs:3.2.4}
+The analyzer shall be able to detect signals down to at least $40$~dB below the output
+amplitude. (Not applicable: state \hyperref[prs:3.1.1]{WCP52-3.1.1 --- idle})
+
+\subsection*{3.2.5: Extended sensitity}
+\label{prs:3.2.5}
+The analyzer should be able to detect signals down to at least $60$~dB below the output
+amplitude. (Not applicable: state \hyperref[prs:3.1.1]{WCP52-3.1.1 --- idle})
+
+\subsection*{3.2.6: Accuracy}
+\label{prs:3.2.6}
+Amplitude accuracy shall be within $3$~dB, and phase accuracy within $5\dg$.
+
+\subsection*{3.2.7: Extended accuracy}
+\label{prs:3.2.7}
+Amplitude accuracy should be within $1$~dB, and phase accuracy within $1\dg$, for
+frequencies less than $20$~MHz.
+
+\subsection*{3.2.8: Interface safety}
+\label{prs:3.2.8}
+The hardware shall not be able to be damaged by its remote interface, unless an ``unlock'' command
+has been issued.
+
+\section*{3.3: System External Interface Requirements}
+
+\subsection*{3.3.1: Interface}
+\label{prs:3.3.1}
+The analyzer shall interface with a PC.
+
+\subsection*{3.3.2: Communications type}
+\label{prs:3.3.2}
+The analyzer should use a text-driven protocol.
+
+\subsection*{3.3.3: Communications medium}
+\label{prs:3.3.3}
+The analyzer should use a common, standard communication protocol, for example, USB-CDC.
+
+\subsection*{3.3.4: Panel connectors}
+\label{prs:3.3.4}
+The analyzer shall use either SMA or BNC connectors to interface to the device under test (DUT).
+
+\subsection*{3.3.5: Auxiliary connector}
+\label{prs:3.3.5}
+The analyzer shall provied power via a front-panel connection for use with external DUT
+adapters. The voltage should be at least $\pm 7$~V, and up to $40$~mA should be available.
+
+\section*{3.4: System Internal Interface Requirements}
+All internal interfaces are left to the system designers.
+
+\section*{3.5: System Internal Data Requirements}
+All decisions about internal data are left to the system designers.
+
+\section*{3.6: Other System Requirements}
+
+\subsection*{3.6.1: Operator's Manual}
+\label{prs:3.6.1}
+The system should include a simple operator's manual, which should include a brief
+Theory of Operation explaining its design, instructions for using each function,
+and example test setups for characterization of filters and control loops.
+
+\subsection*{3.6.2: Protocol Guide}
+\label{prs:3.6.2}
+The system shall include a protocol guide, showing how to communicate with it.
+
+\subsection*{3.6.3: SMT}
+\label{prs:3.6.3}
+The PCB shall be produced using surface-mount technology as much as is reasonable,
+without no-lead packages unless absolutely required.
+
+\subsection*{3.6.4: Direct control}
+\label{prs:3.6.4}
+The interface should expose direct control of the hardware functions, allowing additional
+features to be implemented.
+
+\subsection*{3.6.5: Electrical safety}
+\label{prs:3.6.5}
+The system shall have no voltages greater than $30$~V peak-to-peak accessible
+externally.
+
+\section*{3.7: Precedence and Criticality of Requirements}
+
+All requirements have equal weight.
