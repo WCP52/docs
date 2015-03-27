@@ -42,7 +42,8 @@ upper_bound = float (sys.argv[2])
 
 
 
-freqs = np.logspace(np.log10(lower_bound), np.log10(upper_bound), 60) # 1 kHz to 150 MHz
+freqs_f = np.logspace(np.log10(lower_bound), np.log10(upper_bound), 60) # 1 kHz to 150 MHz
+freqs_p = np.logspace(np.log10(lower_bound), np.log10(upper_bound), 30) # 1 kHz to 150 MHz
 data_f = []
 data_p = []
 data_calibrate_f = []
@@ -50,21 +51,21 @@ data_calibrate_p = []
 
 
 if "calibrate" in sys.argv:
-    input ("Please double check that the wire is connected and press any key...")
-    data_calibrate_f = get_freq_response(s, lower_bound, upper_bound, freqs)
+    input ("Please double check that the wire is connected and press Enter...")
+    data_calibrate_f = get_freq_response(s, lower_bound, upper_bound, freqs_f)
     if "phase" in sys.argv:
-        data_calibrate_p = get_phase_response(s, lower_bound, upper_bound, freqs)
+        data_calibrate_p = get_phase_response(s, lower_bound, upper_bound, freqs_p)
 
-input ("Now connect your filter for testing and press any key ...")
-data = get_freq_response(s, lower_bound, upper_bound, freqs)
+input ("Now connect your filter for testing and press Enter ...")
+data_f = get_freq_response(s, lower_bound, upper_bound, freqs_f)
 for i in range(len(data_f)):
     data_f[i] = data_f[i] - data_calibrate_f[i]
 plt.subplot(2, 1, 1)
 #ax = plt.axes(xlim=(1e3, 1e9))
 if 'linear' in sys.argv:
-    plot, = plt.plot (freqs, data_f)
+    plot, = plt.plot (freqs_f, data_f)
 else:
-    plot, = plt.semilogx (freqs, data_f)
+    plot, = plt.semilogx (freqs_f, data_f)
 if "phase" not in sys.argv:
     plt.xlabel ("Frequency (Hz)")
 plt.ylabel ("Amplitude (dB, calibrated)")
@@ -72,19 +73,18 @@ plt.title ("Voltage Insertion Gain, calibrated")
 plt.grid (True)
 
 if "phase" in sys.argv:
-    input ("Ready to collect phase data.  Press any key to continue ...")
-    data_p = get_phase_response(s, lower_bound, upper_bound, freqs)
+    data_p = get_phase_response(s, lower_bound, upper_bound, freqs_p)
     for i in range(len(data_p)):
         data_p[i] = data_p[i] - data_calibrate_p[i]
     plt.subplot(2, 1, 2)
     #ax = plt.axes(xlim=(1e3, 1e9))
     if 'linear' in sys.argv:
-        plot, = plt.plot (freqs, data_p)
+        plot, = plt.plot (freqs_p, data_p)
     else:
-        plot, = plt.semilogx (freqs, data_p)
+        plot, = plt.semilogx (freqs_p, data_p)
     plt.xlabel ("Frequency (Hz)")
-    plt.ylabel ("Phase (deg, uncalibrated)")
-    plt.title ("Phase Shift, uncalibrated")
+    plt.ylabel ("Phase (deg, calibrated)")
+    plt.title ("Phase Shift, calibrated")
     plt.grid (True)
 
 plt.savefig('out.png')
