@@ -73,5 +73,27 @@ off, and turning off the one that was on.
 \subsubsection{Buffer and Filter}
 \schematicpage{9}{Buffer\_Filter}
 
+\begin{figure}[H]
+\centering
+\missingfigure[figwidth=3in]{buffer}
+\caption{Input buffer circuit}
+\label{fig:buffer}
+\end{figure}
+
+Figure~\ref{fig:buffer} is the input signal buffer. \refdes{Q9} is a simple
+emitter-follower (common collector) amplifier, providing isolation
+between the input and further circuitry. \refdes{Q10} and \refdes{Q8} form
+a current source to power it, in a feedback configuration providing
+approximately $0.65\;\mr{V} / 30\;\Omega \approx 22\;\mr{mA}$.
+
+The configuration of \refdes{R76} and \refdes{R77} sums together
+the input signal and the phase reference signal, and this continues to the
+input filter. \refdes{R75} combines with \refdes{R76} to properly
+terminate the 50~\Ohm{} phase reference signal.
+
+To lower the effect of external interference on the signals, a filter restricts
+signals above the instrument's maximum operating frequency from continuing
+past this point.
+
 \subsubsection{Logarithmic Detector}
 \schematicpage{10}{Detector}
