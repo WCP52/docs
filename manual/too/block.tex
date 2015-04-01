@@ -30,7 +30,7 @@ drives the instrument, configuring a dual sine wave synthesizer via a serial
 interface.  The first output passes through an optional, switchable attenuator,
 allowing output amplitude to be configured beyond the practical amplitude range
 of the synthesizer. The signal is then filtered to attenuate Nyquist aliasing,
-and then amplified by $30\;\mr{dB}$ before being passed to the output.
+and then amplified by 30~dB before being passed to the output.
 
 Signals returning from the Device Under Test (DUT) pass through input protection
 networks, then enter a double-throw RF switch allowing one of them to be
@@ -45,10 +45,10 @@ on-chip analog to digital converter.
 A power supply system provides overcurrent protection, reverse polarity
 protection, overvoltage lockout, undervoltage lockout, inrush limiting, and
 microcontroller-driven shutdown (used in cases of USB suspend). It produces
-regulated voltage rails of $+9\;\mr{V}$ and $-9\;\mr{V}$ (for the final output
-amplifier stage), $+5\;\mr{V}$ and $-5\;\mr{V}$ (for general linear circuitry),
-$+3.3\;\mr{V}$ (for the synthesizer), $+1.8\;\mr{V}$ (for the synthesizer),
-and a second, weaker $+3.3\;\mr{V}$ rail that can be powered by the USB port in
+regulated voltage rails of \Pos 9~V and \Neg 9~V (for the final output
+amplifier stage), \Pos 5~V and \Neg 5~V (for general linear circuitry),
+\Pos 3.3~V (for the synthesizer), \Pos 1.8~V (for the synthesizer),
+and a second, weaker \Pos 3.3~V rail that can be powered by the USB port in
 the absence of the main power input (for the microcontroller).
 
 A USB interface connects to a computer, where software sends control commands to

@@ -19,7 +19,7 @@ correctly with power. This subsystem provides the following features:
 The first piece of this input system, and possibly the simplest, is
 \refdes{R81}. \refdes{R81} is a \emph{resettable fuse}, a type of resistor
 with a positive temperature coefficient. Its resistance is very low
-(around $0.5\;\Omega$) at room temperature.  As the current flowing through it
+(around 0.5~\Ohm) at room temperature. As the current flowing through it
 increases, it heats up, and as it heats up, its resistance increases.
 Eventually, it will reach a point where this process `snowballs', and its
 resistance is high enough that almost no current can flow through it. This
@@ -77,11 +77,11 @@ built in~\cite{tl431}.
 
 \subsubsection{Undervoltage lockout}
 
-\refdes{U11} provides an accurate $2.5\;\mr{V}$ level against which the input
+\refdes{U11} provides an accurate 2.5~V level against which the input
 voltage can be compared. As the input voltage rises, the voltage at the output of
 the \refdes{R84A}/\refdes{R84B}/\refdes{R85A} voltage divider also rises. When
-this divided voltage reaches the $2.5\;\mr{V}$ reference level, the input voltage
-is at $7.5\;\mr{V}$, the undervoltage threshold. Comparator \refdes{U12A}
+this divided voltage reaches the 2.5V reference level, the input voltage
+is at 7.5~V, the undervoltage threshold. Comparator \refdes{U12A}
 switches low, allowing power switch \refdes{Q14} to switch on and allow the
 full system to operate.
 
@@ -89,14 +89,14 @@ full system to operate.
 
 If the input voltage continues to rise, the voltage at the output of the
 \refdes{R84C}/\refdes{R84D}/\refdes{R85D}/\refdes{R85C} voltage divider will
-eventually reach the reference level when the input voltage is at $10\;\mr{V}$.
+eventually reach the reference level when the input voltage is at 10~V.
 \refdes{C72} provides a low-pass effect which prevents simple noise and short
 transients from causing this. When this happens, comparator \refdes{U12B}
 switches low. At this point, two things happen. First, \refdes{Q12} switches
 \refdes{Q14} off, powering down the circuit. Second, \refdes{D5} pulls the
-reference level as seen by \refdes{U12B} down to about $1\;\mr{V}$, locking
+reference level as seen by \refdes{U12B} down to about 1~V, locking
 the system in this shutdown mode until the input voltage drops back as low
-as $4\;\mr{V}$ --- at which point it must climb again to the $7.5\;\mr{V}$
+as 4~V --- at which point it must climb again to the 7.5~V
 undervoltage threshold. In practice, the system must be powered off and back
 on. This latch prevents the instrument from accidentally being powered by
 too high an input voltage.
@@ -119,8 +119,8 @@ The circuit in figure~\ref{fig:miller}, when \refdes{Q14} is in the linear
 region, is known as a `Miller integrator'~\cite[pg. 283]{tranckts-sawtooth}.
 Because \texttt{R87} and \texttt{R88} form a voltage divider, the input
 voltage to the integrator will be half the input supply voltage at half
-the resistance (nominally, $4.5\;\mr{V}$ at $500\;\mr{k\Omega}$). The
-integrator capacitance is simply \texttt{C75}, which is $10\;\mr{nF}$.
+the resistance (nominally, 4.5~V at 500~\kOhm). The
+integrator capacitance is simply \texttt{C75}, which is 10~nF.
 Because the voltage across \texttt{C74} changes only negligibly, its effect
 on the circuit will also be negligible.
 
@@ -138,12 +138,12 @@ a ramp, with a slope of:
     = 900\;\mr{V/s} = 0.9\;\mr{V/ms}
 \end{equation*}
 
-This means it will take about $10\;\mr{ms}$ for the voltage to ramp from zero
-to the full input voltage of $9\;\mr{V}$.
+This means it will take about 10~ms for the voltage to ramp from zero
+to the full input voltage of 9~V.
 
 Because the inrush current to be limited is the current charging the system's
 capacitance, we can calculate the worst-case inrush current. Charge is held
-on-board by approximately $200\;\mr{\mu F}$ worth of capacitors. Given this
+on-board by approximately 200~\uF {}worth of capacitors. Given this
 capacitance and the voltage slope, the current is calculated as follows:
 
 \begin{equation*}
@@ -163,7 +163,7 @@ power for the entire time will be:
 \end{gather*}
 
 Thus, a MOSFET must be selected that can handle an $810\;\mr{mW}$ pulse for
-$10\;\mr{ms}$. This pulse-handling capability is shown in the datasheet as
+10~ms. This pulse-handling capability is shown in the datasheet as
 the ``forward-biased safe operating area'', and we selected an AOD417 which
 can easily handle this pulse with excess~\cite{aod417}.
 
@@ -183,9 +183,9 @@ current that a USB device may consume. We used the same Miller-integrator
 inrush limiting circuit on the USB power supply input.
 
 In this case, the resistance has not changed (still a Th\'evenin-equivalent
-$500\;\mr{k\Omega}$), and the input step is equal to $2.5\;\mr{V}$, half the
-input voltage. The integrating capacitance is \refdes{C4}, which has a value of $10\;\mr{nF}$,
-and the maximum input capacitance being charged is approximately $20\;\mr{\mu F}$.
+500~\kOhm), and the input step is equal to 2.5~V, half the
+input voltage. The integrating capacitance is \refdes{C4}, which has a value of 10~nF,
+and the maximum input capacitance being charged is approximately 20~\uF.
 
 \begin{gather*}
     \frac{dv}{dt} = \frac{v_\mr{in}}{RC} = \frac{2.5\;\mr{V}}{(500\;\mr{k\Omega})(10\;\mr{nF})}
@@ -193,7 +193,7 @@ and the maximum input capacitance being charged is approximately $20\;\mr{\mu F}
     I = C \frac{dv}{dt} = (20\;\mr{\mu F})(500\;\mr{V/s}) = 10\;\mr{mA}
 \end{gather*}
 
-The power dissipation in this case is very small (no more than $50\;\mr{mW}$ for
+The power dissipation in this case is very small (no more than 50~mW for
 only a few milliseconds), so we used a smaller and less expensive MOSFET that
 was already in use elsewhere for this particular integrator.
 
@@ -288,14 +288,14 @@ its resistor.
 Two things can be the `something' of the previous paragraph, initiating the
 switch from phase 1 to phase 2. First, note that \refdes{Q16}'s emitter is
 connected to the output voltage, so when it is switched on, its base will be
-about $0.65\;\mr{V}$ above that. When the output voltage reaches about
-$3.25\;\mr{V}$, the base voltage is at about $3.9\;\mr{V}$, and Zener diode
+about 0.65~V above that. When the output voltage reaches about
+3.25~V, the base voltage is at about 3.9~V, and Zener diode
 \refdes{DZ9} starts to conduct. This means that the output voltage will not be
-allowed to rise above about $3.25\;\mr{V}$, providing the voltage regulation
+allowed to rise above about 3.3~V, providing the voltage regulation
 function.
 
 The inductor current must also flow through sense resistor \refdes{R96}. If the
-current exceeds about $650\;\mr{mA}$, the base-emitter voltage applied to
+current exceeds about 650~mA, the base-emitter voltage applied to
 \refdes{Q20} will be high enough to switch it on, and \refdes{Q20} will draw the
 shutdown current. This provides the current-limiting function.
 
@@ -304,8 +304,8 @@ It is possible to repurpose a buck converter circuit as an inverting
 (buck-boost) circuit that generates a negative voltage~\cite{buckinv}. The
 circuit is otherwise the same, with two exceptions. First, the Zener diode, now
 \refdes{DZ10}, is a $10\;\mr{V}$ part, giving a regulated output voltage of
-about $9.35\;\mr{V}$. Second, because the current through the output capacitor
-has more hard edges in a buck-boost converter, a $1\;\mr{\mu F}$ ceramic
+about 9.35~V. Second, because the current through the output capacitor
+has more hard edges in a buck-boost converter, a 1~\uF{} ceramic
 capacitor (useful to higher frequencies and currents) has been added in
 parallel with the main output capacitor.
 
@@ -314,13 +314,13 @@ A series-type linear regulator works by acting as a controlled resistance,
 regulating itself to exactly the resistance required to give the correct
 output voltage considering the amount of current flowing through it. This
 means that power loss is a required property of linear regulators. For example,
-a linear regulator taking an input voltage of $9\;\mr{V}$, giving an output
-voltage of $5\;\mr{V}$, and passing a current of $100\;\mr{mA}$, will
+a linear regulator taking an input voltage of 9~V, giving an output
+voltage of 5~V, and passing a current of 100~mA, will
 lose $(9-5)(0.1)\;\mr{W} = 400\;\mr{mW}$ of power, dissipated as heat.
 The loss is sometimes a fair trade for simplicity and low output noise.
 This instrument uses four linear regulators, which provide power supplies
-of $5\;\mr{V}$, $-5\;\mr{V}$, $1.8\;\mr{V}$, and a low-power $3.3\;\mr{V}$
-supply (a high-power $3.3\;\mr{V}$ supply for the synthesizer comes from
+of 5~V, \Neg 5~V, 1.8~V, and a low-power 3.3~V
+supply (a high-power 3.3~V supply for the synthesizer comes from
 the buck converter).
 
 These regulators are \refdes{U13}, \refdes{U14}, \refdes{U15}, and \refdes{U16}.

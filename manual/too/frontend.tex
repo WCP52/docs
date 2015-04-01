@@ -36,7 +36,7 @@ instead of a PN junction. While uncommon in general, it is used often in GaAs
 circuits due to the relative ease of constructing GaAs MESFETs.}.  These are
 depletion-mode devices, so they are switched \emph{on} by applying zero volts
 to the gate, and turned \emph{off} by applying a negative voltage, around
-$-5\;\mr{V}$.  Switching on transistors \refdes{Q1} and \refdes{Q3} allows the
+\Neg 5~V.  Switching on transistors \refdes{Q1} and \refdes{Q3} allows the
 signal to pass through from the input to the output. Switching on transistors
 \refdes{Q2} and \refdes{Q4} disconnects the input from the output, but also
 \emph{terminates} the input (applies a $50\;\Omega$ resistance between the
@@ -51,21 +51,21 @@ does not cause signal reflections.
 \end{figure}
 
 Figure~\ref{fig:gaasctl} is the control circuit for figure~\ref{fig:gaassw}.
-When $0\;\mr{V}$ (a logic \emph{low}) is applied to the input from the
+When 0~V (a logic \emph{low}) is applied to the input from the
 microcontroller, no current flows through \refdes{R65} or \refdes{R66A}.
-This applies $-5\;\mr{V}$ to \refdes{Q6}. Because \refdes{Q6}'s source is
-connected to the $-5\;\mr{V}$ rail instead of ground, the voltage between gate
+This applies \Neg 5~V to \refdes{Q6}. Because \refdes{Q6}'s source is
+connected to the \Neg 5~V rail instead of ground, the voltage between gate
 and source ($V_{GS}$) is zero, and \refdes{Q6} is switched off.
-This provides $0\;\mr{V}$ to one input of the GaAs switches. \refdes{Q7} acts
-as an inverter, providing $-5\;\mr{V}$ to the other GaAs switch input. The
+This provides 0~V to one input of the GaAs switches. \refdes{Q7} acts
+as an inverter, providing \Neg 5~V to the other GaAs switch input. The
 dual switches have their inputs connected opposite each other, so this
 switches one of them \emph{on} and the other \emph{off}.
 
-When $3.3\;\mr{V}$ (a logic \emph{high}) is applied to the input from the
-microcontroller, about $1.6\;\mr{mA}$ flows through \refdes{R65}. This
-saturates \refdes{Q5}, applying about $0.7\;\mr{V}$ to \refdes{Q6}. As above,
-$V_{GS}$ is the difference between this and the $-5\;\mr{V}$ rail, or
-$5.7\;\mr{V}$. \refdes{Q6} now switches on, and the two signals to the GaAs
+When 3.3~V (a logic \emph{high}) is applied to the input from the
+microcontroller, about 1.6~mA flows through \refdes{R65}. This
+saturates \refdes{Q5}, applying about 0.7~V to \refdes{Q6}. As above,
+$V_{GS}$ is the difference between this and the \Neg 5~V rail, or
+5.7~V. \refdes{Q6} now switches on, and the two signals to the GaAs
 switches swap places. This swaps the two switches, turning on the one that was
 off, and turning off the one that was on.
 
