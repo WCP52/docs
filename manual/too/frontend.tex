@@ -7,6 +7,16 @@
 \subsection{Input System}
 \schematicpage{6}{InputFrontend}
 
+The input system is used to transform the signals received from the device
+under test into signals that can be read directly by the microcontroller.
+First, the signals pass through a protection network; this is to protect
+the following (expensive!) circuitry from damage by signals that are too
+large. The signals then pass into a switch, allowing one of the two to be
+selected. The selected signal is buffered, summed with a phase reference signal,
+filtered to remove high-frequency interference, and then enters a logarithmic
+detector stage. The output of this, after a bit more filtering, is applied to
+the microcontroller's analog-to-digital converter.
+
 \subsubsection{Protection}
 \schematicpage{7}{Protection}
 
@@ -97,3 +107,14 @@ past this point.
 
 \subsubsection{Logarithmic Detector}
 \schematicpage{10}{Detector}
+
+Signals at this point can have a very wide variety of amplitudes, as high as \Pos 10~dBm
+(1~V peak) and as low as \Neg 60~dBm (224~\uV{} peak) or even lower, and over a wide
+frequency range. Measuring this requires a \emph{logarithmic detector}. This is a
+circuit that responds to the logarithm of the signal, rather than the signal itself,
+generating a voltage proportional to the \emph{decibel} amplitude of the signal. More
+exactly, the output voltage of the detector is equal to:
+
+\begin{equation*}
+    V_\mathrm{out} = (24\;\mr{mV/dB})((20\;\mr{dB})\log_{10}(V_\mathrm{in}) + 108\;\mr{dB})
+\end{equation*}
