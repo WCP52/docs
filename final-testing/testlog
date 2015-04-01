@@ -1,0 +1,10 @@
+Power supply testing
+====================
+
+Ramp at 9V: ramp-9v.png
+OV protection, suddenly connecting 20V: ovp.png
+OV protection, step from 9V to 19V: ovp-step.png
+UVLO threshold: 7.44V
+OVLO threshold: 10.0V
+
+
