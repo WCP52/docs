@@ -92,14 +92,12 @@ If the input voltage continues to rise, the voltage at the output of the
 eventually reach the reference level when the input voltage is at 10~V.
 \refdes{C72} provides a low-pass effect which prevents simple noise and short
 transients from causing this. When this happens, comparator \refdes{U12B}
-switches low. At this point, two things happen. First, \refdes{Q12} switches
-\refdes{Q14} off, powering down the circuit. Second, \refdes{D5} pulls the
-reference level as seen by \refdes{U12B} down to about 1~V, locking
-the system in this shutdown mode until the input voltage drops back as low
-as 4~V --- at which point it must climb again to the 7.5~V
-undervoltage threshold. In practice, the system must be powered off and back
-on. This latch prevents the instrument from accidentally being powered by
-too high an input voltage.
+switches low. This switches \refdes{Q14} off via \refdes{Q12}, powering down
+the circuit.
+
+Note that \refdes{R83A} is a remnant of a previous revision of the design, and
+serves no purpose. It originally was intended to provide a latching mechanism
+
 
 \subsubsection{Inrush current limiting}
 
@@ -295,7 +293,7 @@ allowed to rise above about 3.3~V, providing the voltage regulation
 function.
 
 The inductor current must also flow through sense resistor \refdes{R96}. If the
-current exceeds about 650~mA, the base-emitter voltage applied to
+current exceeds about 360~mA, the base-emitter voltage applied to
 \refdes{Q20} will be high enough to switch it on, and \refdes{Q20} will draw the
 shutdown current. This provides the current-limiting function.
 

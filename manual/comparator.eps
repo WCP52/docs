@@ -1,7 +1,7 @@
 %!PS-Adobe-3.0 EPSF-3.0
 %%Title: comparator.eps
-%%Creator: XCircuit v3.9 rev33
-%%CreationDate: Sat Mar 21 14:25:06 2015
+%%Creator: XCircuit v3.9 rev37
+%%CreationDate: Tue Mar 31 23:43:29 2015
 %%Pages: 1
 %%BoundingBox: 68 68 297 283
 %%DocumentNeededResources: font Times-Roman Courier Symbol 
@@ -229,18 +229,6 @@ begingate
 endgate
 } def
 
-/liec_smi::diode {
-begingate
-248 1.000 -18 -16 0 16 18 -16 3 polygon
-1 1.000 0 -32 0 -16 2 polygon
-1 1.000 0 32 0 16 2 polygon
-1 1.000 -18 16 18 16 2 polygon
-1.000 0.000 0.000 scb
-(d.m) {/Times-Roman cf} 2 9 0 1.000 0 32 pinlabel
-(d.p) {/Times-Roman cf} 2 13 0 1.000 0 -32 pinlabel
-endgate
-} def
-
 /analog::capacitor {
 begingate
 1 1.000 0 -64 0 -6 2 polygon
@@ -253,6 +241,18 @@ begingate
 0.180 0.545 0.341 scb
 (spice:C%i %pc.1 %pc.2 1.0P) {/Times-Roman cf} 2 0 0 1.000 -208 -160 infolabel
 (sim:c %pc.1 %pc.2) {/Times-Roman cf} 2 0 0 1.000 -208 -208 infolabel
+endgate
+} def
+
+/liec_smi::diode {
+begingate
+248 1.000 -18 -16 0 16 18 -16 3 polygon
+1 1.000 0 -32 0 -16 2 polygon
+1 1.000 0 32 0 16 2 polygon
+1 1.000 -18 16 18 16 2 polygon
+1.000 0.000 0.000 scb
+(d.m) {/Times-Roman cf} 2 9 0 1.000 0 32 pinlabel
+(d.p) {/Times-Roman cf} 2 13 0 1.000 0 -32 pinlabel
 endgate
 } def
 
@@ -354,10 +354,6 @@ endgate
 1 1.000 -80 -192 -224 -192 2 polygon
 1 1.000 80 -192 144 -192 2 polygon
 1.000 0 -224 -192 generic::dot
-1.000 90 224 -32 liec_smi::diode
-1 1.000 192 -32 112 -32 112 32 3 polygon
-1.000 0 112 32 generic::dot
-1 1.000 256 -32 336 -32 336 80 304 80 4 polygon
 1 1.000 252 92 240 80 252 68 264 80 252 92 5 polygon
 1 1.000 240 68 264 68 2 polygon
 1 1.000 252 -132 240 -144 252 -156 264 -144 252 -132 5 polygon
@@ -365,7 +361,6 @@ endgate
 1 1.000 384 208 336 208 2 polygon
 1.000 0 336 208 generic::dot
 1 1.000 448 144 448 -144 432 -144 3 polygon
-(D5) {/Courier cf} 2 21 0 0.900 224 0 label
 (R87) {/Courier cf} 2 21 0 0.900 384 -112 label
 (R85A) {/Courier cf} 2 21 0 0.900 -64 -448 label
 (R85C) {/Courier cf} 2 21 0 0.900 64 -448 label
@@ -393,7 +388,6 @@ endgate
 1 1.000 -224 -320 32 0.000 360.000 xcarc
 (U11) {/Courier cf} 2 16 0 0.900 -208 -288 label
 (R83A) {/Courier cf} 2 21 0 0.900 -144 80 label
-1.000 0 336 80 generic::dot
 1.000 90 464 -144 generic::arrow
 1.000 0 448 -144 generic::dot
 (Q14) {/Courier cf} (To ) {/Times-Roman cf} 4 20 0 0.900 512 -144 label
@@ -423,13 +417,15 @@ endgate
 1.000 90 384 -144 euro::R
 1 1.000 336 -144 304 -144 2 polygon
 1.000 0 448 208 analog::pnp
-0.600 0.600 0.600 scb
+0.604 0.604 0.604 scb
 1 1.000 -176 352 -176 320 -208 272 -176 368 spline
 1 1.000 -112 336 -128 352 -112 368 -80 272 spline
 1 1.000 16 320 0 352 16 368 48 272 spline
 1.000 150 48 272 generic::arrowhead
 1.000 150 -80 272 generic::arrowhead
 1.000 210 -208 272 generic::arrowhead
+sce
+1 1.000 336 80 304 80 2 polygon
 pgsave restore showpage
 
 %%Trailer
