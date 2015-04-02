@@ -53,10 +53,10 @@ items:
         prog: 90
       - name: GUI
         start: 2015-03-06
-        end: 2015-03-21
-        prog: 90
+        end: 2015-04-16
+        prog: 80
 
   - name: Documentation
     start: 2015-03-23
     end: 2015-05-18
-    prog: 10
+    prog: 50
