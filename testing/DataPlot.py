@@ -1,11 +1,11 @@
-#!usr/bin/python
+#!/usr/bin/python2.7
 
 try:
 	from Tkinter import *
 except ImportError:
 	from tkinter import *
-from PIL import Image
-from PIL import ImageTk 
+#from PIL import Image
+#from PIL import ImageTk 
 #import tkMessageBox
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
