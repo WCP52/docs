@@ -4,9 +4,9 @@ try:
 	from Tkinter import *
 except ImportError:
 	from tkinter import * 
-import tkMessageBox
-import matplotlib.pyplot as plt
-import matplotlib.animation as animation
+#import tkMessageBox
+#import matplotlib.pyplot as plt
+#import matplotlib.animation as animation
 import random
 
 root =  Tk()
@@ -22,7 +22,7 @@ random_list = []
 ## outputting arbitrary values read in list in text widget will need to wrap  on Chris function 
 
 def Calibrate():
-	print v		
+	print("Min:" + str(v.get())+" "+"Max:"+ " " + str(v2.get()))		
 def GraphPlot():
 	global random_list
 	plt.plot(random_list)
@@ -55,7 +55,7 @@ v = DoubleVar()
 UserSetMin = Entry(root, bd = 1, textvariable = v ).grid(column = 0 , row = 5)
 
 LabMax = Label(root, text = "Min").grid(column = 0, row = 6)
-
-UserSetMax = Entry(root, bd = 1).grid(column = 1, row = 5)
+v2 = DoubleVar()
+UserSetMax = Entry(root, bd = 1, textvariable = v2).grid(column = 1, row = 5)
 
 root.mainloop()
