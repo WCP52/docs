@@ -59,7 +59,7 @@ if "calibrate" in sys.argv:
 
 input ("Now connect your filter for testing and press Enter ...")
 data_f = get_freq_response(s, lower_bound, upper_bound, freqs_f)
-if "calibrate" in sys.argv:
+if data_calibrate_f:
     for i in range(len(data_f)):
         data_f[i] = data_f[i] - data_calibrate_f[i]
 plt.subplot(2, 1, 1)
@@ -76,9 +76,8 @@ plt.grid (True)
 
 if "phase" in sys.argv:
     data_p = get_phase_response(s, lower_bound, upper_bound, freqs_p)
-    if "calibrate" in sys.argv:
-        for i in range(len(data_p)):
-            data_p[i] = data_p[i] - data_calibrate_p[i]
+    for i in range(len(data_p)):
+        data_p[i] = data_p[i] - data_calibrate_p[i]
     plt.subplot(2, 1, 2)
     #ax = plt.axes(xlim=(1e3, 1e9))
     if 'linear' in sys.argv:

@@ -3,16 +3,16 @@ import serial
 import time
 import sys
 from demo_plot_defs import getline
-
+import demo_plot_defs as defs
 
 def get_freq_response(s, lower_bound, upper_bound,freqs):
     print ("Collecting data... ")
     data = []
     for i in freqs:
         nSamples = max(((1/i)*25)//1000000, 1024)
-        s.write (("T:FREQ 1, %f\r\n" % i).encode ('ascii'))
+        s.write (("T:FREQ %d, %f\r\n" % (defs.CH_MAIN, i)).encode ('ascii'))
         getline (s)
-        s.write(b"T:ATT 0\r\n")
+        s.write(b"LOW:CLR GPIO_ATTEN\r\n")
         time.sleep(.005)
         s.write (("T:SAM %d\r\n" % nSamples).encode ('ascii'))
         level = float (getline (s))
@@ -20,7 +20,7 @@ def get_freq_response(s, lower_bound, upper_bound,freqs):
         #if level >= 2900, attenuate the input signal
         if level >= 2900:
             print("this is running...")
-            s.write(b"T:ATT 1\r\n")
+            s.write(b"LOW:SET GPIO_ATTEN\r\n")
             time.sleep(.005)
             s.write (("T:SAM %d\r\n" % nSamples).encode ('ascii'))
             level = float (getline (s))
@@ -42,13 +42,13 @@ def get_phase_response(s, lower_bound, upper_bound, freqs):
     data = []
     for i in freqs:
         # Set frequency. Then, search phases for a null
-        s.write (("T:FREQ 1, %f\r\n" % i).encode ('ascii'))
+        s.write (("T:FREQ %d, %f\r\n" % (defs.CH_PHASE, i)).encode ('ascii'))
         getline (s)
-        s.write (("T:FREQ 0, %f\r\n" % i).encode ('ascii'))
+        s.write (("T:FREQ %d, %f\r\n" % (defs.CH_MAIN, i)).encode ('ascii'))
         getline (s)
-        s.write (b"T:AMP 1, 0.5\r\n")
+        s.write (("T:AMP %d, 0.5\r\n" % (defs.CH_PHASE)).encode ('ascii'))
         getline (s)
-        s.write (b"T:AMP 0, 0.1\r\n")
+        s.write (("T:AMP %d, 0.1\r\n" % (defs.CH_MAIN)).encode ('ascii'))
         getline (s)
 
         phase_bound_left = 0
@@ -63,7 +63,7 @@ def get_phase_response(s, lower_bound, upper_bound, freqs):
             for phase_i, phase in enumerate(phases):
                 nSamples = max(((1/i)*25)//1000000, 1024)
                 phase = phase % 360.
-                s.write (("T:PHASE 0, %f\r\n" % phase).encode ('ascii'))
+                s.write (("T:PHASE %d, %f\r\n" % (defs.CH_PHASE, phase)).encode ('ascii'))
                 getline (s)
                 s.write (("T:SAM %d\r\n" % nSamples).encode ('ascii'))
                 level = float (getline (s))
