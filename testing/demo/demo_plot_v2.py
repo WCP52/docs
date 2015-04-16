@@ -6,11 +6,11 @@ import numpy as np
 import serial
 import sys
 import time
-from demo_plot_defs import *
-from other_funcs import get_freq_response, get_phase_response
+from serial_comm import *
+from response import get_freq_response, get_phase_response
 
 
-if (sys.argv[1] == "help"):
+if sys.argv[1] in ("help", "--help", "-h"):
     print ("usage: demo_plot.py MIN MAX options...")
     print ("MIN MAX define the range of frequencies to test")
     print ("Possible options: linear, phase, calibrate.")
@@ -51,6 +51,7 @@ data_calibrate_p = []
 
 
 if "calibrate" in sys.argv:
+#if startGraph.get() == 1:
     input ("Please double check that the wire is connected and press Enter...")
     data_calibrate_f = get_freq_response(s, lower_bound, upper_bound, freqs_f)
     if "phase" in sys.argv:
