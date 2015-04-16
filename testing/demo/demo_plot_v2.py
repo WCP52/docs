@@ -58,8 +58,9 @@ if "calibrate" in sys.argv:
 
 input ("Now connect your filter for testing and press Enter ...")
 data_f = get_freq_response(s, lower_bound, upper_bound, freqs_f)
-for i in range(len(data_f)):
-    data_f[i] = data_f[i] - data_calibrate_f[i]
+if data_calibrate_f:
+    for i in range(len(data_f)):
+        data_f[i] = data_f[i] - data_calibrate_f[i]
 plt.subplot(2, 1, 1)
 #ax = plt.axes(xlim=(1e3, 1e9))
 if 'linear' in sys.argv:
