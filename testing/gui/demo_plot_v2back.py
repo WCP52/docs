@@ -6,11 +6,11 @@ import numpy as np
 import serial
 import sys
 import time
-from serial_comm import *
-from response import get_freq_response, get_phase_response
+from demo_plot_defs import *
+from other_funcs import get_freq_response, get_phase_response
 
 
-if sys.argv[1] in ("help", "--help", "-h"):
+if (sys.argv[1] == "help"):
     print ("usage: demo_plot.py MIN MAX options...")
     print ("MIN MAX define the range of frequencies to test")
     print ("Possible options: linear, phase, calibrate.")
@@ -51,7 +51,6 @@ data_calibrate_p = []
 
 
 if "calibrate" in sys.argv:
-#if startGraph.get() == 1:
     input ("Please double check that the wire is connected and press Enter...")
     data_calibrate_f = get_freq_response(s, lower_bound, upper_bound, freqs_f)
     if "phase" in sys.argv:
@@ -59,7 +58,7 @@ if "calibrate" in sys.argv:
 
 input ("Now connect your filter for testing and press Enter ...")
 data_f = get_freq_response(s, lower_bound, upper_bound, freqs_f)
-if data_calibrate_f:
+if "calibrate" in sys.argv:
     for i in range(len(data_f)):
         data_f[i] = data_f[i] - data_calibrate_f[i]
 plt.subplot(2, 1, 1)
@@ -76,8 +75,9 @@ plt.grid (True)
 
 if "phase" in sys.argv:
     data_p = get_phase_response(s, lower_bound, upper_bound, freqs_p)
-    for i in range(len(data_p)):
-        data_p[i] = data_p[i] - data_calibrate_p[i]
+    if "calibrate" in sys.argv:
+        for i in range(len(data_p)):
+            data_p[i] = data_p[i] - data_calibrate_p[i]
     plt.subplot(2, 1, 2)
     #ax = plt.axes(xlim=(1e3, 1e9))
     if 'linear' in sys.argv:

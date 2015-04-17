@@ -5,8 +5,16 @@ try:
 except ImportError:
 	from tkinter import *
 import matplotlib.pyplot as plt
+<<<<<<< HEAD
 from bode import Bode
 
+=======
+import matplotlib.animation as animation
+import random
+from response import *
+from serial import *
+#from demo_plot_v2 import * # change here imported demo_plot_v2
+>>>>>>> 6d50ef352d1be3c5de2651e8c2ac37e4454c14a7
 root =  Tk()
 root.geometry("365x245")
  

@@ -2,6 +2,7 @@
 
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
+from DataPlot2 import *
 import numpy as np
 import serial
 import sys
@@ -107,17 +108,19 @@ data = [i-data[0] for i in data]
 
 plt.subplot(2, 1, 1)
 #ax = plt.axes(xlim=(1e3, 1e9))
-if 'linear' in sys.argv:
+#if 'linear' in sys.argv:
+if CheckVar1.get() = "1"
     plot, = plt.plot (freqs, data)
 else:
     plot, = plt.semilogx (freqs, data)
-if "phase" not in sys.argv:
+#if "phase" not in sys.argv:
     plt.xlabel ("Frequency (Hz)")
 plt.ylabel ("Amplitude (dB, uncalibrated)")
 plt.title ("Voltage Insertion Gain, uncalibrated")
 plt.grid (True)
 
-if "phase" in sys.argv:
+#if "phase" in sys.argv:
+if CheckVar2.get() = "1":
     plt.draw ()
     plt.waitforbuttonpress (-1)
 
@@ -193,7 +196,8 @@ if "phase" in sys.argv:
 
     plt.subplot(2, 1, 2)
     #ax = plt.axes(xlim=(1e3, 1e9))
-    if 'linear' in sys.argv:
+    #if 'linear' in sys.argv:
+    if CheckVar1.get() = "1":	
         plot, = plt.plot (freqs, data)
     else:
         plot, = plt.semilogx (freqs, data)

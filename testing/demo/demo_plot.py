@@ -7,6 +7,41 @@ import serial
 import sys
 import time
 
+import os
+
+USB_ID = "1209:4757"
+
+def read(fn):
+    with open (fn) as f:
+        return f.read().strip()
+
+def usb_id(path):
+    if not os.path.isfile (path + "/idProduct"):
+        return None
+    if not os.path.isfile (path + "/idVendor"):
+        return None
+    product = read(path + "/idProduct")
+    vendor = read(path + "/idVendor")
+    return vendor.lower() + ":" + product.lower()
+
+def get_tty(path):
+    for subdir in os.listdir(path):
+        if not os.path.isdir(path + "/" + subdir):
+            continue
+        if os.path.isdir(path + "/" + subdir + "/tty"):
+            this_subdir = subdir
+            break
+    return "/dev/" + os.listdir(os.path.join(path, subdir, "tty"))[0]
+
+
+def find_device():
+    DEVS = "/sys/bus/usb/devices"
+    for dev_dir in os.listdir(DEVS):
+        path = DEVS + "/" + dev_dir
+        if usb_id(path) == USB_ID:
+            return DEVS + "/" + dev_dir
+
+
 def getline (s):
     return s.readline ().decode ('ascii').strip ()
 
@@ -28,14 +63,20 @@ except ValueError:
     sys.exit (1)
 
 # Connect
+devnode = find_device()
+if devnode is None:
+    print ("No GPA found!")
+    sys.exit(1)
+tty = get_tty(devnode)
+
 print ("Connecting to GPA...")
-s = serial.Serial ("/dev/ttyACM0", 115200, timeout=1)
+s = serial.Serial (tty, 1, timeout=1)
 
 # Initialize
 print ("Initializing microcontroller...")
-s.write (b"*RST\r\n")
-s.read (100)
-time.sleep (0.5)
+#s.write (b"*RST\r\n")
+#s.read (100)
+#time.sleep (0.5)
 s.flushInput ()
 s.write (b"*IDN?\r\n")
 idnstr = getline (s)
@@ -85,7 +126,7 @@ for i in freqs:
     s.write (("T:FREQ 1, %f\r\n" % i).encode ('ascii'))
     getline (s)
     s.write(b"T:ATT 0\r\n")
-    time.sleep(.005)
+    time.sleep(.01)
     s.write (("T:SAM %d\r\n" % nSamples).encode ('ascii'))
     level = float (getline (s))
     
