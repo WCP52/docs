@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+
 """
 This file contains the functions necessary to establish and use
 a serial connection to the Gain/Phase Analyzer
@@ -13,7 +14,6 @@ is then used to initialize board peripherals.  It can be used like this:
     frontend_init(s)
 
 """
-
 
 import serial
 import time

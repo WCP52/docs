@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2.7
 
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation

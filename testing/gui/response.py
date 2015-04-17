@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/end python
 
 """
 This file contains all necessary methods retrieve frequency and phase
@@ -11,7 +11,7 @@ analyzer and to initialize its peripherals.
 import serial
 import time
 import sys
-from demo_plot_defs import getline
+from serial_comm import getline
 
 
 """ Gets the frequency response.
@@ -24,7 +24,7 @@ from demo_plot_defs import getline
         a list of data points which will correspond to values
         in the list of frequencies at the same index.
 """
-def get_freq_response(s, lower_bound, upper_bound,freqs):
+def get_freq_response(s, freqs):
     print ("Collecting data... ")
     data = []
     for i in freqs:
@@ -65,7 +65,7 @@ def get_freq_response(s, lower_bound, upper_bound,freqs):
         in the list of frequencies at the same index.
 """
 
-def get_phase_response(s, lower_bound, upper_bound, freqs):
+def get_phase_response(s,freqs):
     print ("Collecting phase data...")
     N_POINTS_PER_RANGE = 10
     PRECISION = 1.
