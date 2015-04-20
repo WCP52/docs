@@ -1,21 +1,14 @@
 #!/usr/bin/end python
 
-import time
-import sys
-import matplotlib.pyplot as plt
-import numpy as np
-
 from serial_comm import *
 from response import *
 
 class Bode:
     def __init__(self):
-        """
         self.s = connect_gpa()
         mc_init(self.s)
         synth_init(self.s)
         frontend_init(self.s)
-        """
         self.freq_calibration = []
         self.phase_calibration = []
         self.freq_response = []
@@ -25,43 +18,52 @@ class Bode:
         self.upper_bound = 0.0
         self.lower_bound = 0.0
         self.do_phase = False
-        self.do_linear = False 
+
+    #set the upper bound of sampling frequencies
+    def set_upper_bound(self, upper_bound):
+        self.upper_bound = upper_bound
+
+    #sets lower bound of sampling frequencies
+    def set_lower_bound(self, lower_bound):
+        self.lower_bound = lower_bound
+
+    def set_do_phase(self, do_phase):
+        self.do_phase = do_phase
+
+    def get_freq_calibration_data(self):
+        return self.freq_calibration
     
-    def calibrate(self):
- 
+    def get_phase_calibration_data(self):
+        return self.phase_calibration
+
+    def get_freq_response_data(self):
+        return self.freq_response
+    
+    def get_phase_response_data(self):
+        return self.phase_response
+
+    #generate lists of all sampling frequencies
+    def generate_freqs(self):
         self.freqs_f = np.logspace(np.log10(self.lower_bound), np.log10(self.upper_bound), 60) # 1 kHz to 150 MHz
+        if self.do_phase:
+            self.freqs_p = np.logspace(np.log10(self.lower_bound), np.log10(self.upper_bound), 30) # 1 kHz to 150 MHz
+
+    def get_freqs_f(self):
+        return self.freqs.f
+
+    def get_freqs_p(self):
+        return self.freqs.p
+
+    def calibrate(self):
         self.freq_calibration = get_freq_response(self.s, self.freqs_f)
         if self.do_phase:
-            self.freqs_p = np.logspace(np.log10(lower_bound), np.log10(upper_bound), 30) # 1 kHz to 150 MHz
-            self.phase_calibration = get_phase_response(self.s, self.phase)
+            self.phase_calibration = get_phase_response(self.s, self.freqs_p)
 
-    def display_plot(self):
-        self.freqs_f = np.logspace(np.log10(self.lower_bound), np.log10(self.upper_bound), 60) # 1 kHz to 150 MHz
+    def run(self):
         self.freq_response = get_freq_response(self.s, self.freqs_f)
         if self.do_phase:
-            self.freqs_p = np.logspace(np.log10(lower_bound), np.log10(upper_bound), 30) # 1 kHz to 150 MHz
             self.phase_response = get_phase_response(self.s, self.freqs_p)
-        if self.freq_calibration:
-            for i in range(len(self.freq_response)):
-                self.freq_response = self.freq_response[i] - self.freq_calibration[i]
-        plt.subplot(2,1,1)
-        if do_linear:
-            plot = plt.plot(self.freqs_f, self.freq_response)
-        else:
-            plot = plt.semilogx(self.freqs.f, self.freq_response)
-        if not do_phase:
-            plt.xlabel ("Frequency (Hz)")
-        plt.ylabel ("Amplitude (dB, calibrated)")
-        plt.title ("Voltage Insertion Gain, calibrated")
-        plt.grid (True)
-        if do_phase:
-            plt.subplot(2,1,2)
-            if do_linear:
-                plot, = plt.plot (self.freqs_p, self.data_p)
-            else:
-                plot, = plt.semilogx (freqs_p, data_p)
-            plt.xlabel ("Frequency (Hz)")
-            plt.ylabel ("Phase (deg, calibrated)")
-            plt.title("Phase Shift, calibrated")
-            plt.grid(True)
-        plt.show()
+
+
+    
+    
