@@ -5,7 +5,7 @@ import sys
 from demo_plot_defs import getline
 import demo_plot_defs as defs
 
-def get_freq_response(s, lower_bound, upper_bound,freqs):
+def get_freq_response(s, freqs):
     print ("Collecting data... ")
     data = []
     for i in freqs:
@@ -35,7 +35,7 @@ def get_freq_response(s, lower_bound, upper_bound,freqs):
     return data
 
 
-def get_phase_response(s, lower_bound, upper_bound, freqs):
+def get_phase_response(s, freqs):
     print ("Collecting phase data...")
     N_POINTS_PER_RANGE = 10
     PRECISION = 1.

@@ -1,25 +1,24 @@
-#!/usr/bin/env python
-
-
-"""
-This file contains the functions necessary to establish and use
-a serial connection to the Gain/Phase Analyzer
-
-In order to set up a connection to the gain/phase analyzer properly,
-you must first call connect_gpa().  It returns a serial object which
-is then used to initialize board peripherals.  It can be used like this:
-    s = connect_gpa()
-    mc_init(s)
-    synth_init(s)
-    frontend_init(s)
-
-"""
-
-import os
+#!/usr/bin/python
 import serial
 import time
+import os
+
+CH_MAIN = 0
+CH_PHASE = 1
+CH_IN_1 = 1
+CH_IN_2 = 0
 
 USB_ID = "1209:4757"
+
+
+def getline (s):
+    return s.readline ().decode ('ascii').strip ()
+
+def printline (s, indent=2):
+    """Print a line from serial, indented."""
+    line = getline (s)
+    print ((" " * indent) + line)
+    return line
 
 def read(fn):
     with open (fn) as f:
@@ -51,21 +50,6 @@ def find_device():
         if usb_id(path) == USB_ID:
             return DEVS + "/" + dev_dir
 
-
-# Read the latest data that was sent across the serial interface.
-def getline (s):
-    return s.readline ().decode ('ascii').strip ()
-
-# Print the data read from the serial interface
-def printline (s, indent=2):
-    """Print a line from serial, indented."""
-    line = getline (s)
-    print ((" " * indent) + line)
-    return line
-
-# Sets up a serial connection to the gain phase analyzer.  This function
-# must be called before the functions that follow in this file.  It returns
-# a serial connection that is used to pass to those functions.
 def connect_gpa():
     devnode = find_device()
     if devnode is None:
@@ -74,10 +58,8 @@ def connect_gpa():
     print ("Connecting to GPA...")
     return serial.Serial (tty, 1, timeout=1)
 
-# Initializes the microcontroller using the serial connection
-# which is passed as a parameter
 def mc_init(s):
-    print ("Testing microcontroller...")
+    print ("Initializing microcontroller...")
     s.write (b"*IDN?\r\n")
     idnstr = getline (s)
     print ("  identity string = " + idnstr)
@@ -92,7 +74,6 @@ def mc_init(s):
         print ("  identity string = " + idnstr)
     print ("  OK")
 
-# Initializes the synthesizer
 def synth_init(s):
     print ("Initializing synthesizer...")
     s.write (b"T:INIF\r\n")
@@ -105,14 +86,13 @@ def synth_init(s):
     time.sleep (0.25)
     print ("  OK")
 
-#Initializes the front end
 def frontend_init(s):
     print ("Initializing frontend... ")
-    s.write (b"T:FREQ 0, 0\r\n")
+    s.write (("T:FREQ %d, 0\r\n" % (CH_PHASE)).encode('ascii'))
     printline (s)
-    s.write (b"T:AMP 0, 0\r\n")
+    s.write (("T:AMP %d, 0\r\n" % (CH_PHASE)).encode('ascii'))
     printline (s)
-    s.write (b"T:CH 1\r\n")
+    s.write (("T:CH %d\r\n" % (CH_IN_1)).encode('ascii'))
     s.write (b"*OPC?\r\n")
     getline (s)
     print ("  OK")
