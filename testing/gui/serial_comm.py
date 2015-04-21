@@ -15,8 +15,42 @@ is then used to initialize board peripherals.  It can be used like this:
 
 """
 
+import os
 import serial
 import time
+
+USB_ID = "1209:4757"
+
+def read(fn):
+    with open (fn) as f:
+        return f.read().strip()
+
+def usb_id(path):
+    if not os.path.isfile (path + "/idProduct"):
+        return None
+    if not os.path.isfile (path + "/idVendor"):
+        return None
+    product = read(path + "/idProduct")
+    vendor = read(path + "/idVendor")
+    return vendor.lower() + ":" + product.lower()
+
+def get_tty(path):
+    for subdir in os.listdir(path):
+        if not os.path.isdir(path + "/" + subdir):
+            continue
+        if os.path.isdir(path + "/" + subdir + "/tty"):
+            this_subdir = subdir
+            break
+    return "/dev/" + os.listdir(os.path.join(path, subdir, "tty"))[0]
+
+
+def find_device():
+    DEVS = "/sys/bus/usb/devices"
+    for dev_dir in os.listdir(DEVS):
+        path = DEVS + "/" + dev_dir
+        if usb_id(path) == USB_ID:
+            return DEVS + "/" + dev_dir
+
 
 # Read the latest data that was sent across the serial interface.
 def getline (s):
@@ -33,8 +67,12 @@ def printline (s, indent=2):
 # must be called before the functions that follow in this file.  It returns
 # a serial connection that is used to pass to those functions.
 def connect_gpa():
+    devnode = find_device()
+    if devnode is None:
+        raise Exception("No GPA found!")
+    tty = get_tty(devnode)
     print ("Connecting to GPA...")
-    return serial.Serial ("/dev/ttyACM0", 115200, timeout=1)
+    return serial.Serial (tty, 1, timeout=1)
 
 # Initializes the microcontroller using the serial connection
 # which is passed as a parameter

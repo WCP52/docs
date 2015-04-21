@@ -55,7 +55,7 @@ class GUI:
             upper_bound = self.max_var.get()
             self.bode.set_lower_bound(lower_bound)
             self.bode.set_upper_bound(upper_bound)
-            self.bode.set_phase(phase)
+            self.bode.set_do_phase(phase)
             self.bode.generate_freqs()
 
         #Have bode generate data
@@ -66,6 +66,7 @@ class GUI:
         if self.calibrate:
             freq_plt = self.freq_fig.add_subplot(111, xlabel="Frequency", ylabel="Gain, calibrated")
             freq_calibrate_data = self.bode.get_freq_calibration_data()
+            assert len(freq_calibrate_data) == len(freq_response), (len(freq_calibrate_data), len(freq_response))
             for i in range(len(freq_response)):
                 freq_response[i] = freq_response[i] - freq_calibrate_data[i]
         else:
@@ -104,13 +105,13 @@ class GUI:
     def on_calibrate(self):
         #set lower and upper bounds for bode
         lower_bound = self.min_var.get()
-        upper_bound = self.min_var.get()
+        upper_bound = self.max_var.get()
         self.bode.set_lower_bound(lower_bound)
         self.bode.set_upper_bound(upper_bound)
 
         #tell bode whether or not it will do a phase plot
         phase = self.builder.get_variable('do_phase').get()
-        bode.set_do_phase(phase)
+        self.bode.set_do_phase(phase)
 
         #generate the frequencies to sample across
         self.bode.generate_freqs()
