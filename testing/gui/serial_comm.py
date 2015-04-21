@@ -39,11 +39,7 @@ def connect_gpa():
 # Initializes the microcontroller using the serial connection
 # which is passed as a parameter
 def mc_init(s):
-    print ("Initializing microcontroller...")
-    s.write (b"*RST\r\n")
-    s.read (100)
-    time.sleep (0.5)
-    s.flushInput ()
+    print ("Testing microcontroller...")
     s.write (b"*IDN?\r\n")
     idnstr = getline (s)
     print ("  identity string = " + idnstr)
