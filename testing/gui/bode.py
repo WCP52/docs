@@ -1,7 +1,6 @@
-#!/usr/bin/end python
-
 from serial_comm import *
 from response import *
+import numpy as np
 
 class Bode:
     def __init__(self):
@@ -49,10 +48,10 @@ class Bode:
             self.freqs_p = np.logspace(np.log10(self.lower_bound), np.log10(self.upper_bound), 30) # 1 kHz to 150 MHz
 
     def get_freqs_f(self):
-        return self.freqs.f
+        return self.freqs_f
 
     def get_freqs_p(self):
-        return self.freqs.p
+        return self.freqs_p
 
     def calibrate(self):
         self.freq_calibration = get_freq_response(self.s, self.freqs_f)

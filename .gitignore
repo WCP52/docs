@@ -34,3 +34,4 @@
 *-converted-to.pdf
 *.mtc0
 *.ptc
+__pycache__
