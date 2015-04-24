@@ -26,7 +26,7 @@ items:
         prog: 100
       - name: Final PCB assembled
         start: 2015-04-08
-        prog: 90
+        prog: 100
 
   - name: Final hardware testing
     start: 2015-02-16
@@ -46,17 +46,17 @@ items:
       - name: PC software
         start: 2015-03-20
         end: 2015-04-17
-        prog: 50
+        prog: 95
       - name: Algorithms
         start: 2015-01-27
         end: 2015-03-31
-        prog: 90
+        prog: 95
       - name: GUI
         start: 2015-03-06
         end: 2015-04-16
-        prog: 80
+        prog: 95
 
   - name: Documentation
     start: 2015-03-23
     end: 2015-05-18
-    prog: 50
+    prog: 75
