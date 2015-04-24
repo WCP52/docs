@@ -6,7 +6,7 @@ except:
     import Tkinter as tk
 import pygubu
 import matplotlib
-matplotlib.use("TkAgg")
+from tkinter import messagebox
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 from bode import Bode
@@ -32,7 +32,7 @@ class GUI:
         #set up canvas to hold plots
         self.freq_fig = Figure()
         self.phase_fig = Figure()
-        self.freq_canvas = FigureCanvasTkAgg(self.freq_fig, master)
+        self.freq_canvas = FigureCanvasTkAgg(self.freq_fig, master) 
         self.phase_canvas = FigureCanvasTkAgg(self.phase_fig, master)
 
         #connect callbacks
@@ -53,6 +53,9 @@ class GUI:
         if not self.calibrate:
             lower_bound = self.min_var.get() 
             upper_bound = self.max_var.get()
+            # need error here
+            if lower_bound >= upper_bound:
+                tk.messagebox.showerror = ("error","These values are not valid Try again min must be lower than max" )
             self.bode.set_lower_bound(lower_bound)
             self.bode.set_upper_bound(upper_bound)
             self.bode.set_do_phase(phase)
@@ -108,7 +111,9 @@ class GUI:
         upper_bound = self.max_var.get()
         self.bode.set_lower_bound(lower_bound)
         self.bode.set_upper_bound(upper_bound)
-
+        #need error box here
+        if lower_bound >= upper_bound:
+               tk.messagebox.showerror = ("error","These values are not valid Try again min must be lower than max")
         #tell bode whether or not it will do a phase plot
         phase = self.builder.get_variable('do_phase').get()
         self.bode.set_do_phase(phase)
