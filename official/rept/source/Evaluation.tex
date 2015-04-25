@@ -1,0 +1,200 @@
+\chapter{Evaluation}
+
+\section{Overview}
+Our system was designed through a combination of computer simulation, and
+prototype testing. After carefully designing each subsystem,
+per-subsystem PCBs were fabricated and interconnected to build a prototype, which was
+thoroughly tested before the final PCB was designed and fabricated.
+
+As our project is a piece of electrical test equipment, the majority of the
+tests are electrical in nature. The tests for requirements \hyperref[prs:3.2.2]{3.2.2}
+and \hyperref[prs:3.2.3]{3.2.3} (output signal characteristics) require
+an oscilloscope with at least $300$~MHz bandwidth. The remaining electrical
+tests require only a basic multimeter, and often use the instrument to
+verify itself. For example, \hyperref[prs:3.2.4]{3.2.4} (sensitivity) is
+verified by measuring the reported amplitude from the output amplifier, and
+comparing that to the input noise floor. Requirement \hyperref[prs:3.2.6]{3.2.6}
+(accuracy) is verified by examining the normalized sweep of a flat-response
+attenuator. Some requirements, for example \hyperref[prs:3.2.1]{3.2.1} (type
+of plot), \hyperref[prs:3.3.1]{3.3.1 -- 3.3.3} (interface design), and \hyperref[prs:3.6.4]{3.6.4}
+(direct control) are verified simply by observing how the instrument responds to
+PC control. Others, for example \hyperref[prs:3.3.4]{3.3.4} (panel connectors),
+\hyperref[prs:3.6.1]{3.6.1} (Operator's Manual), \hyperref[prs:3.6.2]{3.6.2} (Protocol Guide),
+and \hyperref[prs:3.6.3]{3.6.3} (surface-mount technology) are verified by observing the
+instrument and accompanying materials themselves.
+
+The full project requirements can be found in \hyperref[chap:prs]{Appendix~\ref{chap:prs}}, and the full
+test procedures can be found in \hyperref[chap:test]{Appendix~\ref{chap:test}}.
+
+\section{Testing and Results}
+
+The full test procedures can be found in Appendix~\ref{chap:test}.
+
+\note{As the full tests have not been performed at the time of this draft,
+\emph{Italicized} text is used as a placeholder for missing results.}
+
+\subsection*{Requirement WCP52.3.1.1 --- Required mode: Idle}
+This requirement simply means that the device must have a mode in which it is
+not performing analysis. \emph{We measured the output signal in this state, and
+it measured --- \uV peak to peak. We demonstrated that the ``sample'' annunciator
+was not lit.}
+
+\subsection*{Requirement WCP52.3.1.2 --- Required mode: Analysis}
+This requirement means that the device must have a non-idle mode in which it is
+performing its primary function. This does not require a separate demonstration;
+the fact that it performs correctly in the demonstration for WCP52.3.2.6 shows
+that it must be capable of performing analysis.
+
+\subsection*{Requirement WCP52.3.2.1 --- Bode plot}
+\emph{By providing sample data to the PC software and causing it to display a
+plot, we demonstrated that the software is capable of displaying a Bode plot.}
+
+\subsection*{Requirement WCP52.3.2.3 --- Test signal frequency}
+We used an oscilloscope to measure the output of the instrument at nominal
+frequencies of 1~kHz, 10~MHz, 75~MHz, and 150~MHz. \emph{The maximum deviation from
+nominal was ---\%, which is within the 2.5~\% required by the test procedure.}
+
+\subsection*{Requirement WCP52.3.2.3 --- Test signal amplitude}
+We used an oscilloscope to measure the amplitude of the instrument's output
+at nominal frequencies of 1~kHz, 20~MHz, and 100~MHz. \emph{The measured amplitudes
+were, respectively, ---~V~RMS, ---~V~RMS, and ---~V~RMS.} These are all above the
+required minimum of 1.25~V~RMS.
+
+\subsection*{Requirement WCP52.3.2.4 --- Sensitivity}
+First, we measured the instrument's noise floor at 100~kHz, which is the
+absolute limit to its sensitivity. \emph{The noise floor was ---dB.} This
+ensures that any measured amplitude above this is the true amplitude, not
+the noise floor itself. Then, we measured the relative attenuation of a
+40~dB nominal attenuator, verifying that the signal could be seen above the
+noise floor. This shows that the instrument is capable of viewing signals
+at least 40~dB less than its output amplitude.
+
+\subsection*{Requirement WCP52.3.2.5 --- Extended sensitivity}
+The fact that the noise floor above was also under a threshold of -65~dB
+satisfies the requirement for extended sensitivity.
+
+\subsection*{Requirement WCP52.3.2.6 --- Accuracy --- Amplitude}
+We measured an attenuator specified for \emph{---dB}, and the instrument claimed
+an attenuation of \emph{---dB}. This is within the required 3~dB accuracy limit.
+
+\subsection*{Requirement WCP52.3.2.6 --- Accuracy --- Phase}
+We measured the phase shift due to propagation delay of a section of RG-316 coaxial
+cable. The nominal phase shifts are:
+
+\begin{tabular}{|l|l|}
+\hline
+Frequency & Phase shift \\ \hline \hline
+10~kHz & 0.02\dg \\ \hline
+1~MHz & 1.74\dg \\ \hline
+10~MHz & 17.4\dg \\ \hline
+25~MHz & 43.5\dg \\ \hline
+\end{tabular}
+
+We measured phase shifts of:
+
+\begin{tabular}{|l|l|}
+\hline
+Frequency & Phase shift \\ \hline \hline
+10~kHz & 0.02\dg \\ \hline
+1~MHz & 1.74\dg \\ \hline
+10~MHz & 17.4\dg \\ \hline
+25~MHz & 43.5\dg \\ \hline
+\end{tabular}
+
+These measurements are within ---\dg of nominal, which satisfies the
+5\dg requirement.
+
+\subsection*{Requirement WCP52.3.2.7 --- Extended accuracy}
+The fact that the measurements above are also within 1~dB and 1\dg
+satisfies the requirement for extended accuracy.
+
+\subsection*{Requirement WCP52.3.2.8 --- Interface safety}
+To test this, we issued the \texttt{LOWLEVEL:SET GPIO\_LEVEL} command,
+and recieved back the message \texttt{Pin 'GPIO\_LEVEL' is not an output!}. This
+verifies that the instrument will not set an output value on an input pin.
+
+\subsection*{Requirement WCP52.3.3.1 --- Interface}
+This requirement is satisfied by the fact that WCP52.3.2.1 through WCP52.3.2.8
+were satisfied, which all required a PC interface.
+
+\subsection*{Requirement WCP52.3.3.2 --- Communications type}
+We connected a serial terminal to the device and issued the \texttt{*IDN?} command,
+which produced \emph{the response}. These are both text commands, verifying that the
+instrument uses a text-based serial protocol.
+
+\subsection*{Requirement WCP52.3.3.3 --- Communications medium}
+The use of a USB-compatible serial terminal in verifying WCP52.3.3.2 also demonstrated
+WCP52.3.3.3.
+
+\subsection*{Requirement WCP52.3.3.4 --- Panel connectors}
+We demonstrated that the connectors on the front panel are SMA connectors.
+
+\subsection*{Requirement WCP52.3.3.5 --- Auxiliary connector}
+We measured the voltages on the power supply pins of the auxiliary connector; they were
+\Pos ---~V and \Neg ---~V.
+
+\subsection*{Requirement WCP52.3.6.1 --- Operator's manual}
+We presented the PDF operator's manual, and showed the `Theory of Operation' and `Operational
+Instructions' sections in it. The latter section had test setups for characterizing both
+filters and control loops.
+
+\subsection*{Requirement WCP52.3.6.2 --- Protocol guide}
+We showed that there is a protocol guide inside the Operator's Manual, which lists the
+SCPI commands and their formats.
+
+\subsection*{Requirement WCP52.3.6.3 --- SMT}
+We showed that all parts on the PCB were surface-mount with the following exceptions:
+
+\begin{itemize}
+\item[DS1]{--- front panel LED --- exemption: front panel}
+\item[J1]{--- power jack --- exemption: connector, front panel}
+\item[J2]{--- input jack \#1 --- exemption: connector, front panel}
+\item[J3]{--- input jack \#2 --- exemption: connector, front panel}
+\item[J4]{--- output jack --- exemption: connector, front panel}
+\item[J5]{--- auxiliary jack --- exemption: connector, front panel}
+\item[J8]{--- JTAG port --- exemption: connector}
+\item[L6]{--- buck-boost inductor --- exemption: inductor $>$ 5~mm diam}
+\item[L7]{--- buck inductor --- exemption: inductor $>$ 5~mm diam}
+\end{itemize}
+
+Also, we showed that the only leadless parts were those that are directly responsible for the device's function:
+
+\begin{itemize}
+\item[U3]{--- DDS --- directly satisfies WCP52.3.2.2}
+\end{itemize}
+
+\subsection*{Requirement WCP52.3.6.4 --- Direct control}
+We showed the following commands in the protocol guide: \texttt{LOWLEVEL:SET}, \texttt{LOWLEVEL:GET},
+\texttt{LOWLEVEL:SPITX}, \texttt{LOWLEVEL:ADC}.
+
+\subsection*{Requirement WCP52.3.6.5 --- Electrical safety}
+We measured the voltages present on the pins of the auxiliary connector with a multimeter;
+they were, respectively, \emph{3.3~V, 3.3~V, 8.5~V, -9.3~V, 3.3~V, 0.0~V}. We then
+measured the maximum amplitude of a signal from the output connector; the maximum peak was
+$4.5~V$. These are all within the $15~V$ limit.
+
+\section{Assessment}
+
+In the end, our design met all of the mandatory requirements, and most of the optional ones.
+This is overall a useful design. It can measure filters over a wide range with reasonable
+accuracy. It is simple to use, robust against input overloads, output overloads, and incorrect
+power supply. The system is fully open-source, so users can modify and develop on it as they
+please, and students can learn from its operation.
+
+The design has a few drawbacks, however. First, power consumption is high, as the power supply
+is inefficient. This was necessary within the development budget and time, as a more efficient
+power supply design would also produce more noise that could interfere with the measurements.
+Multiple prototypes and significant analysis and testing could have been required. Second,
+output phase noise is relatively high at high frequencies. This could cause measurement error
+particularly when measuring devices with nonlinearities or when attempting to measure very close
+to a strong resonance. However, this noise is inherent in a design with a fixed sample rate, and
+correcting this would require a significant increase in complexity of clock generation. Third,
+the output can have somewhat significant DC offset voltages (up to around 100mV), which is not
+a huge problem but could be surprising to some users. A coupling capacitor after the differential
+amplifier stage would fix this, but using the correct one would require significant testing and
+would risk introducing amplitude loss at either the high or the low end. Fourth, the frontend
+is not selective; it always measures the total input power over its full bandwidth. A frontend
+with a selective mixer to measure only signals at the same frequency as the output frequency
+would greatly increase the measurement noise floor and improve the behavior with nonlinear
+devices-under-test.
+

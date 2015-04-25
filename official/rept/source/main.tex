@@ -1,0 +1,111 @@
+\documentclass[article,oneside]{memoir}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cclicenses}
+\usepackage{color}
+\usepackage{euler}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=red]{hyperref}
+\usepackage{float}
+\usepackage{framed}
+\usepackage[letterpaper,margin=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{indentfirst}
+\usepackage{lipsum}
+\usepackage{longtable}
+\usepackage[final]{microtype}
+\usepackage{multicol}
+\usepackage{nameref}
+\usepackage{pdflscape}
+\usepackage{pdfpages}
+\usepackage{tabularx}
+\usepackage{textcomp}
+\usepackage{todonotes}
+\usepackage{libertine}
+\usepackage{inconsolata}
+\usepackage{upgreek}
+%\usepackage{mathptmx} % <-- Times font
+
+
+% PAGE SETUP
+\setlength{\parindent}{5mm}
+\nonzeroparskip
+\raggedbottom
+\raggedcolumns
+
+% CONFIG FOR TOC, BIBLIO, ETC
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{2}
+\renewcommand{\bibname}{References}
+\renewcommand{\abstractname}{Executive Summary}
+\renewcommand{\contentsname}{Table of Contents}
+
+% HANDY DEFINITIONS
+\newcommand{\note}[1]{ \begin{framed} #1 \end{framed} }
+\newcommand{\refdes}[1]{\texttt{#1}}
+\newcommand{\mr}[1]{\ensuremath{\mathrm{#1}}}
+\newcommand{\dg}{\ensuremath{{}^\circ}}
+\newcommand{\schematicpage}[2]{ \begin{framed} Relevant schematic page: \hyperlink{schematic.pdf.#1}{\texttt{#2/#1}} \end{framed} }
+\newcommand{\greylipsum}[1]{{\color{gray} \lipsum[#1]}}
+\newcommand{\kOhm}{\ensuremath{\mathrm{k}\Omega}}
+\newcommand{\Ohm}{\ensuremath{\Omega}}
+\newcommand{\Pos}[1]{{\ensuremath{+}#1}}
+\newcommand{\Neg}[1]{{\ensuremath{-}#1}}
+\newcommand{\uA}{\ensuremath{\upmu\mathrm{A}}}
+\newcommand{\uF}{\ensuremath{\upmu\mathrm{F}}}
+\newcommand{\uV}{\ensuremath{\upmu\mathrm{V}}}
+
+\title{Design Report}
+\author{WCP52}
+
+\begin{document}
+
+\pagestyle{headings}
+\input{title}
+%\begin{multicols}{2}
+
+\input{ExecSummary}
+
+\newpage
+\tableofcontents*
+%\listoffigures
+
+\newpage
+\input{ProblemDefinition}
+\input{DesignDescription}
+\input{Evaluation}
+\input{ScheduleBudget}
+\input{FuturePlans}
+
+%\end{multicols}
+
+%\newpage
+%\begin{landscape}
+%\chapter{Electrical parts}
+%\texttt{
+%\input{autogen-bom}
+%}
+%\end{landscape}
+
+%\newpage
+%\chapter{Full schematics}
+%The following pages contain schematics exported directly from the CAD software.
+%While they are documented, it is intended that readers will first familiarize
+%themselves with the workings of the circuits by reading through the
+%\hyperref[chap:too]{Theory of Operation}.
+%\includepdf[landscape=true,pages=-,link]{schematic.pdf}
+\newpage
+\input{biblio}
+
+\begin{appendices}
+    \newpage \input{ProjectRequirements}
+    \newpage \input{AppTestProcedures}
+    \newpage \chapter{Computer Code}
+\begin{verbatim}
+10 PRINT "HELLO WORLD"
+20 GOTO 10
+\end{verbatim}
+    \newpage \chapter{CAD Drawings}
+\end{appendices}
+
+\end{document}
