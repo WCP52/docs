@@ -54,8 +54,10 @@ class GUI:
             lower_bound = self.min_var.get() 
             upper_bound = self.max_var.get()
             # need error here
+            #while lower_bound != upper_bound:
             if lower_bound >= upper_bound:
-                tk.messagebox.showerror = ("error","These values are not valid Try again min must be lower than max" )
+                error = tk.messagebox.showerror("error","These values are not valid.\n Try again min must be lower than max" )
+            #        break
             self.bode.set_lower_bound(lower_bound)
             self.bode.set_upper_bound(upper_bound)
             self.bode.set_do_phase(phase)
@@ -112,8 +114,10 @@ class GUI:
         self.bode.set_lower_bound(lower_bound)
         self.bode.set_upper_bound(upper_bound)
         #need error box here
+        #while lower_bound != upper_bound:
         if lower_bound >= upper_bound:
-               tk.messagebox.showerror = ("error","These values are not valid Try again min must be lower than max")
+            error = tk.messagebox.showerror("error","These values are not valid.\n Try again min must be lower than max")
+        #        break
         #tell bode whether or not it will do a phase plot
         phase = self.builder.get_variable('do_phase').get()
         self.bode.set_do_phase(phase)
