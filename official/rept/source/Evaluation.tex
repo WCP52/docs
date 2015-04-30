@@ -35,9 +35,10 @@ The full test procedures can be found in Appendix~\ref{chap:test}.
 
 \subsection*{Requirement WCP52.3.1.1 --- Required mode: Idle}
 This requirement simply means that the device must have a mode in which it is
-not performing analysis. \emph{We measured the output signal in this state, and
-it measured --- \uV peak to peak. We demonstrated that the ``sample'' annunciator
-was not lit.}
+not performing analysis. We measured the output signal in this state, and
+demonstrated that the ``sample'' annunciator was not lit.
+
+\textbf{Maximum output amplitude in ``idle'':} 6.0~mV~p-p, 750~\uV~RMS (mostly amplifier noise)
 
 \subsection*{Requirement WCP52.3.1.2 --- Required mode: Analysis}
 This requirement means that the device must have a non-idle mode in which it is
@@ -46,23 +47,40 @@ the fact that it performs correctly in the demonstration for WCP52.3.2.6 shows
 that it must be capable of performing analysis.
 
 \subsection*{Requirement WCP52.3.2.1 --- Bode plot}
-\emph{By providing sample data to the PC software and causing it to display a
-plot, we demonstrated that the software is capable of displaying a Bode plot.}
+By providing sample data to the PC software and causing it to display a
+plot, we demonstrated that the software is capable of displaying a Bode plot.
 
 \subsection*{Requirement WCP52.3.2.3 --- Test signal frequency}
 We used an oscilloscope to measure the output of the instrument at nominal
-frequencies of 1~kHz, 10~MHz, 75~MHz, and 150~MHz. \emph{The maximum deviation from
-nominal was ---\%, which is within the 2.5~\% required by the test procedure.}
+frequencies of 1~kHz, 10~MHz, 75~MHz, and 150~MHz. The maximum deviation from
+nominal was 0.13\%, which is within the 2.5~\% required by the test procedure.
+
+\begin{tabular}{|l|l|l|}
+\hline
+Nominal & Measured & Error \\ \hline \hline
+1~kHz & 1.000~kHz & 0\% \\ \hline
+10~MHz & 10.01~MHz & 0.1\% \\ \hline
+75~MHz & 74.95~MHz & 0.06\% \\ \hline
+150~MHz & 150.2~MHz & 0.13\% \\ \hline
+\end{tabular}
 
 \subsection*{Requirement WCP52.3.2.3 --- Test signal amplitude}
 We used an oscilloscope to measure the amplitude of the instrument's output
-at nominal frequencies of 1~kHz, 20~MHz, and 100~MHz. \emph{The measured amplitudes
-were, respectively, ---~V~RMS, ---~V~RMS, and ---~V~RMS.} These are all above the
-required minimum of 1.25~V~RMS.
+at nominal frequencies of 1~kHz, 20~MHz, and 100~MHz.
+
+\begin{tabular}{|l|l|}
+\hline
+Test Frequency & Amplitude \\ \hline \hline
+100~MHz & 1.267~V~RMS \\ \hline
+20~MHz & 1.360~V~RMS \\ \hline
+1~kHz & 1.516~V~RMS \\ \hline
+\end{tabular}
+
+These are all above the required minimum of 1.25~V~RMS.
 
 \subsection*{Requirement WCP52.3.2.4 --- Sensitivity}
 First, we measured the instrument's noise floor at 100~kHz, which is the
-absolute limit to its sensitivity. \emph{The noise floor was ---dB.} This
+absolute limit to its sensitivity. \textbf{The noise floor was -87.5~dB.} This
 ensures that any measured amplitude above this is the true amplitude, not
 the noise floor itself. Then, we measured the relative attenuation of a
 40~dB nominal attenuator, verifying that the signal could be seen above the
@@ -70,12 +88,14 @@ noise floor. This shows that the instrument is capable of viewing signals
 at least 40~dB less than its output amplitude.
 
 \subsection*{Requirement WCP52.3.2.5 --- Extended sensitivity}
-The fact that the noise floor above was also under a threshold of -65~dB
+The fact that the noise floor above was also under a threshold of -65~dB,
+and that a -60~dB signal was visible above it,
 satisfies the requirement for extended sensitivity.
 
 \subsection*{Requirement WCP52.3.2.6 --- Accuracy --- Amplitude}
-We measured an attenuator specified for \emph{---dB}, and the instrument claimed
-an attenuation of \emph{---dB}. This is within the required 3~dB accuracy limit.
+We measured an attenuator specified for \textbf{10.0~dB}, and the instrument
+claimed an attenuation between \textbf{9.1~dB and 10.4~dB}. This is within the
+required 3~dB accuracy limit.
 
 \subsection*{Requirement WCP52.3.2.6 --- Accuracy --- Phase}
 We measured the phase shift due to propagation delay of a section of RG-316 coaxial
@@ -85,9 +105,9 @@ cable. The nominal phase shifts are:
 \hline
 Frequency & Phase shift \\ \hline \hline
 10~kHz & 0.02\dg \\ \hline
-1~MHz & 1.74\dg \\ \hline
-10~MHz & 17.4\dg \\ \hline
-25~MHz & 43.5\dg \\ \hline
+1~MHz & 1.51\dg \\ \hline
+10~MHz & 15.1\dg \\ \hline
+25~MHz & 37.8\dg \\ \hline
 \end{tabular}
 
 We measured phase shifts of:
@@ -95,18 +115,23 @@ We measured phase shifts of:
 \begin{tabular}{|l|l|}
 \hline
 Frequency & Phase shift \\ \hline \hline
-10~kHz & 0.02\dg \\ \hline
-1~MHz & 1.74\dg \\ \hline
-10~MHz & 17.4\dg \\ \hline
-25~MHz & 43.5\dg \\ \hline
+10~kHz & 1.76\dg \\ \hline
+1~MHz & 0.70\dg \\ \hline
+10~MHz & 19.0\dg \\ \hline
+25~MHz & 42.2\dg \\ \hline
 \end{tabular}
 
-These measurements are within ---\dg of nominal, which satisfies the
+These measurements are within 4.4\dg of nominal, which satisfies the
 5\dg requirement.
 
 \subsection*{Requirement WCP52.3.2.7 --- Extended accuracy}
-The fact that the measurements above are also within 1~dB and 1\dg
-satisfies the requirement for extended accuracy.
+The 4.4\dg error does \emph{not} meet the optional requirement for extended
+accuracy, which requires a maximum error of 1\dg. However, the 0.9~dB amplitude
+error \emph{does} meet the extended accuracy requirement for amplitude.
+
+A possible source of phase error is that tests were performed without the shielding
+metal enclosure. Electromagnetic interference in the area around the analyzer tends
+to cause errors in the sensitive null-finding algorithm.
 
 \subsection*{Requirement WCP52.3.2.8 --- Interface safety}
 To test this, we issued the \texttt{LOWLEVEL:SET GPIO\_LEVEL} command,
@@ -119,7 +144,7 @@ were satisfied, which all required a PC interface.
 
 \subsection*{Requirement WCP52.3.3.2 --- Communications type}
 We connected a serial terminal to the device and issued the \texttt{*IDN?} command,
-which produced \emph{the response}. These are both text commands, verifying that the
+which produced \texttt{WCP52,~GPA,~1,~0}. These are both text commands, verifying that the
 instrument uses a text-based serial protocol.
 
 \subsection*{Requirement WCP52.3.3.3 --- Communications medium}
@@ -131,7 +156,7 @@ We demonstrated that the connectors on the front panel are SMA connectors.
 
 \subsection*{Requirement WCP52.3.3.5 --- Auxiliary connector}
 We measured the voltages on the power supply pins of the auxiliary connector; they were
-\Pos ---~V and \Neg ---~V.
+\Pos 8.76~V and \Neg 9.28~V, and could supply 93~mA and 190~mA respectively.
 
 \subsection*{Requirement WCP52.3.6.1 --- Operator's manual}
 We presented the PDF operator's manual, and showed the `Theory of Operation' and `Operational
@@ -169,9 +194,9 @@ We showed the following commands in the protocol guide: \texttt{LOWLEVEL:SET}, \
 
 \subsection*{Requirement WCP52.3.6.5 --- Electrical safety}
 We measured the voltages present on the pins of the auxiliary connector with a multimeter;
-they were, respectively, \emph{3.3~V, 3.3~V, 8.5~V, -9.3~V, 3.3~V, 0.0~V}. We then
-measured the maximum amplitude of a signal from the output connector; the maximum peak was
-$4.5~V$. These are all within the $15~V$ limit.
+they were, respectively, \emph{3.03~V, 3.03~V, 8.76~V, \Neg 9.28~V, 3.03~V, 0.0~V}. We then
+measured the maximum amplitude of a signal from the output connector; the maximum peaks were
+4.4~V and \Neg 4.4~V. These are all within the 15~V limit.
 
 \section{Assessment}
 
