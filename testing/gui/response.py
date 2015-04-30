@@ -5,11 +5,17 @@ import sys
 from serial_comm import getline
 import serial_comm as defs
 
+# The first few samples come out wrong. Repeat them
+N_REPEAT = 6
+
 def get_freq_response(s, freqs):
     print ("Collecting data... ")
     data = []
+
+    freqs = list(freqs[:N_REPEAT]) + list(freqs)
+
     for i in freqs:
-        nSamples = max(((1/i)*25)//1000000, 1024)
+        nSamples = max(((1/i)*50)//1000000, 2048)
         s.write (("T:FREQ %d, %f\r\n" % (defs.CH_MAIN, i)).encode ('ascii'))
         getline (s)
         s.write(b"LOW:CLR GPIO_ATTEN\r\n")
@@ -18,7 +24,7 @@ def get_freq_response(s, freqs):
         level = float (getline (s))
         
         #if level >= 2900, attenuate the input signal
-        if level >= 2900:
+        if level >= 3500:
             print("this is running...")
             s.write(b"LOW:SET GPIO_ATTEN\r\n")
             time.sleep(.005)
@@ -31,24 +37,28 @@ def get_freq_response(s, freqs):
         print ("%.2f Hz\t%.2f dB" % (i, db))
         data.append (db)
 
-    data = [i-data[0] for i in data]
+    # Remove repeated measurements
+    data = data[N_REPEAT:]
+    #data = [i-data[0] for i in data]
     return data
 
 
 def get_phase_response(s, freqs):
     print ("Collecting phase data...")
-    N_POINTS_PER_RANGE = 10
+    N_POINTS_PER_RANGE = 16
     PRECISION = 1.
     data = []
+    freqs = list(freqs[:N_REPEAT]) + list(freqs)
     for i in freqs:
         # Set frequency. Then, search phases for a null
         s.write (("T:FREQ %d, %f\r\n" % (defs.CH_PHASE, i)).encode ('ascii'))
         getline (s)
         s.write (("T:FREQ %d, %f\r\n" % (defs.CH_MAIN, i)).encode ('ascii'))
         getline (s)
-        s.write (("T:AMP %d, 0.5\r\n" % (defs.CH_PHASE)).encode ('ascii'))
+        s.write (("T:AMP %d, 1.0\r\n" % (defs.CH_PHASE)).encode ('ascii'))
         getline (s)
-        s.write (("T:AMP %d, 0.1\r\n" % (defs.CH_MAIN)).encode ('ascii'))
+        s.write(b"LOW:SET GPIO_ATTEN\r\n")
+        s.write (("T:AMP %d, 0.178\r\n" % (defs.CH_MAIN)).encode ('ascii'))
         getline (s)
 
         phase_bound_left = 0
@@ -61,7 +71,7 @@ def get_phase_response(s, freqs):
             lowest_amp = float("inf")
             lowest_i = None
             for phase_i, phase in enumerate(phases):
-                nSamples = max(((1/i)*25)//1000000, 1024)
+                nSamples = max(((1/i)*50)//1000000, 2048)
                 phase = phase % 360.
                 s.write (("T:PHASE %d, %f\r\n" % (defs.CH_PHASE, phase)).encode ('ascii'))
                 getline (s)
@@ -104,5 +114,6 @@ def get_phase_response(s, freqs):
 
         print ("%.2f Hz\t%f deg" % (i, phase))
         data.append (phase)
+    data = data[N_REPEAT:]
     return data
 

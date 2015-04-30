@@ -83,6 +83,7 @@ class GUI:
             freq_plt.semilogx(freqs_f, freq_response)
         else:
             freq_plt.plot(freqs_f, freq_response)
+        freq_plt.grid(True)
         self.freq_canvas.show()
         self.freq_canvas.get_tk_widget().place(relx=.26, rely=0.01,relheight=0.49,relwidth=0.7)
 
@@ -104,6 +105,7 @@ class GUI:
             else:
                 phase_plt.plot(freqs_p, phase_response)
 
+            phase_plt.grid(True)
             self.phase_canvas.show()
             self.phase_canvas.get_tk_widget().place(relx=.26,rely=0.505,relheight=0.49,relwidth=0.7)
         
