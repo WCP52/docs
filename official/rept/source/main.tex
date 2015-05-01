@@ -102,12 +102,23 @@
 \begin{appendices}
     \newpage \input{ProjectRequirements}
     \newpage \input{AppTestProcedures}
-    \newpage \chapter{Computer Code}
-\begin{verbatim}
-10 PRINT "HELLO WORLD"
-20 GOTO 10
-\end{verbatim}
+    \newpage \chapter{Microprocessor Code}
+    \includepdf[pages=-]{code.pdf}
+    \newpage \chapter{PC Code}
+    \includepdf[pages=-]{pccode.pdf}
     \newpage \chapter{CAD Drawings}
+    \includepdf[landscape=true,pages=-]{schematic.pdf}
+
+    \newpage \chapter{PCB Layouts}
+    \begin{vplace}[0.5]\includegraphics[width=6.5in]{render_2l}\end{vplace}
+    \newpage \section{Layer 1}
+    \begin{vplace}\includegraphics[width=6.5in]{render_lyr1}\end{vplace}
+    \newpage \section{Layer 2}
+    \begin{vplace}\includegraphics[width=6.5in]{render_lyr2}\end{vplace}
+    \newpage \section{Layer 3}
+    \begin{vplace}\includegraphics[width=6.5in]{render_lyr3}\end{vplace}
+    \newpage \section{Layer 4}
+    \begin{vplace}\includegraphics[width=6.5in]{render_lyr4}\end{vplace}
 \end{appendices}
 
 \end{document}
