@@ -45,8 +45,8 @@ def get_freq_response(s, freqs):
 
 def get_phase_response(s, freqs):
     print ("Collecting phase data...")
-    N_POINTS_PER_RANGE = 16
-    PRECISION = 1.
+    N_POINTS_PER_RANGE = 8
+    PRECISION = 5.
     data = []
     freqs = list(freqs[:N_REPEAT]) + list(freqs)
     for i in freqs:
