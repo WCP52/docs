@@ -1,6 +1,7 @@
 from serial_comm import *
 from response import *
 import numpy as np
+import threading
 
 class Bode:
     def __init__(self):
@@ -53,16 +54,25 @@ class Bode:
     def get_freqs_p(self):
         return self.freqs_p
 
-    def calibrate(self):
-        self.freq_calibration = get_freq_response(self.s, self.freqs_f)
+    def calibrate(self, statusbar=None, callback=None):
+        self.freq_calibration = get_freq_response(self.s, self.freqs_f, statusbar)
         if self.do_phase:
-            self.phase_calibration = get_phase_response(self.s, self.freqs_p)
+            self.phase_calibration = get_phase_response(self.s, self.freqs_p, statusbar)
+        if callback is not None:
+            callback()
 
-    def run(self):
-        self.freq_response = get_freq_response(self.s, self.freqs_f)
+    def calibrate_threaded(self, statusbar, callback):
+        calthread = threading.Thread(target=self.calibrate, args=(statusbar, callback))
+        calthread.start()
+
+    def run(self, statusbar=None, callback=None):
+        self.freq_response = get_freq_response(self.s, self.freqs_f, statusbar)
         if self.do_phase:
-            self.phase_response = get_phase_response(self.s, self.freqs_p)
+            self.phase_response = get_phase_response(self.s, self.freqs_p, statusbar)
+        if callback is not None:
+            callback()
 
-
-    
+    def run_threaded(self, statusbar, callback):
+        runthread = threading.Thread(target=self.run, args=(statusbar, callback))
+        runthread.start()
     

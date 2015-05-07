@@ -17,8 +17,9 @@
     </layout>
     <child>
       <object class="tk.Button" id="calibrate">
+        <property name="anchor">n</property>
         <property name="command">on_calibrate</property>
-        <property name="text" translatable="yes">Calibrate</property>
+        <property name="text" translatable="yes">Normalize</property>
         <property name="width">5</property>
         <layout>
           <property name="column">0</property>
@@ -95,33 +96,6 @@
         </layout>
       </object>
     </child>
-    <!--
-    <child>
-      <object class="tk.Entry" id="entry_min">
-        <property name="text" translatable="yes">0.0</property>
-        <property name="textvariable">double:min_val</property>
-        <property name="width">10</property>
-        <layout>
-          <property name="column">1</property>
-          <property name="propagate">True</property>
-          <property name="row">1</property>
-        </layout>
-      </object>
-    </child>
-    
-    <child>
-      <object class="tk.Entry" id="entry_max">
-        <property name="text" translatable="yes">0.0</property>
-        <property name="textvariable">double:max_val</property>
-        <property name="width">10</property>
-        <layout>
-          <property name="column">1</property>
-          <property name="propagate">True</property>
-          <property name="row">2</property>
-        </layout>
-      </object>
-    </child>
-    -->
     <child>
       <object class="ttk.Separator" id="separator_horizontal">
         <property name="orient">vertical</property>

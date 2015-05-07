@@ -8,13 +8,16 @@ import serial_comm as defs
 # The first few samples come out wrong. Repeat them
 N_REPEAT = 6
 
-def get_freq_response(s, freqs):
+def get_freq_response(s, freqs, statusbar=None):
     print ("Collecting data... ")
     data = []
 
     freqs = list(freqs[:N_REPEAT]) + list(freqs)
 
-    for i in freqs:
+    for n, i in enumerate(freqs):
+        if statusbar is not None:
+            percentage = 100.0 * ((1+n) / len(freqs))
+            statusbar.set("Gain: {pct:.0f}%% (at {freq:.2f} Hz)".format(pct=percentage, freq=i))
         nSamples = max(((1/i)*50)//1000000, 2048)
         s.write (("T:FREQ %d, %f\r\n" % (defs.CH_MAIN, i)).encode ('ascii'))
         getline (s)
@@ -37,19 +40,26 @@ def get_freq_response(s, freqs):
         print ("%.2f Hz\t%.2f dB" % (i, db))
         data.append (db)
 
+    if statusbar is not None:
+        statusbar.set ("")
+
     # Remove repeated measurements
     data = data[N_REPEAT:]
     #data = [i-data[0] for i in data]
     return data
 
 
-def get_phase_response(s, freqs):
+def get_phase_response(s, freqs, statusbar=None):
     print ("Collecting phase data...")
     N_POINTS_PER_RANGE = 8
     PRECISION = 5.
     data = []
     freqs = list(freqs[:N_REPEAT]) + list(freqs)
-    for i in freqs:
+    for n, i in enumerate(freqs):
+        if statusbar is not None:
+            percentage = 100.0 * ((1+n) / len(freqs))
+            statusbar.set("Phase: {pct:.0f}%% (at {freq:.2f} Hz)".format(pct=percentage, freq=i))
+
         # Set frequency. Then, search phases for a null
         s.write (("T:FREQ %d, %f\r\n" % (defs.CH_PHASE, i)).encode ('ascii'))
         getline (s)
@@ -114,6 +124,10 @@ def get_phase_response(s, freqs):
 
         print ("%.2f Hz\t%f deg" % (i, phase))
         data.append (phase)
+
+    if statusbar is not None:
+        statusbar.set ("")
+
     data = data[N_REPEAT:]
     return data
 
